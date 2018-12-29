@@ -1,0 +1,8 @@
+width: 100%; 
+/*文字溢出以点形式表示*/
+display: -webkit-box;
+/*从第二行开始以点形式表示*/
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}

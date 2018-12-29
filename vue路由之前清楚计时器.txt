@@ -1,0 +1,1 @@
+https://blog.csdn.net/weixin_39494582/article/details/79879282   beforeDestroy(组件销毁前调用)在这个声明周期函数中清楚计时器即可

@@ -1,0 +1,2 @@
+git pull origin master拉取master分支
+git pull origin dev拉取dev分支

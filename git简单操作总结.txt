@@ -1,0 +1,17 @@
+先安装git
+1.新建文件夹 右键git bash here
+2.输入git clone git仓库地址  （拉去项目）
+2.5. git init 初始化git仓库
+3.你可以在你拉取得文件夹进行操作
+4.操作之后cd你拉取的文件夹
+5.输入git add . 把你更新的东西添加到暂存区
+6.git commit -m “注释” 提交文件注释
+7.git push -u origin （master或dev）要提交的分支
+8.打开你的GitHub查看已经跟新
+9.git branch dev 创建分支
+10.git checkout dev 切换分支
+
+11.git pull origin master拉取master分支
+12.git pull origin dev拉取dev分支
+
+13.git remote add origin 加(git厂库地址) ：关联git仓库

@@ -1,0 +1,1 @@
+window.parent.layer.closeAll();//¹Ø±Õµ¯´°

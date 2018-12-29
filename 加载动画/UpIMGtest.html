@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form class="container" enctype="multipart/form-data" method="post" id='formBox' name="form"> 
+            <input type="file" id="chooseImage" name="file">
+            <!-- 保存用户自定义的背景图片 -->
+            <img id="cropedBigImg" value='custom' alt="" data-address='' title="自定义背景"/>
+      </form>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	 
+ $('#chooseImage').on('change',function(){
+    	var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+    	    fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase();
+    	// 检查是否是图片
+    	if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+    		error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
+        	return;  
+        }
+        $('#cropedBigImg').attr('src',filePath);
+        $('#loding').show();
+})
+ $('#chooseImage').on('change',function(){
+    	var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+    		fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+    		src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+    		
+    	// 检查是否是图片
+    	if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+    		error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
+        	return;  
+        }
+  
+        $('#cropedBigImg').attr('src',src);
+})
+// src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+</script>

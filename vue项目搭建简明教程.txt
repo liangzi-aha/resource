@@ -1,0 +1,21 @@
+前提安装好node不再赘述
+可以在自带的命令行中运行,也可以在webstorm中运行
+安装cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+安装webpack;这一步可以省略
+cnpm install webpack -g
+全局安装Vue
+cnpm install -g vue
+全局安装Vue脚手架
+cnpm install -g vue-cli
+使用脚手架创建新项目;要先使用cd 命令转到要放置项目的目录
+vue init webpack my-project
+接下来会有项目的配置;
+你看不懂无所谓;一路按enter就行
+注意：看到eslint字样选no
+完成后安装项目依赖文件;先cd命令转到项目的根目录
+cnpm install
+接下来可以启动监听端口了
+npm run dev
+你可以看到一个演示的例子
+剩下的就是写Vue了;至于怎么写，加油哦！
