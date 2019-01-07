@@ -1,0 +1,11 @@
+//禁止页面后退
+			$(function() {
+				//index禁止后退的页面
+				if(window.location.href.indexOf("/index") > -1) {
+					//防止页面后退
+					history.pushState(null, null, document.URL);
+					window.addEventListener('popstate', function() {
+						history.pushState(null, null, document.URL);
+					});
+				}
+			});
