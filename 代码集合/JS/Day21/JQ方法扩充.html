@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ方法扩充</title>
+		<style type="text/css">
+			#div1 {
+				width: 200px;
+				height: 200px;
+				border: solid;
+				background-color: red;
+			}
+		</style>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<!--<input type="text" />
+		<input type="text" />-->
+		<div id="div1"></div>
+		<script type="text/javascript">
+			/*
+			 * jq的方法扩充有两种方式:
+			 * 1.静态方法扩充
+			 * 		如果扩充的是静态方法,那么方法扩充完成之后,该方法的所有者是JQ类,而不属于某个jq对象,所以,在调用时,不用某个jq对象去调用.
+			 * 2.对象方法扩充
+			 * 		扩充的方法属于某个jq对象,在调用时需要jq对象使用,语法进行调用.
+			 */
+
+			/*
+			 * 扩充静态方法
+			 * 
+			 * 语法:
+			 * $.extend()
+			 * 作用1:合并对象
+			 * 参数1:布尔值,当合并的两个对象里有相同的属性且值是对象时,如果要保留两个对象里的数据,设置值为true,不保留设置值为false.
+			 * 参数2:目标对象
+			 * 参数3... :被合并的对象
+			 * 
+			 * 
+			 * 作用2.实现静态方法的扩充
+			 * 只在$.extend()方法里填一个对象,系统会认为该对象是被合并的对象,默认值为目标对象为JQ类,这样,我们就可以把任何一个方法,合并进JQ类里,该方法就能成为静态方法.
+			 */
+			//			$.extend(true, target object, object1);
+//			var obj1 = {
+//				name: "张三",
+//				age: 20,
+//				gf: {
+//					name: "韩梅梅",
+//					sex: "女"
+//				},
+//				sayHi: function() {
+//					console.log("obj1的方法sayHi")
+//				}
+//			}
+			//			console.log(obj1.name)
+			//obj1.sayHi()
+
+//			var obj2 = {
+//				name: "李四",
+//				school: "技校",
+//				gf: {
+//					height: 165,
+//					weight: "xx"
+//				},
+//				sayHello: function() {
+//					console.log("obj的方法sayHello");
+//				}
+//			}
+//			$resObj = $.extend(true, obj1, obj2);
+//			console.log(obj1)
+//			console.log($resObj)
+//
+//			$.extend({
+//				twoMax: function(a, b) {
+//					return a > b ? a : b;
+//				}
+//			})
+//
+//			var res = $.twoMax(10, 20);
+//			console.log(res)
+
+			//作业:查 $.each  和  $.map的用法
+
+			/*
+			 * 2.扩充对象方法
+			 * 语法
+			 * $.fn.extend(被合并的对象);
+			 */
+
+			//			$.fn.extend({
+			//				getV:function(){
+			//					$(this).click(function(){
+			//						alert($(this).val())
+			//					})
+			//				}
+			//			})
+			//			
+			//			$("input").getV();
+
+			//封装一个jq对象方法,实现元素的拖拽效果
+			$.fn.extend({
+				dragElement: function() {
+					$(this).mousedown(function(e) {
+						$(this).css({
+							position: "absolute",
+							left: $(this).position().left,
+							top: $(this).position().top,
+						});
+						var even = e || event
+						var _this = this;
+						var x = even.clientX - $(this).position().left;
+						var y = even.clientY - $(this).position().top;
+						$(window).mousemove(function(e) {
+							var even = e || event;
+							$(_this).css({
+								left : even.clientX - x + "px",
+								top : even.clientY - y + "px"
+							})
+
+						})
+
+					})
+					$(this).mouseup(function(){
+						$(window).unbind("mousemove");
+					})
+				}
+			});
+
+			$("div").dragElement();
+		</script>
+	</body>
+
+</html>

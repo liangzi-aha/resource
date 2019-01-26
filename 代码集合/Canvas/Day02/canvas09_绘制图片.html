@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas09_绘制图片</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3. 绘制图片
+			//创建一个图片对象
+			var img = new Image();
+			img.src = "girl1.jpg";
+			
+			//onload事件,当图片加载完毕时才开始绘制
+			img.onload = function(){
+				//开始绘制图片 drawImage()  draw:画  /坐/
+				/*
+				 * 写法一:
+				 * drawImage(image,x,y)
+				 * 三个参数:
+				 * image:要绘制的图片对象
+				 * x,y:要绘制画布上的位置
+				 */
+//				content.drawImage(this,0,0)
+				
+				/*
+				 * 写法二:
+				 * drawImage(image,x,y,width,height)
+				 * 五个参数:
+				 * image:要绘制的图片对象
+				 * x,y:要绘制画布上的位置
+				 * width,height:要绘制成的图像的宽高
+				 * 
+				 * 注意:在设置宽高时,按比例设置
+				 */
+				
+//				content.drawImage(this,0,0,920,500);
+				
+				
+				/*
+				 * 写法三:
+				 * drawImage(image,sx,sy,swidth,sheight,x,y,width,height);
+				 * image :参数为图片
+				 * sx,sy :参数是截取开始的位置
+				 * swidth,sheight:截取的大小
+				 * x,y:截取后放在canvas的位置
+				 * width,height:截取后的宽高
+				 */
+				
+				
+				content.drawImage(this,1000,0,920,1080,0,0,460,500);
+			}
+		</script>
+	</body>
+</html>

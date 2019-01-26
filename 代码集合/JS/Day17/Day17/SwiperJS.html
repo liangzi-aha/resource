@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>SwiperJS</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="css/swiper-4.3.3.min.css" />
+        <style type="text/css">
+            .swiper-container {
+                width: 600px;
+                height: 300px;
+                margin: 50px auto;
+                border: 5px solid red;
+            }
+            
+            .swiper-slide {
+                font-size: 50px;
+                text-align: center;
+                line-height: 300px;
+                color: white;
+                background-color: pink;
+            }
+            .swiper-pagination span{
+            		width: 100px;
+            		height: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- 如果需要滚动条 -->
+            <!--<div class="swiper-scrollbar"></div>-->
+        </div>
+        <script src="js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            var div = document.querySelector(".swiper-container")
+            var mySwiper = new Swiper(div, {
+                //竖直 vertical 水平 horizontal
+                direction: 'vertical',
+                loop: true,
+                //              initialSlide :2,
+                autoplay: true,
+//              speed: 1000,
+				disableOnInteraction:true,
+                effect: 'cube',
+//              on: {
+//                  slideChangeTransitionEnd: function() {
+//                      alert(this.activeIndex); //切换结束时，告诉我现在是第几个slide
+//                  },
+//              },
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // 如果需要滚动条
+                //              scrollbar: {
+                //                  el: '.swiper-scrollbar',
+                //              },
+            })
+        </script>
+    </body>
+
+</html>

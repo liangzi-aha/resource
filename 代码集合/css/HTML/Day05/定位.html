@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定位</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				height: 5000px;
+			}
+			/*#div1{
+				width: 200px;
+				height: 200px;
+				background-color:red;
+				position: static;
+				left: 100px;
+			}*/
+			/*#div2{
+				width: 200px;
+				height: 200px;
+				background-color:blue;
+				设置相对定位
+				position: relative;
+				top: 100px;
+				left: 300px;
+				margin: 0 auto;
+			}*/
+			/*#div3{
+				width: 200px;
+				height: 200px;
+				background-color:red;
+			}*/
+			/*#div4{
+				width: 200px;
+				height: 200px;
+				background-color:yellow;
+				position:relative;
+				left: 200px;
+			}
+			#div5{
+				width: 200px;
+				height: 200px;
+				background-color:green;
+			}*/
+			/*#div6{
+				width: 500px;
+				height: 500px;
+				background-color:red;
+			}
+			#div7{
+				width: 400px;
+				height: 400px;
+				background-color:yellow;
+				position: relative;
+			}
+			#div8{
+				width: 300px;
+				height: 300px;
+				background-color:blue;
+				
+			}
+			#div9{
+				width: 200px;
+				height: 200px;
+				background-color:black;
+				position: absolute;
+				right: 100px;
+			}*/
+			/*#div10{
+				width: 1000px;
+				height: 100px;
+				background-color:gray;
+				position: fixed;
+				left: 100px;
+				top: 100px;
+				border: dashed;
+			}
+			#div11{
+				width: 400px;
+				height: 450px;
+				background-color:red;
+			}*/
+			#one{
+				width: 200px;
+				height: 200px;
+				background-color:red;
+				position: absolute;
+			}
+			#two{
+				width: 200px;
+				height: 200px;
+				background-color:yellow;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+			/*body{
+				position: relative;
+			}*/
+	</style>
+	</head>
+	<body>
+		<!--
+			定位:
+			position
+			对元素的位置进行精确的调整
+			定位一共有四个值:
+			1.static  静态定位
+			2.relative  相对定位
+			3.absolute  绝对定位
+			4.fixed  固定定位
+			以上四个值只是规定了元素定位的方式,具体的元素应该如何移动,
+			需要通过另外四个css样式实现:left,right,top,bottom,表示距
+			离当前某个方位移动多少px的值
+			
+			注意:left,right,top,bottom四个css样式只对设置了非static定
+			位的元素起作用!!!!
+			
+		-->
+		<!--1.static 静态定位 默认值-->
+		<!--<div id="div1"></div>-->
+
+		<!--2.relative 相对定位
+			a.相对定位的元素移动的参考位置是自己之前的位置
+			b.相对定位的元素不完全脱离文档流,会保留自己之前的位置
+		-->
+		<!--<div id="div2"></div>
+		<div id="div3"></div>-->
+		
+		<!--3.absolute 绝对定位
+			a.绝对定位的元素完全脱离文档流.会失去自己之前的位置.
+			b.绝对定位的元素其移动的参考位置是:距离他最近的.设置
+			了非static定位的祖先元素;如果所有的祖先元素都没有设置
+			非static定位的值,这该元素相对与整个文档定位.
+		-->
+		<!--<div id="div4"></div>
+		<div id="div5"></div>-->
+		
+		<!--<div id="div6">
+			<div id="div7">
+				<div id="div8">
+					<div id="div9"></div>
+				</div>
+			</div>
+		</div>-->
+		<!--以后如果给一个元素设置了绝对定位,立刻去给它的父元素相对定位-->
+		
+		<!--4.fixed 固定定位
+			a.固定定位的元素完全脱离文档流,会失去自己之前的位置.
+			b.固定定位的元素移动的参考是整个文档.
+		-->
+		<!--<div id="div10"></div>
+		<div id="div11"></div>-->
+		<!--
+			绝对定位的元素因为脱离文档流,层级会大于非定位元素
+			如果多个元素同时绝对定位,此时层级大小按照书写顺序,写的越晚,层级越大
+			
+		-->
+		<div id="one"></div>
+		<div id="two"></div>
+	</body>
+</html>

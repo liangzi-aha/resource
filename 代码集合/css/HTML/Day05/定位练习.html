@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#item{
+				width: 372px;
+				height: 240px;
+				margin: 50px auto;
+				position:relative;
+				background-color:grey;
+			}
+			#item img{
+				width: 372px;
+				height: 205px;
+			}
+			#item>p{
+				/*position: absolute;*/
+				text-align: center;
+				
+			}
+			#item>div>*{
+				color: white;
+				/*如何实现背景透明,文字不透明*/
+				text-align: center;
+			}
+			#item>div h2{
+				margin-top: 80px;
+			}
+			#item>div{
+				width: 372px;
+				height: 205px;
+				/*透明效果
+				1.rgba()a表示不透明,取值范围0-1,
+				1表示完全不透明(默认值),0表示完全透明
+				2.opacity样式,表示不透明,取值范围0-1,
+				1表示完全不透明(默认值),0表示完全透明
+				* */
+				 background-color: rgba(0,0,0,0.4);
+				 /*background-color:grey;
+				 opacity: 0.5;*/
+				 /*绝对定位*/
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+			#item:hover>div{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="item">
+			<!--图片-->
+			<img src="d1.jpg" alt="" />
+			<!--文字-->
+			<p>抖音品牌升级片</p>
+			<!--遮罩-->
+			<div>
+				<h2>抖音</h2>
+				<p>抖音品牌升级片</p>
+			</div>
+		</div>
+	</body>
+</html>

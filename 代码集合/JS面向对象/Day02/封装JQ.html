@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装JQ</title>
+		<style type="text/css">
+			/*p:nth-of-type(1) {
+			    background: green;
+			}
+			*/
+		</style>
+		<script src="packageJQ.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+	</head>
+	<body>
+	    <div id="div1">
+	        <p>
+	            <span>111</span>
+	            <span>222</span>
+	        </p>
+	        <p>
+	            <span>333</span>
+	            <span>444</span>
+	            <span>555</span>
+	        </p>
+	    </div>
+	    <span>666</span>
+	    <script type="text/javascript">
+//	    	     console.log($("#div1 span"));
+	    	     
+//	    	     $("span").css("background", "red");
+//	    	     $("p").css({
+//	    	         background:"red",
+//	    	         width:"200px",
+//	    	         height:"200px"
+//	    	     }); 
+                $("p:eq(0)").css("background", "red");
+                $("p:eq(1)").css("background", "yellow");
+//	    	       console.log($("p").css("backgroundColor"));
+
+
+//          $("p")[0].style.backgroundColor = "red";
+            
+            $("p").on("click", function(){
+                alert("被点击");
+            });
+//	    	     var p = $("p")[0];
+//	    	     p["onclick"] = function(){
+//	    	         alert(1111);
+//	    	     }
+	    	     
+	    	     
+	    	     
+	    	     
+	    </script>
+	</body>
+</html>

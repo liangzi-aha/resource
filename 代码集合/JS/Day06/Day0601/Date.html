@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Date</title>
+	</head>
+	<body>
+	    <script type="text/javascript">
+	    	      /*
+	    	       * JS里, Date用来创建日期时间的对象, 该对象可以用来处理与日期和时间有关的所有操作.
+	    	       */
+	    	      
+	    	      //1. 创建日期时间对象.JS里, 创建对象使用new关键字
+	    	       var d = new Date();
+	    	       
+	    	       //获取年份
+//	    	       console.log(d.getFullYear());
+	    	       
+               //获取月份 取值范围0-11
+//             console.log(d.getMonth());
+               
+               //获取日期
+//             console.log(d.getDate());
+               
+               //获取星期几 取值范围0-6 周日是0
+//             console.log(d.getDay());
+               
+               //获取小时
+//             console.log(d.getHours());
+               
+               //获取分钟
+//             console.log(d.getMinutes());
+               
+               //获取秒
+//             console.log(d.getSeconds());
+               
+               
+               
+               setInterval(function(){
+                   var now = new Date();
+                   var body = document.querySelector("body");
+                   body.innerHTML = now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
+               }, 1000);
+               
+               
+               //时间戳
+               //在js里, 是一个毫秒数, 1970年1月1日0时到当前时刻所消耗的所有时间转化成的毫秒数.
+               
+               //获取时间戳
+               console.log(d.getTime() / 1000 / 60/ 60 / 24/ 365);
+               
+               
+               //如何任意规定一个时刻??
+               var fDate = new Date(2018, 8, 31, 19, 0, 0);
+               
+               setInterval(function(){
+                   var nDate = new Date();
+                   //计算两者的时间戳差值
+                   var time = (fDate.getTime() - nDate.getTime()) / 1000;
+                   
+                   //天
+                   var d = Math.floor(time / (60*60*24));
+                   //小时
+//                 var h = Math.floor(time % (60*60*24) / (60*60));
+                   var h = Math.floor(time/ 3600) % 24;
+                   
+                   //分钟
+//                 var m = Math.floor(time % (60*60*24) % (60*60) / 60);
+                   var m = Math.floor(time / 60) % 60;                  
+                   //秒
+//                 var s = Math.floor(time % (60*60*24) % (60*60) % 60);
+                   var s = Math.floor(time % 60);
+                   
+                   console.log(d, h, m, s);
+               }, 1000);
+               
+               
+               
+	    </script>
+	</body>
+</html>

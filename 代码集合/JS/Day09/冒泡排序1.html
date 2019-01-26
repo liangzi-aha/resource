@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>冒泡排序</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 冒泡排序
+			 * 排序算法里的一种,一般用作对数组里值进行整理,最终的排序结果是升序或者降序
+			 * 时间复杂度O(n²)
+			 * 空间复杂度O(1)
+			 * 
+			 * 算法思想:
+			 * 相邻的两两数比较,根据规则决定是否交换两个数的位置.
+			 */
+			var arr = [9, 7, 5, 3, 1];
+			for(var i = 0; i < arr.length - 1; i++) {
+				for(var j = 0; j < arr.length - 1 - i; j++) {
+					//判断相邻的两个数的大小关系,当前面比后面大时,交换位置,排成升序.
+					if(arr[j] > arr[j + 1]) {
+						//交换位置
+						var t = arr[j];
+						arr[j] = arr[j + 1];
+						arr[j + 1] = t;
+					}
+				}
+			}
+			console.log(arr)
+			//冒泡排序里,外层循环的-1和内层循环的-i是可以省略的.目的是为了提高执行效率;但是内层的-1不能省略,如果省略,会出现数组越界.
+
+			//选择排序 快速排序  桶排序 插入排序 ....
+
+
+
+
+			/*
+			  冒泡排序的原理：每次在无序队列里将相邻两个数依次进行比较，将小数调换到前面，
+			  逐次比较，直至将最大的数移到最后。最将剩下的N-1个数继续比较，将次大数移至倒数第二位。
+			  依此规律，直至比较结束。
+			  冒泡排序的代码如下：
+			 */
+			void bubble_sort(int a[], int n) {
+				int i, j;
+				for(i = 0; i < n - 1; ++i)
+					for(j = 0; j < n - i - 1; ++j) {
+						if(a[j] > a[j + 1])
+							swap( & a[j], & a[j + 1]);
+					}
+			}
+			/*
+			  选择排序的原理：每次在无序队列中“选择”出最小值，放到有序队列的最后，并从无序队列
+			  中去除该值（具体实现略有区别）。
+			  选择排序的代码如下：
+			 */
+			void selection_sort(int a[], int n) {
+				int i, j;
+				int min;
+				for(i = 0; i < n; ++i) {
+					min = i;
+					for(j = i + 1; j < n; ++j) {
+						if(a[j] < a[min])
+							min = j;
+					}
+					if(min != i)
+						swap( & a[min], & a[i]);
+				}
+			}
+			/*
+			  插入排序的原理：始终定义第一个元素为有序的，将元素逐个插入到有序排列之中，其特点是要不断的
+			  移动数据，空出一个适当的位置，把待插入的元素放到里面去。
+			  插入排序的代码如下：
+			 */
+			void insertion_sort(int a[], int n) {
+				int i, j;
+				for(i = 1; i < n; ++i) {
+					int A = a[i];
+					j = i - 1;
+					while(j >= 0 && a[j] > A) {
+						a[j + 1] = a[j];
+						j--;
+					}
+					a[j + 1] = A;
+				}
+			}
+			int main(int argc, char * argv[]) {
+				int a[] = {
+					5,
+					6,
+					7,
+					1,
+					2,
+					3
+				};
+				// bubble_sort(a , 6);
+				//selection_sort(a , 6);
+				insertion_sort(a, 6);
+				int i;
+				for(i = 0; i < sizeof(a) / sizeof(int); ++i) {
+					printf("%d ", a[i]);
+				}
+				printf("\n");
+				return 0;
+			}
+		</script>
+	</body>
+
+</html>

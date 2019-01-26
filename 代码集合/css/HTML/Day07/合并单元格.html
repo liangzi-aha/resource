@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>合并单元格</title>
+	</head>
+	<body>
+		<!--
+			合并单元格需要单元格的两个属性
+			1.colspan  列合并  横向合并
+			2.rowspan  行合并  纵向合并
+		-->
+		<table border="" cellspacing="0" cellpadding="30">
+			<tr>
+				<th colspan="2">121</th>
+				<th>1231</th>
+				<th>121</th>
+				<th>121</th>
+			</tr>
+			<tr>
+				<th></th>
+				<th></th>
+				<th rowspan="2"></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<th></th>
+				<th></th>
+				<th rowspan="2" colspan="2"></th>
+				<!--<th></th>-->
+			</tr>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<!--<th></th>
+				<th></th>-->
+			</tr>
+		</table>
+	</body>
+</html>

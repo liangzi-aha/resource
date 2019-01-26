@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>变量提升</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 变量提升:
+			 * JS会把函数里所有的变量声明和函数的声明统统提升到函数的最顶部.
+			 */
+			var a = 100;
+			function fn1() {
+				console.log(a);
+				var a = 1000;
+			}
+			fn1()
+		</script>
+	</body>
+
+</html>

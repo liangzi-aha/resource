@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas01_拾色器</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+
+			//3.拾色器
+			var img = new Image();
+			img.src = "../Day02/girl1.jpg";
+			img.onload = function() {
+				content.drawImage(this, 0, 0, 1000, 500);
+			}
+			canvas.onclick = function(e) {
+				var even = event || e;
+				//获取鼠标位置
+				var x = even.offsetX
+				var y = even.offsetY
+				//获取一个像素点的像素对象;  image对象 :下面有个属性为data里面存的是 rgba 4个值
+				var imgdata = content.getImageData(x, y, 1, 1);
+				console.log(imgdata);
+				//获取像素对象下面的data值 data:里存的是rgba值;
+				var pixelArray = imgdata.data;
+				console.log(pixelArray)
+				document.body.style.backgroundColor = "rgb(" +
+				//取出下标为r g b的值赋给body;
+				pixelArray[0] + "," + pixelArray[1] + "," + pixelArray[2] + ")"
+			}
+		</script>
+	</body>
+
+</html>

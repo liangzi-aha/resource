@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>匿名函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 匿名函数:
+			 * 因为匿名函数没有名字,所以没有办法像普通函数那样随时调用. 使用匿名函数有两种发方法:
+			 * 1.在声明的同时就调用
+			 * 2.如果把匿名函数赋给一个变量,那么变量名就可以当做函数的函数名使用.
+			 */
+			//1.在声明的同时就调用
+			(function (name){
+				console.log(123,name);
+			})('张三');
+			
+			//2.如果把匿名函数赋给一个变量,使用
+			var a = function (){
+				console.log("aaaaaa")
+			}
+			a();
+			a();
+			/*
+			 * 普通函数的函数名非常重要:
+			 * 1.调用的语法就是函数名()!
+			 * 2.函数名就可以代指该函数自己!
+			 */
+		</script>
+	</body>
+</html>

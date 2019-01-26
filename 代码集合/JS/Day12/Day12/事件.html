@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>事件</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #div1 {
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+                margin: 100px auto;
+            }
+            
+            #div2 {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                margin: 100px auto;
+            }
+            
+            #div3 {
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+                margin: 100px auto;
+            }
+            
+            #div4 {
+                width: 200px;
+                height: 200px;
+                background-color: cyan;
+                margin: 100px auto;
+            }
+            
+            #div5 {
+                width: 200px;
+                height: 200px;
+                background-color: green;
+                margin: 100px auto;
+            }
+            
+            #div6 {
+                width: 200px;
+                height: 200px;
+                background-color: gold;
+                margin: 100px auto;
+            }
+            
+            #div7 {
+                width: 200px;
+                height: 200px;
+                background-color: purple;
+                margin: 100px auto;
+            }
+            
+            body {
+                position: relative;
+            }
+            
+            #div8 {
+                width: 200px;
+                height: 200px;
+                background-color: lightcoral;
+                position: absolute;
+                left: 0;
+                top: 0;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+        <div id="div4"></div>
+        <div id="div5"></div>
+        <div id="div6"></div>
+
+        <div id="div7"></div>
+        <div id="div8"></div>
+        <form action="javascript:void(0)" method="post">
+            <input type="text" id="i1" placeholder="请输入姓名" />
+            <input type="submit" id="btn"/>
+            <input type="reset" />
+        </form>
+        <script type="text/javascript">
+            /*
+             * JS是一门以事件为驱动的脚本语言, 我们如果想要实现各种效果, 需要借助事件触发实现.
+             * 
+             * 我们目前仅仅可以添加事件, 如何获取事件触发后更加详细的信息??如鼠标的位置, 键盘的触发键等.
+             * 
+             * 系统已经帮我们把事件触发后的所有信息封装到了一个事件对象里. 除了火狐浏览器之外, 所有浏览器的事件对象的获取方式是直接在触发函数里 书写 event, 这个event就是事件对象.
+             * 
+             * 火狐浏览器不支持event对象, 解决办法:
+             * 给触发函数添加一个参数, 该参数就是事件对象
+             */
+            div1.onclick = function(e) {
+                var even = e || event;
+                console.log(even);
+                this.style.backgroundColor = randomColor();
+            }
+            /*
+             * 事件的分类:
+             * 1. 鼠标事件
+             * 2. 键盘事件
+             * 3. 表单事件
+             * 4. 触屏事件
+             */
+            function randomNumber(x, y) {
+                return Math.floor(Math.random() * (y - x + 1) + x);
+            }
+
+            function randomColor() {
+                var r = randomNumber(0, 255);
+                var g = randomNumber(0, 255);
+                var b = randomNumber(0, 255);
+                return "rgb(" + r + "," + g + "," + b + ")";
+            }
+
+            //一. 鼠标事件
+            //1. onclick 鼠标单击事件
+
+            //2. ondblclick 鼠标双击事件
+            div2.ondblclick = function() {
+                this.style.backgroundColor = randomColor();
+            }
+
+            /*
+             * 3. 鼠标移入移出事件
+             * a.onmouseover 移入
+             * b.onmouseout 移出
+             * 
+             * a.onmouseenter 移入
+             * b.onmouseleave 移出
+             * 
+             * onmouseenter和onmouseleave的执行效率较高.
+             */
+
+            //4. 鼠标按下事件 onmousedown
+
+            div3.onmousedown = function(e) {
+                var even = e || event;
+                switch(even.button) {
+                    case 0:
+                        {
+                            console.log("左键");
+
+                            break;
+                        }
+                    case 1:
+                        {
+                            console.log("滚轮");
+                            break;
+                        }
+                    case 2:
+                        {
+                            console.log("右键");
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            }
+
+            //5. 鼠标右键事件 oncontextmenu
+            div4.oncontextmenu = function() {
+                alert("右键事件触发");
+            }
+
+            //6. 鼠标抬起事件 onmouseup
+            div3.onmouseup = function() {
+                console.log("抬起事件被触发");
+            }
+
+            //7. 鼠标滚轮事件 onmousewheel
+            div5.onmousewheel = function() {
+                console.log("滚轮事件被触发");
+            }
+
+            //8. 鼠标移动事件 onmousemove
+            div6.onmousemove = function() {
+                console.log("鼠标移动事件触发");
+            }
+
+            //二. 键盘事件
+            //1. 键盘按下事件 onkeydown
+            //          var left = 0;
+            //          var top1 = 0;
+            //          window.onkeydown = function(e) {
+            //              var even = e || event;
+            //              even.preventDefault();
+            //              //              console.log("键盘按下事件被触发了");
+            //              switch(even.keyCode) {
+            //                  case 37:
+            //                      {
+            //                          left-=10;
+            ////                          alert("左键");
+            //                          break;
+            //                      }
+            //                  case 38:
+            //                      {
+            //                          top1-=10;
+            ////                          alert("上键");
+            //                          break;
+            //                      }
+            //                  case 39:
+            //                      {
+            //                          left+=10;
+            ////                          alert("右键");
+            //                          break;
+            //                      }
+            //                  case 40:
+            //                      {
+            //                          top1+=10;
+            ////                          alert("下键");
+            //                          break;
+            //                      }                    
+            //              }
+            //              div8.style.left = left + "px";
+            //              div8.style.top = top1 + "px";
+            //          }
+
+            //2. 键盘弹起事件 onkeyup
+            //          window.onkeyup = function(){
+            //              console.log("键盘弹起事件触发");
+            //          }
+
+            //3. onkeypress
+            //          window.onkeydown = function(){
+            //              console.log(1111);
+            //          }
+            //          window.onkeypress = function(){
+            //              console.log(2222);
+            //          }
+
+            //三. 表单事件
+            //1. onfocus 获得焦点事件
+            i1.onfocus = function() {
+                this.placeholder = "";
+            }
+
+            //2. onblur 失去焦点事件
+            i1.onblur = function() {
+                this.placeholder = "请输入姓名";
+            }
+            
+            //3. onchange  内容输入完毕时当前内容与上一次内容相比发生改变
+            i1.onchange = function(){
+                console.log("change事件被触发");
+            }
+            
+            //4. onsubmit 当内容提交时触发
+            document.querySelector("form").onsubmit = function(){
+                console.log("内容提交时触发");
+            }
+            //5. onreset 当内容被重置时触发
+            document.querySelector("form").onreset = function(){
+                console.log("重置内容时触发");
+            }
+        </script>
+
+    </body>
+
+</html>

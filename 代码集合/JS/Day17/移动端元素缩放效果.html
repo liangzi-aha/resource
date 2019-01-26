@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>移动端元素缩放效果</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#div1 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			//表示上一次两个点的位置
+			var one1 = {
+				x: 0,
+				y: 0
+			};
+			var two1 = {
+				x: 0,
+				y: 0
+			};
+
+			//表示当前两个点的位置
+			var one2 = {
+				x: 0,
+				y: 0
+			};
+			var two2 = {
+				x: 0,
+				y: 0
+			};
+
+			div1.ontouchstart = function(e) {
+				var even = e || event
+				even.preventDefault();
+				//获取两个手指的位置 触摸时的位置
+				var f1 = even.touches[0];
+				var f2 = even.touches[1];
+
+				one1.x = f1.clientX;
+				one1.y = f1.clientY;
+
+				two1.x = f2.clientX;
+				two1.y = f2.clientY;
+
+				this.ontouchmove = function(e) {
+					var even = e || event;
+					//获取两个手指的位置 移动后的位置
+					var f1 = even.touches[0];
+					var f2 = even.touches[1];
+
+					one2.x = f1.clientX;
+					one2.y = f1.clientY;
+
+					two2.x = f2.clientX;
+					two2.y = f2.clientY;
+
+					//计算之前两点的距离 one1, tow1
+					var preD = Math.sqrt(Math.pow(one1.x - two1.x, 2) + Math.pow(one1.y - two1.y, 2));
+					//计算当前两点的距离one2, tow2
+					var nowD = Math.sqrt(Math.pow(one2.x - two2.x, 2) + Math.pow(one2.y - two2.y, 2))
+					
+					var bl = nowD / preD;
+					div1.style.width = Math.ceil(div1.offsetWidth * bl)  + "px";
+					div1.style.height = Math.ceil(div1.offsetHeight * bl)  + "px";
+					//重置点的数据
+					one1.x = one2.x;
+					one1.y = one2.y;
+					
+					two1.x = two2.x;
+					two1.y = two2.y;y
+				}
+			}
+		</script>
+	</body>
+
+</html>

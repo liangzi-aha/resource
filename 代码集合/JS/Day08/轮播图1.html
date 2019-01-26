@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 300px;
+				height: 450px;
+				margin: 50px auto;
+				border: 3px solid red;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#content {
+				width: 2100px;
+				height: 450px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			img {
+				width: 300px;
+				height: 450px;
+				float: left;
+			}
+			
+			ul {
+				width: 200px;
+				list-style: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 420px;
+				bottom: 0;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-around;
+			}
+			
+			li {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: white;
+				text-align: center;
+				line-height: 20px;
+			}
+			
+			#left,
+			#right {
+				width: 20px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				background-color: rgba(0, 0, 0, 0.6);
+				color: white;
+				position: absolute;
+				top: 50%;
+				margin-top: -25px;
+			}
+			
+			#right {
+				right: 0;
+			}
+			
+			.choose {
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="content">
+				<img src="img/1.png" alt="" />
+				<img src="img/2.jpeg" alt="" />
+				<img src="img/3.jpeg" alt="" />
+				<img src="img/4.png" alt="" />
+				<img src="img/5.jpeg" alt="" />
+				<img src="img/6.png" alt="" />
+				<img src="img/1.png" alt="" />
+			</div>
+			<!--分页器-->
+			<ul>
+				<li class="choose">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<!--左右按钮-->
+			<div id="left">
+				<</div>
+					<div id="right">></div>
+			</div>
+			<script src="JS/tween.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+				//获取wrap元素
+				var wrapDiv = document.getElementById("wrap")
+				//获取content元素
+				var contentDiv = document.getElementById("content")
+				//获取按钮
+				var btns = document.querySelectorAll("#left,#right")
+				//获取li按钮
+				var lis = document.querySelectorAll("li")
+				var index = 0;
+				//点击左按钮换图片
+				for(var i = 0; i < 6; i++) {
+					btns[0].onclick = function() {
+						clearInterval(timer);
+						if(index == 0) {
+							index = 6;
+							contentDiv.style.left = index * -300 + "px";
+						}
+						index--;
+						//改变图片
+						huanTu();
+						//改变小球
+						xiaoQiu();
+					}
+				}
+				//点击右按钮换图片
+				for(var i = 0; i < 6; i++) {
+					btns[1].onclick = function() {
+						clearInterval(timer);
+						if(index == 6) {
+							index = 0;
+							contentDiv.style.left = index * -300 + "px";
+						}
+						index++;
+						//改变图片
+						huanTu();
+						//改变小球
+						xiaoQiu();
+					}
+				}
+				
+				//点击小球改变图片
+				for(var i = 0; i < 6; i++) {
+					lis[i].onmouseover = function() {
+						clearInterval(timer)
+						//写法1
+						for(var j = 0; j < 6; j++) {
+				//上面的for i循环循环 循环一次 下面的for循环循环循环一圈所以j等于 0 1 2 3 4 5,所以下面的lis[j].className都为 " " ;当点击小球的时候,把所有的小球都改变成白色
+							if(this == lis[j]) {
+								index = j
+				//设置this 就是当前点击的这个小球,改变它的this.className = "choose"当前点击的小球就会改变颜色,
+								this.className = "choose"
+								huanTu();
+							} else {
+								lis[j].className = "";
+							}
+						}
+					}
+				}
+				
+				//图片切换
+				var timer;
+
+				function huanTu() {
+					var t = 0;
+					var b = contentDiv.offsetLeft
+					var c = -300 * index - b
+					var d = 20;
+					timer = setInterval(function() {
+						t++;
+						if(t == d) {
+							clearInterval(timer);
+						}
+						contentDiv.style.left = Tween.Linear(t, b, c, d) + "px";
+						//c*t/d + b
+					}, 20)
+				}
+
+				//改变小球
+				function xiaoQiu() {
+					for(var i = 0; i < 6; i++) {
+						if(i == index) {
+							lis[i].className = 'choose';
+						} else {
+							lis[i].className = '';
+						}
+						if(index == 6) {
+							lis[0].className = 'choose';
+						}
+					}
+				}
+
+				
+			</script>
+	</body>
+
+</html>

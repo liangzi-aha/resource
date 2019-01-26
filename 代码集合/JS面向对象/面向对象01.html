@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>面向对象01</title>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            /*
+             * JS是一门脚本语言
+             * 
+             * 面向过程编程语言(OPP):C语言
+             * 面向对象编程语言(OOP):java, c#, c++, oc, swift
+             * 
+             * 
+             * 面向对象的三大特性:
+             * 1. 封装 
+             * 2. 继承
+             * 3. 多态 (一种事物的多种形态)
+             * 
+             * 类和对象
+             * 
+             * 面向对象编程(oop)与面向过程编程(opp)的区别:
+             * 1. 面向过程编程以事件为中心, 将完成整个事件拆分成若干个步骤, 按照步骤依次执行. 侧重点在步骤的分析上.
+             * 2. 面向对象编程以事物为中心, 完成需求需要哪些事物参与, 每个事物都有哪些特征和行为. 侧重点在对象的特征和行为的设计上.
+             * 
+             * 类和对象:
+             * 类: 类是具有相同特征和行为的事物的抽象.  类是对象的类型
+             * 对象: 对象是类的实例
+             * 
+             * 如何判断所描述的是类还是对象??
+             * 如果所有人都能通过描述找到同一个事物, 则描述的是对象, 否则是类.
+             * 
+             * 在面向对象编程中, 首先是对类进行设计, 类完成之后即可使用类创建出对象, 完成对应的需求
+             * 
+             * 
+             * 注意: 所有的面向对象的语言里都有类和对象的概念, 但是JS中只有对象的概念, 没有类的概念, 所以JS不是面向对象的语言.
+             * 
+             * JS里如何创建对象???
+             * 1.字面量创建对象
+             * 2.普通函数创建对象
+             * 3.构造函数创建对象
+             */
+
+            /*
+             * 1. 字面量创建对象
+             * 语法:
+             * var 对象名 = {};
+             * 
+             * 每个对象都有自己的特征(属性)和行为(方法)
+             * 一个对象可以有多个属性和方法, 之间用逗号分隔, 每个属性或者方法分为两部分: 名 和值, 之间用冒号连接
+             */
+
+            //创建一个学生对象, 属性: 姓名, 性别, 年龄, 大学, 学号;  方法: 上课, 写作业, 考试, 放学回家
+
+            var stu1 = {
+                //属性
+                name: "帅黄",
+                sex: "男",
+                age: 18,
+                school: "五道口金融学院",
+                num: "1",
+                girlFriend: {
+                    name:"迪丽热巴",
+                    age:17,
+                    height:"168cm",
+                    sayHi:function(){
+                        console.log(this);
+                    }
+                },
+                isShuai: true,
+                //方法
+                goToClass: function() {
+                    //对象函数里的this, 代指当前对象
+                    console.log(this);
+//                  console.log("去上课");
+                },
+                doHomework: function() {
+                    console.log("写作业");
+                },
+                test: function() {
+                    console.log("考试");
+                }
+            };
+
+            //          console.log(stu1);
+            /*
+             * 如何使用对象???
+             * 语法:
+             * 对象名.属性名 或者 对象名.方法名()
+             */
+//          console.log(stu1.school);
+//          stu1.goToClass();
+            
+//          console.log(stu1.girlFriend.name);
+//          stu1.girlFriend.sayHi();    
+
+        var stu2 = {
+                //属性
+                name: "帅黄",
+                sex: "男",
+                age: 18,
+                school: "五道口金融学院",
+                num: "1",
+                girlFriend: {
+                    name:"迪丽热巴",
+                    age:17,
+                    height:"168cm",
+                    sayHi:function(){
+                        console.log(this);
+                    }
+                },
+                isShuai: true,
+                //方法
+                goToClass: function() {
+                    //对象函数里的this, 代指当前对象
+                    console.log(this);
+//                  console.log("去上课");
+                },
+                doHomework: function() {
+                    console.log("写作业");
+                },
+                test: function() {
+                    console.log("考试");
+                }
+            };
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>打灰太狼</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 320px;
+				height: 480px;
+				margin: 50px auto;
+				background: url(img/game_bg.jpg) no-repeat;
+				position: relative;
+			}
+			
+			#score {
+				position: absolute;
+				font-size: 25px;
+				color: white;
+				left: 60px;
+				top: 5px;
+			}
+			
+			#time {
+				position: absolute;
+				height: 16px;
+				left: 63px;
+				top: 66px;
+			}
+			
+			a {
+				text-decoration: none;
+				font-size: 40px;
+				color: red;
+				text-shadow: 0 0 10px greenyellow;
+			}
+			
+			#begin,
+			#end {
+				width: 320px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				margin: auto 0;
+				text-align: center;
+			}
+			
+			span {
+				font-size: 40px;
+				color: red;
+				text-shadow: 0 0 10px greenyellow;
+			}
+			
+			#end {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<!--得分-->
+			<div id="score">0</div>
+			<!--时间进度-->
+			<img src="img/progress.png" alt="" id="time" />
+			<!--开始游戏区域-->
+			<div id="begin">
+				<a href="###">开始游戏</a><br />
+				<a href="###">游戏说明</a>
+			</div>
+			<!--结束游戏区域-->
+			<div id="end">
+				<span>GAME OVER</span><br />
+				<a href="">再来一局</a>
+			</div>
+		</div>
+		<script src="../Day08/js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//分数
+			var scoreDiv = document.getElementById("score");
+			//进度条
+			var time = document.getElementById("time");
+			//开始游戏a链接
+			var beginA = document.querySelector("#begin a");
+			//开始游戏区域
+            var beginDiv = document.getElementById("begin");
+			//结束游戏区域
+			var endDiv = document.getElementById("end");
+			//box
+			var box = document.getElementById("box");
+			//位置数组
+			var locationArr = [
+				[100, 113],
+				[20, 158],
+				[20, 221],
+				[185, 142],
+				[104, 192],
+				[200, 210],
+				[31, 294],
+				[120, 274],
+				[209, 295]
+			];
+			//声明一个变量记录当前得分
+			var score = 0;
+			//随机数函数
+			function randomNumber(x, y) {
+				return Math.floor(Math.random() * (y - x + 1) + x);
+			}
+			//给开始按钮添加点击事件
+			beginA.onclick = function() {
+				//隐藏开始区域
+				beginDiv.style.display = "none";
+				//开始倒计时
+				countDown();
+				//开始游戏
+				startGame();
+			}
+
+			//倒计时函数
+			function countDown() {
+				//              var tWidth = time.offsetWidth;
+				//              //添加计时器, 不断变小时间图片的宽度.
+				//              var timer = setInterval(function() {
+				//                  time.style.width = tWidth + "px";
+				//                  tWidth--;
+				//              }, 20);
+				//使用tweenJS实现动画效果
+				var t = 0;
+				var b = time.offsetWidth;
+				var c = -b;
+				var d = 1000;
+				var timer = setInterval(function() {
+					t++;
+					time.style.width = Tween.Linear(t, b, c, d) + "px";
+					if(t == d) {
+						clearInterval(timer);
+						var n = setInterval(function(){},1000);
+						for (var i = 1;i <= n;i++) {
+							clearInterval(i);
+						}console.log(n)
+						endDiv.style.display = "block"
+					}
+				}, 10);
+
+			}
+			//声明一个变量存储创建图片的计时器
+			var timer1;
+			//声明一个变量存储更换图片的计时器
+			var timer2;
+			var wolf;
+			var name;
+			//开始游戏函数
+			function startGame() {
+				//创建图片
+				timer1 = setInterval(function() {
+					wolf = createImg();
+					//给图片添加点击事件
+					wolf.onclick = hitHead;
+					//设置图片的src
+					name = randomNumber(0, 100) > 70 ? "x" : "h";
+					//声明一个变量存储当前是第几张
+					var index = 0;
+					//声明一个布尔值判断是否应该反向换图
+					var isReverse = false;
+					timer2 = setInterval(function() {
+						wolf.src = "img/" + name + index + ".png";
+						if(index == 5) {
+							isReverse = true;
+						}
+						if(!isReverse) {
+							index++;
+						} else {
+							index--;
+						}
+						if(index == -1){
+							clearInterval(timer2);
+							box.removeChild(wolf);
+						}
+					}, 100);
+				}, 2000);
+			}
+
+			//创建图片的函数
+			function createImg() {
+				var img = document.createElement("img");
+				img.style.position = "absolute";
+				//随机获取位置
+				var pArr = locationArr[randomNumber(0, locationArr.length - 1)];
+				//赋left和top值
+				img.style.left = pArr[0] + "px";
+				img.style.top = pArr[1] + "px";
+				//放到当前文档里
+				box.appendChild(img);
+				return img;
+			}
+			
+			//打击函数
+			function hitHead(){
+				this.onclick = null;
+				//终止之前的换图操作
+				clearInterval(timer2);
+				//开始执行img6到img9的换图操作
+				var hitIndex = 6
+				var timer3 = setInterval(function(){
+					wolf.src = "img/" + name + hitIndex + ".png";
+					hitIndex++;
+					if(hitIndex == 10){
+						clearInterval(timer3);
+						box.removeChild(wolf);
+					}
+				},80)
+				//判断图片类型,改变分数
+				if(name == "h"){
+					score +=10;
+				}else{
+					score -=10;
+				}
+				scoreDiv.innerHTML = score;
+			}
+		</script>
+	</body>
+
+</html>

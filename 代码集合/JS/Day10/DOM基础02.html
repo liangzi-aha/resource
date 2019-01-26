@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM基础02</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				height: 500px;
+				padding: 10px;
+				border: 5px solid red;
+				background-color: cyan;
+				margin: 30px;
+				position: relative;
+			}
+			
+			#big {
+				width: 300px;
+				height: 400px;
+				background-color: yellow;
+				margin: 30px;
+				padding: 10px;
+				border: 0px solid black;
+				border-width: 1px 2px 3px 4px;
+				/*
+				 * overflow:对元素里的内容当溢出时如何做处理
+				 * 1.hidden 隐藏
+				 * 2.scroll 底部和右边添加滚动条,不管内容是否溢出
+				 * 3.auto  底部和右边添加滚动条,是否添加取决于内容是否真的溢出.
+				 */
+				overflow: scroll;
+			}
+			
+			#small {
+				width: 200px;
+				height: 600px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<div id="box">
+		<div id="big">
+			<div id="small">
+				<!--<div id="one"></div>-->
+			</div>
+		</div>
+	</div>
+	<button onclick="move()">获取位置</button>
+
+	<div id="wrap">
+
+	</div>
+
+	<body>
+		<script type="text/javascript">
+			/*
+			 * DOM 可以获取元素的尺寸和位置
+			 * 尺寸和位置是元素的属性,直接用点语法获取即可.
+			 * 尺寸
+			 * 
+			 * 内尺寸	//client 内
+			 * clientWidth  = width + 左右padding
+			 * clientHeight  = height + 上下padding 
+			 * 外尺寸  //offset 外
+			 * offsetWidth = width + 左右padding + 左右border
+			 * offsetHeight = height + 上下padding + 上下border
+			 * 
+			 * 
+			 * 内位置
+			 * clientLeft = border-left;   左边框的宽度
+			 * clientTop = border-top;  上边框的宽度
+			 * 外位置
+			 * offsetLeft = 元素的左边框的外边缘距离它最近的设置了非static定位的某个祖先元素的左边框的内边缘.
+			 * offsetTop = 元素的上边框的外边缘距离它最近的设置了非static定位的某个祖先元素的上边框的内边缘.
+			 * 
+			 * 
+			 * screenX/screenY:鼠标距离屏幕左端和上端的距离
+			 * clientX/clientY:鼠标距离浏览器内容区域左端和上端的距离
+			 * pageX/pageY:鼠标距离真实页面区域左端和上端的距离   比如页面距离比浏览器大的时候,cline只会显示窗口大小的距离,而pageX会显示超出窗口距离加超出窗口距离
+			 * 
+			 * 
+			 * 滚动尺寸
+			 * scrollWidth :滚动区域的宽度,如果元素在此方向上无法滚动,则scrollWidth与clientWidth相等
+			 * scrollHeight :滚动区域的高度,如果元素在此方向上无法滚动,则scrollHeight与clientHeight相等
+			 * 
+			 * 
+			 * 滚动位置
+			 * scrollLeft
+			 * scrollTop
+			 * 
+			 * 
+			 * 
+			 */
+			var big = document.getElementById("big");
+			console.log(big.clientWidth, big.clientHeight);
+			console.log(big.offsetWidth, big.offsetHeight);
+			console.log(big.clientLeft, big.clientTop);
+			console.log(big.offsetLeft, big.offsetTop);
+			console.log(big.scrollWidth, big.scrollHeight);
+
+			function move() {
+				console.log(big.scrollLeft, big.scrollTop);
+
+				setInterval(function() {
+					if(big.scrollTop > 100) {
+						document.getElementById("small").style.backgroundColor = "green"
+					} else {
+						document.getElementById("small").style.backgroundColor = "blue"
+					}
+				}, 1)
+			}
+			
+			//滚动事件 onscroll 事件
+			big.onscroll = function() {
+				if(big.scrollTop > 100) {
+					document.getElementById("small").style.backgroundColor = "green";
+				} else {
+					document.getElementById("small").style.backgroundColor = "blue";
+				}
+			}
+
+			/*
+			 * DOM里以上的所有属性,按照读写可以分为两类:
+			 * 1.只读--只能获取,不能设置
+			 * 2.读写--既可获取,也可设置
+			 */
+		</script>
+	</body>
+
+</html>

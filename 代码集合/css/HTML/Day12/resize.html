@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>resize样式</title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				border: 1px solid gray;
+				/*设置resize让元素可拖拽
+				 1.none: 不允许元素改变大小
+				 2.vertical:  只允许元素在竖直方向上改变大小
+				 3.horizontal:  只允许元素在水平方向改变大小
+				 4.both:  允许元素水平和竖直方向改变大小
+				 */
+				resize:both ;
+				/*想让元素可拖拽,除了添加resize之外还需要添加overflow:hidden溢出隐藏样式*/
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

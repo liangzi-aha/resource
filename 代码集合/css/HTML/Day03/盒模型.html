@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒模型</title>
+	<style type="text/css">
+	/*重置系统默认的边距*/
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		.div1{
+			width: 200px;
+			height: 200px;
+			background-color:red;
+		}
+		#div2{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			/*padding*/
+			padding-left: 20px;
+			padding-right: 30px;
+			padding-top: 40px;
+			padding-bottom: 50px;
+			/*合写*/
+			/*一个值,表示上下左右*/
+			padding: 20px;
+			/*两个值,表示 上下 + 左右*/
+			padding: 20px 40px;
+			/*三个值 上+左右+下*/
+			padding: 20px 30px 40px;
+			/*四个值 上+右+下+左*/
+			padding: 20px 30px 40px 50px;
+		}
+		#div3{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+			/*一条完整的边框包含三个值
+				1.边框的宽度
+				2.边框的类型
+					a.solid实线
+					b.dashed 虚线1
+					c.dotted 虚线2
+				3.边框的颜色
+			*/
+			/*border-left:5px solid red;
+			border-top: 5px dashed blue;
+			border-right: 5px dotted black;
+			border-bottom: 5px solid red;*/
+			/*合写*/
+			/*border: 5px solid red;*/
+
+		/*	border-width: 10px 20px 20px 10px;
+			border-style: solid dashed solid dashed;
+			border-color: red blue red green;*/
+		}
+		#div4{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			/*margin
+			margin-left: 10px;
+			margin-top: 20px;
+			margin-right: 30px;
+			margin-bottom: 20px;
+			/*一个值表示上下左右*/
+			margin: 20px;
+			/*两个值表示 上下+左右*/
+			margin: 20px 30px;
+			/*三个值表示 上+左右+下*/
+			margin: 20px 30px 20px;
+			/*四个值表示 上+右+下+左*/
+			margin: 20px 30px 40px 50px;*/
+		}
+		#div5{
+			width: 200px;
+			height: 200px;
+			background-color:green;
+			margin-bottom: 150px;
+		}
+		#div6{
+			width: 200px;
+			height: 200px;
+			background-color:red;
+			margin-top: 100px;
+		}
+		#div7{
+			width: 200px;
+			height: 200px;
+			background-color:yellow;
+			/*border: solid;*/
+			/*display:inline-block*/
+			/*overflow:hidden*/
+			padding-top: 100px;
+
+		}
+		#div8{
+			width: 100px;
+			height: 100px;
+			background-color:green;
+			margin-top: 100px;
+			}
+	</style>
+</head>
+<body>
+	<!-- 
+		HTml文档是有一个个的HTML元素组成
+		盒模型:把每一个HTML元素想象成一个盒子.
+		1.盒模型的结构
+		2.盒模型是如何影响元素的位置的?
+
+		盒模型的结构:
+		1.content(内容):用来显示内容
+		2.padding(内边距):内容与边框之间的距离
+		3.border(边框):元素的边框
+		4.margin(外边距):元素与元素之间的距离(父子关系,兄弟关系)
+	  -->
+	  <!-- content 设置宽高时,实际上是在设置内容的大小 -->
+	  <div class="div1">
+	  	
+	  </div>
+	  <spam>这是span内容</spam>
+	  <h1>这是h1标题</h1>
+	  <ol>
+	  	<li>列表项</li>
+	  	<li>列表项</li>
+	  	<li>列表项</li>
+	  </ol>
+	  <!-- padding 内边距 
+		背景色会渲染到边框
+	-->
+	  <div id="div2">这是什么呀</div>
+	  <!--
+	   border 边框 
+	   宽度可以不写,默认值3px
+	   颜色可以不写,默认与当前文本颜色相同
+	   三个值的顺序可以随意写
+	   背景渲染到边框区域
+		
+	-->
+<!-- 	  <div id="div3"></div> -->
+
+	  <!--  margin 外边距 
+		背景色不会渲染到margin区域
+	-->
+	  <div id="div4"></div>
+
+	  <!-- 
+		在普通盒模型下:
+		盒子的宽=width+左右padding+上下border+上下margin
+		盒子的高=height+上下padding+上下border+上下margin
+	  -->
+		<!-- 
+		margin在使用过程中的坑点:
+		1.相邻兄弟元素在垂直方向上margin会出现融合.
+		融合标准:以较大的为准.
+
+		解决办法:
+			a.尽量只给一个元素设置垂直的margin值.
+			b.给两个中的任何一个display:inline-block样式.
+		2.父子关系的元素,在垂直方向上margin会出现传递
+		解决办法:
+			a.给父级加一个边框
+			b.给父级添加display:inline-block
+			c.给父级添加overflow:hidden
+			d.用父级的padding代替子级的margin
+
+	  -->
+		<div id="div5"></div>
+	  		<div id="div6"></div>
+ 		
+
+ 	<div id="div7">
+ 		<div id="div8"></div>
+ 	</div>
+
+</body>
+</html>

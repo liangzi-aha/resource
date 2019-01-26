@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function Person() {};
+
+			Person.prototype.name = "Nichloas";
+			Person.prototype.age = 29;
+			Person.prototype.job = "Software Enginner";
+			Person.prototype.sayName = function() {
+				console.log(this.name);
+			}
+			var person1 = new Person();
+			person1.sayName();
+
+			var person2 = new Person();
+			person2.sayName();
+
+			//构造函数
+			function SuperType() {
+				//SuperType构造函数的原型对象↓
+				this.property = true;
+			}
+
+			//在SuperType函数的原型链上创建公共方法 
+			SuperType.prototype.getSuperValue = function() {
+				return this.property;
+			};
+
+			function SubType() {
+				this.subProperty = false;
+			}
+			//继承了SuperType 
+			SubType.prototype = new SuperType();
+			console.log(SubType.prototype);
+			console.log(new SuperType());
+
+			SubType.prototype.getSubValue = function() {
+				return this.subProperty;
+			}
+
+			var instance = new SubType();
+			alert(instance.getSuperValue()); //true;
+		</script>
+	</body>
+
+</html>

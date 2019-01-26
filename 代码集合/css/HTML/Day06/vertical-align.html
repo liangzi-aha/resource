@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vertical-align</title>
+		<style type="text/css">
+			#box{
+				background-color:yellow;
+				/*line-height: 0;*/
+			}
+			img{
+				/*display: block;*/
+				vertical-align:top;
+			}
+			span{
+				display: inline-block;
+				width: 5px;
+				height: 5px;
+				background-color:black;
+				vertical-align:top;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			vertical-align 用来解决行元素或者行级块元素在垂直方向上的对齐方式
+			1.baseline(默认值)元素与当前行的基线对齐
+			2.sub 降低元素到当前行的下标位置
+			3.super 升高元素到当前的上标位置
+			4.top  元素的顶端与当前行内容的顶端对齐
+			5.middle  元素的中垂点与当前行所在的基线加1/2字母x的高之后的位置对齐
+			6.bottom  元素的底端与当前行底端对齐
+			7.text-top  元素的顶端与前行的内容顶端对齐
+			8.text-bottom   元素的底端与当前行的内容底端对齐
+		-->
+		
+		<!--
+			图片底部有缝隙的原因:
+			图片因为是行级块元素所以遵循垂直方向向上基线对齐,而基线的位置不是当前行的底部,所以,图片底部与其父级底部会有缝隙.
+			
+			解决办法:
+			1.把图片的类型设置成display:block;
+			2.将父元素的行高设置成0;
+			3.将图片的vertical-align设置成top/middle/bottom
+		-->
+		<div id="box">
+			abcdefg
+			<!--<img src="../Day03/2.jpg" alt="" />-->
+			<span></span>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas04_矩阵变换</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.矩阵变化
+			/*
+			 * transform(a,b,c,d,e,f);
+			 * 
+			 * 矩阵对象
+			 * a b c         x轴缩放 y轴倾斜 x轴平移
+			 * d e f  ===>   x轴倾斜 y轴缩放 x轴平移
+			 * 0 0 1			   0       0       1
+			 * 
+			 * 如何通过transform 实现旋转??
+			 */
+			content.transform(1, -Math.PI/6, Math.PI/6, 1, 0, 0);
+			content.fillStyle = "red";
+			content.fillRect(100,100,100,100);
+			
+			/*
+			 * 矩形变化
+			 * setTransform(a,b,c,d,e,f)
+			 * 
+			 * 矩阵对象
+			 * a b c         x轴缩放 y轴倾斜 x轴平移
+			 * d e f  ===>   x轴倾斜 y轴缩放 x轴平移
+			 * 0 0 1			   0       0       1
+			 */
+			
+			/*
+			 * transform 和 setTransform 的区别
+			 * transform有累加效果   把矩形缩放2倍在缩放2倍为4倍
+			 * setTransform每次会重新设置  把矩形缩放2倍在缩放2倍还是2倍
+			 */
+		</script>
+	</body>
+</html>

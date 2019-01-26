@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>background-size</title>
+		<style type="text/css">
+			div{
+				width: 500px;
+				height: 500px;
+				border: solid 3px;
+				background: url(k.jpg)no-repeat black;
+				/*
+				 背景尺寸
+				 1.百分比,分别相对于父级的宽高
+				 2.px数值
+				 3.cover
+				 4.contain
+				 
+				 cover和contain的区别
+				 
+				 cover和contain都是等比例缩放图片
+				 cover会保证铺满整个背景区域,可能会导致背景部分溢出背景区域
+				 contain只要一个方向铺满就会停止缩放,可能会导致无法铺满整个背景区域
+				 */
+				background-size:contain;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

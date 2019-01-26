@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪类选择器</title>
+	<style type="text/css">
+	/*
+		1.:link
+		该选择器能找到定义了超链接且没有被访问过的标签
+
+	*/
+	a:link{
+		color:red;
+	}
+	/*
+		2.:visited
+		该选择器能找到定义了超链接且已经访问过的标签
+	*/
+	a:visited{
+		color: red;
+	}
+	/*
+		3.:hover
+		能找到鼠标移动到其上面的元素.
+
+	*/
+	p{
+		width: 200px;
+		height: 200px;
+		background-color: yellow;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		background-color: blue;
+	}
+	p:hover{
+		background-color:red;	}
+
+		/*
+			4.:active
+			找到鼠标在其上按下不松的元素.
+		*/
+		div:active{
+			background-color:red;
+			/*圆角*/
+			border-radius:100px;
+		}
+		a{
+			/*去掉a链接底部的下划线*/
+			text-decoration: none;
+		}
+		a:hover{
+			/*文字中间加线*/
+			text-decoration: line-through;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+	伪类选择器与类(class)选择器的比较:
+	1.伪类选择器也可以找到多个元素
+	2.伪类选择器在书写语法上与clsaa选择为器不同.
+	3.伪类选择器不需要我们自己给对应的元素设置class值,系统几乎已经给所有的元素事先已经设置好了伪类属性值,我们只需要直接写选择器即可.
+	 -->
+	 <a href="http://www.baidu.com/">跳转到百度网站</a>
+	 <a href="https://www.jd.com">跳转到京东网站</a>
+	 <p></p>
+	 <div></div>
+	 <!-- 如果我们在一个网页里给同一类元素设置伪类时需要以上四种伪类选择器中的多个,在书写时需要按照以下顺序书写
+	link--visited--hover--active
+	
+		"爱恨法则"
+		LoVe  HAte
+
+	
+
+
+	  -->
+</body>
+</html>

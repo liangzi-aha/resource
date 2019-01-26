@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器优先级</title>
+	<style type="text/css">
+	/*通配选择器*/
+	*{
+		background-color: red;
+	}
+	/*标签选择器*/
+	div{
+		background-color:red;
+		!important
+	}
+	/*class选择器*/
+	.bgc{
+		background-color: yellow;
+	}
+	/*id选择器*/
+	#div1{
+		background-color:white;
+	}
+	</style>
+</head>
+<body>
+	<div class="bgc" id="div1" style="background-color:#894645"	>
+		这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊这是div啊
+	</div>
+	<!-- 选择器优先级
+		* < 标签选择器 < class选择器 < id选择器 < 行间css样式 < !important值
+
+		如果出现选择器复合的情况,按照各个选择器表示的权重和各自的优先级进行判断
+
+		*		0001
+		标签		0010
+		class	0100
+		id		1000
+
+		将复合选择器里的各个单一选择器对象的权重相加,比较最后的结果,谁大,谁的优先级高.
+	 -->
+</body>
+</html>

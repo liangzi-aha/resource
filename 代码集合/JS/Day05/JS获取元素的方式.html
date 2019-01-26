@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Js获取元素的方式</title>
+	</head>
+
+	<body>
+		<div id="div1" class="a"></div>
+		<ul>
+			<li class="a">这是标签1</li>
+			<li class="a">这是标签2</li>
+			<li class="a">这是标签3</li>
+			<li class="a">这是标签4</li>
+			<li class="a">这是标签5</li>
+		</ul>
+		<script type="text/javascript">
+			/*
+			 * Js获取元素的方式:
+			 * 1.getElementById("id名")
+			 * 通过id名获取元素,该方法每次只能获取一个元素.返回值就是获取到的html元素.
+			 * 
+			 * 
+			 * 2.getElementsBytagName("标签名")
+			 * 通过标签名获取元素,该方法可以获取多个元素
+			 * 
+			 * 
+			 * 3.getElementsByClassName("class名");
+			 * 通过class名获取元素,该方法可以获取多个元素,返回值是数组.
+			 * 
+			 * 
+			 * 4.querySelector("选择器");
+			 * 通过选择器查找元素,找到的是一个元素,如果选择器可以找到多个,返回第一个,返回值就是元素.
+			 * 
+			 * 
+			 * 5.querySelectorAll("选择器名");
+			 * 通过选择器查找元素,按照选择器的原理查找,返回值是一个数组
+			 * 
+			 * 
+			 * 
+			 */
+			//			var div1 = document.getElementById("div1");
+			//			//如果一个元素设置了id属性,则在使用js查找元素时,可以直接将id值当做变量名使用.该方式只适用于id
+			//			div1.style = "width:200px;height:200px;background-color:red;"
+
+			//			var lis = document.getElementsByTagName("li");
+			//			console.log(lis);
+
+			//			var eleA = document.getElementsByClassName("a");
+			//						 console.log(eleA);
+
+			//JS里,写样式名时,如果样式名有多个单词,采用驼峰命名法.
+			//			eleA[0].Style = "background:red";
+			//			eleA[0].style.width = "200px" ;
+
+			//			eleA.style.background = "pink";//错误例子
+			//			eleA[0].style.background = "pink";
+
+			var ele = document.querySelector("li");
+			console.log(ele);
+
+			（
+			//3. 通过DOM的方式
+
+			//获取属性的值： getAttribute(属性名)
+
+			//设置属性的值： setAttribute(属性名， 要设置的值)
+
+			//删除属性： removeAttribute(属性名)
+		</script>
+	</body>
+
+</html>

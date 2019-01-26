@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单</title>
+	</head>
+	<body>
+		<!--
+			
+		表单标签 form 双标签 该标签表示表单的范围,
+		在form标签里书写各种各样的表单元素
+		-->
+		<!--
+		1.action属性:规定当前form标签里的所有数据应该被提交到的服务器地址
+		2.method属性:规定了数据传递使用的方法
+			a.get方法(默认值),一般用于从服务器获取数据,但也可以向服务器传递数据.可传递数据量比较小,
+			传递的数据会以键值对的形式直接拼接到url网址的后面,能直接可见,不太安全.
+			b.post方法,一般用于向服务器传递数据,但也可以从服务器获取数据.可传递的数据量比较大,所传递
+			的数据会放入请求体,不会显示在url网址的后面,不可见,比较安全.
+		-->
+		<form action="" method="post">  
+			<!--
+			form里使用程度最大的标签是input标签,单标签,input标签有很多表现形式,input的type属性可以通
+			过不同的值展现不同的控件样式.
+			-->
+			<!--
+				1.输入框 type=text
+					常用属性
+					a.占位文字placeholder /普雷斯好德儿/
+					b.输入框的值 value
+					c.键值对的键 name
+			-->
+			<input type="text" placeholder="请输入用户名"name="username"/>
+				<input type="text" placeholder="请输入密码"name="password"/>
+				<!--按钮标签-->
+				<!--       只有submit按钮具有提交功能      -->
+				<input type="submit" value="登录"/>
+				<!--
+					2.密码输入框 type=password
+				-->
+				<input type="password" />
+				<!--
+					3.提交按钮 type=submit
+					该按钮的作用是将所在form标签里*所有表单元素里的数据提交到action属性对应的地址.
+					只有type=submit的按钮才具有提交功能
+					该按钮提交数据之后会刷新整个网页
+				-->
+				<input type="submit" reset="注册"/>
+				
+				<!--
+					4.重置按钮 type=reset
+					我么以后不经常使用系统自带的重置按钮,如果有重置数据的需求,我们一般选着自定义重置按钮.
+				-->
+				<input type="reset" value="重置"/>
+				
+				<!--
+					5.单选框type=radio
+					单选框默认不具有单选效果,需要将单选框分组,这样一组里的单选框具有单选功能,使用name属性
+					设置相同的值,将多个单选框分为一组.
+					
+					label标签可以实现点击对应文选择单选框效果,设置label 的for属性与对应单选框的id值相同.
+					单选框提交的值,是value属性值,需要我们自己设置.
+				--><br />
+				<label for="g1">男:</label><input type="radio" name="gender" id="g1" value="男" />
+			<label for="g2">女:</label><input type="radio" name="gender" id="g2" value="女" checked/>
+				
+				<!--
+					6.多选框 type=checkbox
+					多选框在传递数据时,name是不能相同,如果相同,后面的会覆盖,前面的值
+					但是也不建议携程不同名字的,这样会增加后台的工作量
+					将Key值写成数组的形式name=Key[]
+				-->
+				<br />获得的荣誉: <br />
+				<label for="">英语四级:</label>
+				<input type="checkbox" id="en4" value="英语四级" name="honor" checked/><br />
+				
+				<label for="cp2">计算机二级:</label>
+				<input type="checkbox" id="cp2" value="计算机二级" name="honor" checked/><br />
+				
+				<label for="">普通话甲级</label>
+				<input type="checkbox" id="pth" value="普通话甲级" name="honor" checked/>
+				
+				<!--
+					单选框或者多选框,都可以实现默认勾选效果,给想要默认的选框添加checked属性.
+					如果属性名和属性值相同,可以只写属性名,就可以保证属性有效.
+				-->
+				
+				<!--
+					7.下拉框select标签 双标签
+					每个下拉项用option标签表示
+				-->
+				<select name="school">
+					<!--
+						option标签的selected属性可以实现默认选着某个下拉项
+					-->
+					<option value="s1">请选着学校</option>
+					<option value="s1">商丘工大</option>
+					<option value="s2" selected>清华大学</option>
+					<option value="s3">南京交大</option>
+					<option value="s4">黄淮大学</option>
+				</select>
+				
+				<!--
+					8.文本域 textarea 双标签
+				-->
+				<textarea name="content" rows="20" cols="50"></textarea>
+		</form>
+	</body>
+</html>

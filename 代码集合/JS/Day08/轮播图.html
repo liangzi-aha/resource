@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 300px;
+				height: 450px;
+				margin: 50px auto;
+				border: 3px solid red;
+				position: relative;
+				/*overflow: hidden;*/
+			}
+			
+			#content {
+				width: 2100px;
+				height: 450px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			img {
+				width: 300px;
+				height: 450px;
+				float: left;
+			}
+			
+			ul {
+				width: 200px;
+				list-style: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 420px;
+				bottom: 0;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-around;
+			}
+			
+			li {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: white;
+				text-align: center;
+				line-height: 20px;
+			}
+			
+			#left,
+			#right {
+				width: 20px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				background-color: rgba(0,0,0,0.6);
+				color: white;
+				position: absolute;
+				top: 50%;
+				margin-top: -25px;
+			}
+			
+			#right {
+				right: 0;
+			}
+			
+			.choose {
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="content">
+				<img src="img/1.png" alt="" />
+				<img src="img/2.jpeg" alt="" />
+				<img src="img/3.jpeg" alt="" />
+				<img src="img/4.png" alt="" />
+				<img src="img/5.jpeg" alt="" />
+				<img src="img/6.png" alt="" />
+				<img src="img/1.png" alt="" />
+			</div>
+			<!--分页器-->
+			<ul>
+				<li class="choose">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<!--左右按钮-->
+			<div id="left">
+				<</div>
+					<div id="right">></div>
+			</div>
+			<script src="JS/tween.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+				//content
+				var contentDiv = document.getElementById("content")
+				//图片
+				var imgs = document.querySelectorAll("#content>img")
+				//按钮
+				var btns = document.querySelectorAll("#left,#right")
+				//小球
+				var lis = document.querySelectorAll("li")
+				//wrap
+				var wrapDiv = document.getElementById("wrap")
+				/*
+				 * 思路:
+				 * 首先把换图片和换小球分别封装成函数
+				 * 
+				 * 点击按钮时 调用换图和换小球函数
+				 * 鼠标移入到小球时 调用换图片和换小球
+				 * 
+				 * 当鼠标不在wrap范围内,使用计时器调用右按钮函数
+				 */
+				//声明一个变量同时影响图片和小球的位置
+				var index = 0;
+
+				//给左右按钮添加点击事件
+				//左按钮
+				btns[0].onclick = function() {
+					clearInterval(timer);
+					if(index == 0) {
+						index = 6;
+						contentDiv.style.left = index * -300 + "px"
+					}
+					index--;
+					//换图片
+					changeImg();
+					//换小球
+					changePoint()
+				}
+				//右按钮
+				btns[1].onclick = move;
+				function move() {
+					clearInterval(timer);
+					if(index == 6) {
+						index = 0;
+						contentDiv.style.left = index * -300 + "px"
+					}
+					index++;
+					//换图片
+					changeImg();
+					//换小球
+					changePoint();
+				}
+
+				//点击小球变换图片
+				//因为for循环里面是onclick事件 onclick需要点击触发,所以进来先执行for循环,不执行onclick事件,for循环执行完之后i为6,如果不写第二个for循环,i=6的话this ==lis[6]不成立,所以无法执行.
+				for(var i = 0; i < lis.length; i++) {
+					lis[i].onclick = function() {
+						clearInterval(timer);
+						for(var j = 0; j < lis.length; j++) {
+							if(this == lis[j]) {
+								var m = j;
+							}
+							lis[j].className = "";
+						}
+						this.className = "choose"
+						index = m;
+						changeImg();
+					}
+				}
+
+				var timer
+				//换图片的函数
+				function changeImg() {
+
+					var t = 0;
+					var b = contentDiv.offsetLeft
+					var c = -300 * index - b
+					var d = 20; 
+					timer = setInterval(function() {
+						t++;
+						if(t == d) {
+							clearInterval(timer);
+						}
+						contentDiv.style.left = Tween.Linear(t, b, c, d) + "px";
+						//c*t/d + b
+					}, 20)
+				}
+				//换小球函数
+				function changePoint() {
+					for(var i = 0; i < lis.length; i++) {
+						if(i == index) {
+							lis[i].className = 'choose';
+						} else {
+							lis[i].className = "";
+						}
+					}
+					if(index == 6) {
+						lis[0].className = 'choose';
+					}
+				}
+				var time;
+				//当鼠标不在wrap范围内,使用计时器调用右按钮函数
+				wrapDiv.onmouseout = function() {
+					time = setInterval(move, 3000);
+					btns[0].style.opacity = "0" ;
+					btns[1].style.opacity = "0" ;
+					btns[0].style.transition = "all 1s";
+					btns[1].style.transition = "all 1s";
+				};
+				//鼠标移入wrap范围内,清楚计时器
+				wrapDiv.onmouseover = function() {
+					clearInterval(time);
+					btns[0].style.opacity = "1" ;
+					btns[1].style.opacity = "1" ;
+					
+				}
+			</script>
+	</body>
+
+</html>

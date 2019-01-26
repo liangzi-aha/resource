@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery基础01</title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">这是div1</div>
+		<ul>
+			<li>这是列表1</li>
+			<li>这是列表2</li>
+			<li>这是列表3</li>
+			<li>这是列表4</li>
+			<li>这是列表5</li>
+		</ul>
+		<form action="">
+			<input type="text" disabled="disabled"/>
+			<input type="password" />
+			<input type="radio" checked="checked"/>
+			<input type="checkbox" disabled="disabled"/>
+			<input type="submit" />
+			<input type="button" />
+			<input type="reset" />
+		</form>
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 * jq 选择器
+			 * jq 如何操作元素 DOM
+			 * jq 动画
+			 */
+			
+			/*
+			 * 如何使用jq?
+			 * 引入:
+			 * a.在线引入
+			 * b.本地引入
+			 * 
+			 */
+			
+			/*
+			 * JQ是用面向对象的语言书写出来的,所以jq里到处都是对象和方法.
+			 * JQ里最重要的方法!
+			 * $(参数)
+			 * 该方法的返回值是一个jq对象.
+			 * 
+			 * 牢记:只要通过$()方法得到的永远是jq对象,而不是普通的dom元素!!!  只有jq对象能使用jq提供的方法,而普通的dom元素只能使用自己的普通方法,两者不能混用!!!!
+			 */
+			
+			/*
+			 * 我们经常使用$()查找元素,传入字符串格式的选择器
+			 */
+			//var div1 = $("#div1");
+//			console.log(typeof(div1));
+			
+			/*
+			 * 如何将jq对象和dom元素互相进项转化??
+			 * 1.jq对象--->dom元素  jq对象[下标]
+			 * 2.dom元素--->jq对象  $("dom元素")  把dom元素传进$()方法里,返回值就变成jq对象.
+			 */
+			
+			/*
+			 * 1.jq如何操作css样式???
+			 * css(),该方法既可以设置样式,也可以获取样式.
+			 * 
+			 * 设置css样式:
+			 * 写法1:
+			 * jq对象.css("样式名","样式值");
+			 * 
+			 * 写法2:
+			 * jq对象.css({
+			 * 		样式名1:"样式值",
+			 * 		样式名2:"样式值",
+			 * 		....
+			 * });
+			 * 
+			 * 写法3:
+			 * jq对象.css("样式名");
+			 * 
+			 */
+			
+			//var div1 = $("#div1");
+			//div1.css("background-color","red");
+			
+			//var lis = $("li");
+			//console.log(lis)
+			//lis.css("background-color","blue")
+			
+			
+//			$("#div1").css({
+//				backgroundColor:"yellow",
+//				fontSize:"30px",
+//				color:"green",
+//				textAlign:"center",
+//				lineHeight:"200px"
+//			});
+//			
+//			$("li").css({
+//				listStyle:"none",
+//				height:"30px",
+//				backgroundColor:"pink"
+//			});
+//			
+//			console.log($("#div1").css("width"))
+			
+			//问题:当jq对象里若干个元素的同一个样式值不同时,获取样式时,值是多少???
+			
+			//jq里的伪类选择器
+			// :first 找到jq对象里的第一个元素
+			$("li:first").css("background-color","red")
+			// :last  找到jq对象里的最后一个元素
+			$("li:last").css("background-color","blueviolet")
+			// :even  找到jq对象里下标为偶数的元素
+			$("li:even").css("background-color","pink")
+			// :odd   找到jq对象里下标为奇数的元素
+			$("li:odd").css("background-color","yellow")
+			
+			//:eq(index)  找到jq对象里下标为index的元素
+			$("li:eq(2)").css("background-color","red");
+			
+			//jq对象.eq(index) 找到jq对象里下标为index的元素.
+			var a = 2;
+			$("li").eq(a).css("background-color","#00FFFF")
+			
+			// :gt(index)  找到jq对象里下标大于index 的元素,不包含第index的元素.
+			$("li:gt(2)").css("background-color","#800080")
+			
+			// :lt(index)  找到jq对象里下标小于index 的元素,不包含第index的元素.
+			$("li:lt(2)").css("background-color","#E33333")
+			
+			//与表单元素有关的伪类选择器
+			//: input 找到所有的input元素
+			console.log($("input"));
+			//: text  找到所有type属性值为text的表单元素
+			console.log($("input:text"));
+			//: password   找到所有type属性值为password的表单元素
+			console.log($("input:password"));
+			//: radio   找到所有type属性值为radio的表单元素
+			console.log($("input:radio"));
+			//: checkbox   找到所有type属性值为checkbox的表单元素
+			console.log($("input:checkbox"));
+			//: submit   找到所有type属性值为submit的表单元素
+			console.log($("input:submit"));
+			//: reset   找到所有type属性值为reset的表单元素
+			console.log($("input:reset"));
+			//: button   找到所有type属性值为button的表单元素
+			console.log($("input:button"));
+			
+			//:enabled  找到所有可用的表单元素
+			console.log($("input:enabled"));
+			//:disabled  找到所有不可用的表单元素
+			console.log($("input:disabled"));
+			//:checked  找到所有被勾选的表单
+			console.log($("input:checked"));
+		</script>
+	</body>
+</html>

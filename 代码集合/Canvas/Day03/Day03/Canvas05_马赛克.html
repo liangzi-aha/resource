@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas05_马赛克</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #Canvas {
+                border: 1px solid gold;
+                margin: 50px auto 0;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <canvas id="Canvas">
+            <!--如果不设置宽高,默认300*150-->
+            您的浏览器不支持Canvas, 请升级浏览器
+        </canvas>
+
+        <script type="text/javascript">
+            //1.获取Canvas元素
+            var canvas = document.getElementById("Canvas");
+
+            canvas.width = 1000;
+            canvas.height = 500;
+
+            //2.获取 2D渲染上下文对象(核心).
+            var content = canvas.getContext("2d");
+
+            //3. 马赛克
+            var img = new Image();
+            img.src = "img/girl1.jpg";
+
+            img.onload = function() {
+                content.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                /*
+                 * canvas里马赛克的实现原理:
+                 * 将整个图像分割成若干个片段(块), 对每个片段做处理
+                 */
+                //获取图像像素对象
+                var imgData = content.getImageData(0, 0, canvas.width, canvas.height);
+
+                //获取像素数组
+                var pixelArray = imgData.data;
+
+                //规定分割的行数和列数
+                var row = 50;
+                var col = 100;
+
+                //计算每个片段的尺寸大小
+                var itemW = imgData.width / col;
+                var itemH = imgData.height / row;
+
+                for(var i = 0; i < row; i++) {
+                    for(var j = 0; j < col; j++) {
+                        //计算每个片段的中心点所在的行和列
+                        var itemRow = i * itemH + itemH / 2;
+                        var itemCol = j * itemW + itemW / 2;
+                        //根据当前中心点的行数和列数, 计算其在pixelArray里的下标
+                        var index = ((itemRow - 1) * imgData.width + (itemCol - 1)) * 4;
+
+                        //获取每个中心点的rgba值
+                        var red = pixelArray[index];
+                        var green = pixelArray[index + 1];
+                        var blue = pixelArray[index + 2];
+                        var alpha = pixelArray[index + 3];
+
+                        //合成一个颜色值
+                        var colorStr = "rgba(" + red + "," + green + "," + blue + "," + alpha + ")";
+
+                        content.fillStyle = colorStr;
+
+                        //绘制矩形
+                        content.fillRect(j * 10, i * 10, 10, 10);
+
+                    }
+                }
+            }
+        </script>
+    </body>
+
+</html>

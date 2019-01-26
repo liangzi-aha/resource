@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>字符串操作函数</title>
+	</head>
+	<body>
+		<img src="/Users/lanouhn/Desktop/1.jpg" alt="" />
+		<script type="text/javascript">
+			/*
+			 * 以下函数都属于字符串.所以调用时都需要用字符串调用.
+			 */
+			
+			/*
+			 * 1.获取子字符串
+			 * substr(start,length)   //substring :全写
+			 * 参数1:截取的起始位置,从0开始,如果给负值,从后往前数.
+			 * 参数2.要截取的长度 可以省略,默认截取到最后
+			 * 返回值:截取到的子串.
+			 */
+			var str = "abcdefg";
+			var subStr = str.substr(2);
+			console.log(subStr);
+			
+			/*
+			 * 2.split(string,count)  
+			 * 参数1:分割符.系统会按照分割符将原字符串分割成若干部分.充当分隔符的符号,分割后不再存在.如果想要将字符串里的每个符号都分割开,分割符用"".
+			 * 
+			 * 参数2:规定最终分割成的子串的数量.
+			 * 
+			 * 返回值:分割好的字符串数组
+			 */
+			var dateStr = "2018=10=1";
+			var strArr = dateStr.split("=")
+			console.log(strArr);
+			var timeStr = "子丑寅卯"
+			var timeArr = timeStr.split("");
+			console.log(timeArr);
+		</script>
+	</body>
+</html>

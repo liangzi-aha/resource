@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>问题解释</title>
+	</head>
+	<body>
+	    <script type="text/javascript">
+	    	     function randomArr(arr) {
+	    	         arr[0] = 100;
+	    	         return arr;
+	    	     }
+	    	     var arr1 = [1, 2, 3, 4];
+	    	     var res = randomArr(arr1);
+	    	     console.log(res, arr1);
+	    	     
+	    	     
+	    	     function test(n) {
+	    	         n = 100;
+	    	         return n;
+	    	     }
+	    	     var a = 10;
+	    	     var res1 = test(a);
+	    	     console.log(res1, a);
+	    	     
+	    	     /*
+	    	      * 值的传递 做的永远是拷贝操作.
+	    	      * 1. 值传递
+	    	      * 2. 址传递 (地址, 指针, 引用)
+	    	      * 
+	    	      * 数组和对象在进行传值时是址传递
+	    	      * 其余数据类型是值传递
+	    	      */
+	    	     
+	    	     
+	    	     
+	    	     //如果计时器里的函数需要传参数, 把实参填写在setInterval()的三个参数的位置, 如果参数有多个, 继续往后依次书写即可.
+	    	     setInterval(function(a, b){
+	    	         console.log(a, b);
+	    	     }, 1000, "呵呵", "嘿嘿");
+	    	    
+	    	     
+	    	     
+	    	     
+	    	     
+	    </script>
+	</body>
+</html>

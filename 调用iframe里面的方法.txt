@@ -1,0 +1,4 @@
+#iframe 为 iframe ID，
+使用contentWindow可以调取iframe里面的方法，
+getContent()为方法。
+$('#iframe')[0].contentWindow.getContent();

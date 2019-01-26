@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas09_擦除方式</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.擦除
+			
+			content.arc(500,200,200,0,2*Math.PI,false)
+			content.fillStyle = "deeppink";
+			content.fill();
+			
+			/*
+			 * 擦除canvas
+			 * 方式一:content.clearRect(x,y,w,h);
+			 * 
+			 */
+//			content.clearRect(500,200,50,50)
+			canvas.onmousedown = function(e){
+				canvas.onmousemove = function(e){
+					var even = e || event
+					var x = even.offsetX;
+					var y = even.offsetY;
+					content.clearRect(x-5,y-5,10,10,"radius")
+				}
+				canvas.onmouseup = function(){
+					canvas.onmousemove = null;
+				}
+			}
+			//清除canvas上面的所有东西
+			//content.clearRect(0,0,canvas.width,canvas.height)
+			/*
+			 * 方式2:
+			 * 重置Canvas画布的大小
+			 */
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			content.fillRect(100,100,100,100);
+			
+			/*
+			 * 两种方法的区别:
+			 * clearRect方法仅仅清除画布上的图像,会保留上下文对象里设置的样式
+			 * 重置宽高的方法即会清除画布上的图像,也会重置上下文对象里的样式,重置成默认.
+			 */
+		</script>
+	</body>
+</html>

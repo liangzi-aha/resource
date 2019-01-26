@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义滚动条</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 300px;
+				height: 500px;
+				margin: 50px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#content {
+				width: 285px;
+				font-size: 30px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#tiao {
+				width: 15px;
+				height: 500px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				background-color: darkgrey;
+			}
+			
+			#lun {
+				width: 15px;
+				background-color: darkslategray;
+				position: absolute;
+				right: 0;
+				top: 0;
+				border-radius: 7.5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="content">
+				A5创业网(公众号:iadmin5)7月8讯，小米即将在香港联交所IPO前一天，小米创始人、董事长兼CEO雷军发表公开信。小米IPO发行价 17元港币，估值 543亿美元，已经跻身有史以来全球科技股前三大IPO。巨大的成功同样属于一路上信任小米、支持小米的投资者。比如，最早期的VC，第一笔500万美元投资，今天的回报高达 866倍。 　　雷军表示，最近资本市场跌宕起伏，小米能够成功上市就意味着巨大的成功。上市也意味着巨大的挑战和沉甸甸的责任，有十几万的投资者积极参与认购了小米的股票，包括李嘉诚、马云、马化腾等行业领袖，这是对小米管理层和员工莫大的信任和重托。 　　以下为雷军公开信全文： 　　小米同学们， 　　明天将是激动人心的一天。经过八年的奋斗，我们就要在香港主板上市了。 　　创业至今，小米的历程是由勇气和信任支撑的奇迹。回想过去，八年风风雨雨都历历在目。2010年4月6日，在中关村银谷大厦一间很小的办公室，一家叫小米的小公司静悄悄地开业了，到现在我都依稀记得，当时只有13名员工，除了我、林斌、阿黎和KK四名联合创始人之外，还有范典、刘新宇、王海洲、李明、屈恒、秦智帆、李伟星、孙鹏和管颖智这9名创始团队成员，他们9位同学今天还依然活跃在小米的各个重要岗位上。那一天，我们一起喝了碗小米粥，就开干了。谁也没想到，这家不起眼的小公司，此后实现了史诗般光辉的创业历程。
+			</div>
+			<div id="tiao">
+				<div id="lun"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//滚动条的高
+			lun.style.height = box.offsetHeight * tiao.offsetHeight / content.offsetHeight + "px";
+
+			//给box添加鼠标滚轮方向
+			box.onmousewheel = function(e) {
+				var even = e || event;
+				//				//比例系数
+				//		     var  scale = (tiao.offsetHeight - lun.offsetHeight)  /( content.offsetHeight - box.offsetHeight );
+				var scale = content.offsetTop / (content.offsetHeight - box.offsetHeight);
+
+				if(even.wheelDelta < 0) {
+					//混轮向上 内容向上 内容top变小 轮向下 轮top变大
+					content.style.top = content.offsetTop - 20 + "px";
+
+					if(content.offsetTop <= box.offsetHeight - content.offsetHeight) {
+
+						content.style.top = box.offsetHeight - content.offsetHeight + "px";
+
+					}
+					lun.style.top = -scale * (tiao.offsetHeight - lun.offsetHeight) + "px";
+
+				} else {
+					//混轮向下 内容向下 内容top变大 轮向上 轮top变小
+					content.style.top = content.offsetTop + 20 + "px";
+					if(content.offsetTop >= 0) {
+						content.style.top = "0px";
+					}
+					lun.style.top = -scale * (tiao.offsetHeight - lun.offsetHeight) + "px";
+					console.log(lun.offsetTop)
+				}
+			}
+
+			lun.onmousedown = function(e) {
+				var even = e || event;
+				var y = even.clientY - box.offsetTop - lun.offsetTop;
+
+				window.onmousemove = function(e) {
+					var even = e || event;
+
+					var scale2 = lun.offsetTop / (tiao.offsetHeight - lun.offsetHeight);
+
+					lun.style.top = even.clientY - y - box.offsetTop + "px";
+
+					if(lun.offsetTop < 0) {
+						lun.style.top = "0px";
+					}
+					if(lun.offsetTop > tiao.offsetHeight - lun.offsetHeight) {
+						lun.style.top = tiao.offsetHeight - lun.offsetHeight + "px";
+					}
+
+					content.style.top = -scale2 * (content.offsetHeight - box.offsetHeight) + "px";
+
+				}
+
+			}
+			window.onmouseup = function() {
+				window.onmousemove = null;
+			}
+		</script>
+	</body>
+
+</html>

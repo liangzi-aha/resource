@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--
+			1.width:虚拟视口的宽度,我们一般会把宽度设置成设备宽度.
+			2.initial-scale:初始化的缩放比例,一般给1.
+			3.minmun-scale:允许的最小缩放比例(不能小于0.1)
+			4.maxmun-scale:允许的最大缩放比例(不能大于10)
+			5.user-scalable:是否允许用户缩放(no或者表示不允许,yes或者1表示允许)
+		-->
+		<title>viewport</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			viewport是为了让pc端的网页快速兼容移动端
+			viewport是一个虚拟窗口,一般情况下,虚拟窗口的大小远远大于移动设备的屏幕尺寸,当我们将网页放入虚拟窗口时,网页
+			的大小会根据虚拟窗口的大小进行缩放,但是不会缩小很多,内容大小比较合适,但是因为移动设备的实际屏幕大小过小,会
+			导致内容无法展示完全,需要通过用户手动滑动查看剩余内容.
+		-->
+		<div id="box">
+			
+		</div>
+	</body>
+	
+</html>

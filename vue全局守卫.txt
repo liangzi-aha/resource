@@ -1,0 +1,19 @@
+//注册全局钩子
+router.beforeEach((to, from, next) => {
+  console.log(to.name);   // 即将要进入路由的对象
+  console.log(from.name); // 当前导航要离开的路由对象
+  console.log(next.name); // 调用next该方法，才能进入下一个路由
+  if(to.path == '/Register_one' && from.path == '/HomePage'){
+    next(false);
+  }else if(to.path == '/SET' && from.path == '/Register_one'){
+    next(false);
+  }else if(to.path == "/HomePage" || to.path == '/wangdaiRecommend' || to.path == '/MyCenter'){
+    if(!localStorage.getItem('vid')){
+      next({path:'/Register_one'});
+    }else{
+      next()
+    }
+  }else{
+    next()
+  }
+})

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>碰撞检测</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+				font-size: 50px;
+				color: white;
+				text-align: center;
+				line-height: 200px;
+				position: absolute;
+			}
+			
+			#div2 {
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				border-radius: 50%;
+			}
+			
+			#div1 {
+				left: 0;
+				top: 0;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div1">1</div>
+		<div id="div2">2</div>
+		<script type="text/javascript">
+			div1.onmousedown = function(e) {
+				var even = e || event;
+				var x = even.clientX - this.offsetLeft;
+				var y = even.clientY - this.offsetTop;
+				window.onmousemove = function(e) {
+					var even = e || event;
+					div1.style.left = even.clientX - x + "px";
+					div1.style.top = even.clientY - y + "px";
+					crash();
+				}
+			}
+
+			div1.onmouseup = function() {
+				window.onmousemove = null;
+			}
+
+			function crash() {
+				//              var xLeft = div2.offsetLeft - div1.offsetWidth;
+				//              var xRight = div2.offsetLeft + div2.offsetWidth;
+				//              var yTop = div2.offsetTop - div1.offsetHeight;
+				//              var yBottom = div2.offsetTop + div2.offsetHeight;
+				//              if(div1.offsetLeft > xLeft && div1.offsetLeft < xRight && div1.offsetTop > yTop && div1.offsetTop < yBottom) {
+				//                  div2.style.background = "red";
+				//              } else {
+				//                  div2.style.background = "blue";
+				//              }
+
+				//分别取最小点的x,y和最大点的x, y
+				//              var minX = div2.offsetLeft - div1.offsetWidth;
+				//              var minY = div2.offsetTop - div1.offsetHeight;
+				//
+				//              var maxX = div2.offsetLeft + div2.offsetWidth;
+				//              var maxY = div2.offsetTop + div2.offsetHeight;
+				//
+				//              if(div1.offsetLeft > minX && div1.offsetLeft < maxX && div1.offsetTop > minY && div1.offsetTop < maxY) {
+				//                  div2.style.background = "red";
+				//              } else {
+				//                  div2.style.background = "blue";
+				//              }
+
+				//              var oneX = div1.offsetLeft + div1.offsetWidth / 2;
+				//              var oneY = div1.offsetTop + div1.offsetHeight / 2;
+				//
+				//              var twoX = div2.offsetLeft + div2.offsetWidth / 2;
+				//              var twoY = div2.offsetTop + div2.offsetHeight / 2;
+				//
+				//              if(Math.abs(oneX - twoX) <= (div1.offsetWidth / 2 + div2.offsetWidth / 2) && Math.abs(oneY - twoY) <= (div1.offsetHeight / 2 + div2.offsetHeight / 2)) {
+				//                  div2.style.background = "red";
+				//              } else {
+				//                  div2.style.background = "blue";
+				//              }
+				
+				//两个圆接触,改变颜色
+				var oneX = div1.offsetLeft + div1.offsetWidth / 2;
+				var oneY = div1.offsetTop + div1.offsetHeight / 2;
+
+				var twoX = div2.offsetLeft + div2.offsetWidth / 2;
+				var twoY = div2.offsetTop + div2.offsetHeight / 2;
+
+				if(Math.pow((twoY - oneY), 2) + Math.pow((twoX - oneX), 2) <= (Math.pow((div2.offsetWidth / 2) + (div1.offsetWidth / 2), 2))) {
+					div2.style.background = "red";
+				} else {
+					div2.style.background = "blue";
+				}
+			}
+		</script>
+	</body>
+
+</html>

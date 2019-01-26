@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas03_旋转</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.旋转
+			/*
+			 * rotate(弧度值)
+			 * 1弧度 = π/180°;
+			 */
+			content.fillStyle = "pink";
+			content.fillRect(400,200,100,100);
+			content.rotate(Math.PI / 6);
+			content.translate(400,200)
+			content.fillRect(400,200,100,100);
+			/*
+			 * canvas里的旋转影响的是坐标轴,一旦坐标轴发生了缩放,会影响之后绘制的所有图像.
+			 */
+		</script>
+	</body>
+</html>

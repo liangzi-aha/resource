@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>元素居中的方法</title>
+		<style type="text/css">
+			#div1 {
+				width: 500px;
+				height: 500px;
+				border: solid;
+				background-color: blue;
+				line-height: 500px;
+				font-size: 0;
+			}
+			
+			#div1>img {
+				vertical-align: middle;
+			}
+			
+			#div2 {
+				width: 200px;
+				height: 800px;
+				background-color: red;
+				text-align: center;
+			}
+			
+			#div2>span {
+				display: inline-block;
+				width: 100px;
+				vertical-align:middle;
+			}
+			em{
+				display: inline-block;
+				height: 800px;
+				vertical-align:middle;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			行元素:
+				水平居中:给其父级添加text-align:center
+				竖直居中:
+					a.单行文本可以给其父级添加line:height等于height
+					b.图片近似垂直居中,给父级添加line-height等于height,给图片添加vertical-align:middle
+					c.图片完全垂直居中,在近似居中的基础上,添加font-size:0;
+					d.多行文字垂直居中,需要新增一个行级块元素,且需要居中的元素要小于父级的宽保证与其新增的元素在同一行,让两者互相vertical-align:middle;
+			块元素:
+				水平居中:宽度给定,左右margin给auto
+				垂直方向居中:元素给绝对定位脱离文档流,top,bottom给0,上下margin给auto.
+		-->
+		<div id="div1">
+			<img src="../Day11/k.jpg" alt="" />
+		</div>
+		<div id="div2">
+			<span>	a.单行文本可以给其父级添加line:height等于height
+					b.图片近似垂直居中,给父级添加line-height等于height,给图片添加vertical-align:middle
+					c.图片完全垂直居中,在近似居中的基础上,添加font-size:0;
+					d.多行文字垂直居中
+			</span>
+			<em></em>
+		</div>
+	</body>
+
+</html>

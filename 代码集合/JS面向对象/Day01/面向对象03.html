@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象03</title>
+	</head>
+
+	<body>
+		<!--js面向对象-->
+		构造函数→实例对象
+
+		<script type="text/javascript">
+			//js里没有类,只有构造函数
+			//使用构造函数创建对象
+			//构造函数的函数名首字母大写
+			function Student(name, age, sex, province) { //构造函数
+				this.name = name; //构造函数中的属性
+				this.eat = function() {  // 构造函数中的方法
+					alert("eating");
+				} 
+				this.age = age;
+				this.sex = sex;
+				console.log(this);
+			}
+
+			//用构造函数创建实例对象
+			var stu1 = new Student("张三", 20, "男", "河南省")
+			console.log(stu1)
+
+			//			
+			/*
+			 * new关键字的作用:
+			 * 1.创建空对象
+			 * 2.让空对象去调用构造函数给自己赋值
+			 * 3.把赋值完成的新对象返回
+			 */
+
+			/*
+			 * 原型对象:
+			 * 每一个构造函数都有一个原型对象,为原型对象添加的属性或者方法可以被使用该构造函数实例化的对象共同拥有.
+			 * 原型对象不需要我们自己创建,系统自带
+			 * 每一个构造函数都有一个prototype属性,该属性指向其原型对象
+			 * 
+			 */
+			console.log(Student.prototype)
+			Student.prototype.province = "河南";
+			Student.prototype.goToclass = function() {
+				console.log("去上课");
+			}
+
+			var stu1 = new Student("李四", 20, "女");
+//			console.log(stu1.province)
+			//stu1.goToclass();
+
+			//isPrototypeOf() 用来判断某个原型对象与实例对象之间的关系,此方法是原型对象的方法
+//						console.log(Student.prototype.isPrototypeOf(stu1));
+			//var date = new Date()
+			//			console.log(Student.prototype.isPrototypeOf(date))
+
+			//hasOwnProperty() 该方法用来判断一个属性到底是本地属性还是从原型对象获取的属性,该方法是实例对象的方法.
+
+			//			console.log(stu1.hasOwnProperty("name"));
+			//			console.log(stu1.hasOwnProperty("province"));
+
+			//in 运算符 判断某个属性是否属于实例对象,不管 该属性是本地的还是原型的
+			//			console.log("name" in stu1);
+			//			console.log("province" in stu1);
+			//			console.log("abc" in stu1);
+
+			//			console.log(stu1.__proto__.__proto__.constructor)
+
+			//prototype  原型对象  constructor  构造函数   
+			console.log(Student.prototype.constructor)
+
+			/*
+			 * 属性或者方法的搜索规则
+			 * 1.所谓的属性搜索规则,就是对象在访问属性或者方法时,系统首先会在当前对象里查找是否有对应的属性或者方法.
+			 * 2.如果当前对象中存在对应属性或者方法,停止查找,直接返回对应的值.
+			 * 3.如果当前对象中没有对应属性或者方法,系统会去其他的原型对象中查找是否有对应属性或者方法,如果有,返回对应的值.
+			 * 4.如果原型对象里也没有对应的属性或者方法,系统会去当前原型对象的原型对象里继续查找.
+			 * 5.直到找到Object.prototype,如果到此还没有找到对应的属性或者方法,属性返回undefined,方法报错,该XXX不是一个函数.
+			 * 
+			 * 这种查找属性或者方法的过程形成的链式结构,叫做原型链
+			 */
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas02_绘制三角形</title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.绘制三角形
+//			content.beginPath()
+//			content.moveTo(100,100)
+//			content.lineTo(200,200)
+//			content.lineTo(400,200)
+//			content.closePath(); 
+//			content.stroke();
+			
+			/*
+			 * moveto:创建一条新的子路径
+			 * lineto:沿着已有的子路径继续绘制路径,会记录下添加的最后一个点的坐标信息,不断地跟新子路径的新坐标.
+			 * closepath:闭合路径,连接最后一个点与第一个点.
+			 */
+			
+			//绘制四边形
+//			content.beginPath()
+//			content.moveTo(100,100);
+//			content.lineTo(400,400);
+//			content.lineTo(300,500);
+//			content.lineTo(0,200);
+//			content.lineTo(100,100);
+//			content.closePath(); 
+//			content.stroke();
+			
+			//绘制五角星
+			content.beginPath()
+			content.moveTo(250,100);
+			content.lineTo(450,500);
+			content.lineTo(0,250);
+			content.lineTo(500,250);
+			content.lineTo(50,500);
+			content.closePath(); 
+			content.stroke();
+		</script>
+	</body>
+</html>
+

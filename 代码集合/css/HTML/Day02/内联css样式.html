@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内联css样式</title>
+	<style type="text/css">
+		/*style标签里写的都是css代码*/
+		/*
+		如果采用内联的方式书写长沙市,我们需要考虑我们写的样式是对当前文档里那一个标签做的设置.
+		解决办法:
+		1.先找到元素
+		2.找到对应的元素之后,在进行css样式设置.
+
+		我们通过选择器来查找元素
+		*/
+		/*p{
+			background-color: red;
+		}*/
+		div{
+			background-color: yellow;
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<p>这是段落标签</p>
+	<div>32113212313</div>
+
+	<!-- 内联css样式的优缺点:
+	优点:
+		符合W3C的编码理念
+	缺点:
+		公共的样式无法抽离出来,会造成代码的冗(rong)余.
+	 -->
+</body>
+</html>

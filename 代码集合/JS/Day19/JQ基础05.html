@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ基础05</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 200px;
+				height: 200px;
+				float: left;
+			}
+			#a{
+				background-color: red;
+			}
+			#b{
+				background-color: yellow;
+			}
+			#c{
+				background-color: blue;
+			}
+			hr{
+				clear:both;
+			}
+			#div1{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="a"></div>
+		<div id="b"></div>
+		<div id="c"></div>
+		
+		<div id="div1"></div>
+		<hr />
+		
+		<button onclick="show()">显示动画</button>
+		<button onclick="hide()">隐藏动画</button>
+		<button onclick="special1()">特殊效果</button>
+		
+		<button onclick="fadeIn()">淡入动画</button>
+		<button onclick="fadeOut()">淡出动画</button>
+		<button onclick="fadeTo()" >淡化程度效果</button>
+		<button onclick="special2()">特殊效果淡入出</button>
+		
+		<button onclick="slideUp()">上拉动画</button>
+		<button onclick="slideDown()">下拉动画</button>
+		<button onclick="special3()">特殊效果上下拉</button>
+		
+		<button onclick="DIY()">自定义动画</button>
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 * 1.显示隐藏动画  
+			 * 	a.hide()
+			 * 	b.show()
+			 * 	c.toggle()
+			 */
+			function show(){
+				$("#a").show(1000)
+				$("#b").show("normal")
+				$("#c").show(3000,function(){
+					alert("动画执行完毕");
+				})
+			}
+			function hide(){
+				$("#a").hide(1000)
+				/*
+				 * 可以使用单词表示动画时长
+				 * "slow"
+				 * "normal"
+				 * "fast"
+				 */
+				$("#b").hide(1000)
+				$("#c").hide(3000,function(){
+					alert("动画执行完毕");
+				})
+			}
+			function special1(){
+				$("#a").toggle(600);
+				$("#b").toggle("fast");
+				$("#c").toggle(3000,function(){
+					alert("动画执行完毕")
+				});
+			}
+			
+			/*
+			 * 淡入淡出动画
+			 * 	a.fadeIn 淡入
+			 * 	b.fadeOut 淡出
+			 * 	c.fadeTo 淡到什么程度
+			 * 	d.fadeToggle 淡入淡出开关效果
+			 */
+			
+			function fadeIn(){
+				$("#a").fadeIn(1000)
+				$("#b").fadeIn("slow")
+				$("#c").fadeIn(3000,function(){
+					alert("动画执行完毕");
+				})
+			}
+			function fadeOut(){
+				$("#a").fadeOut(1000)
+				$("#b").fadeOut("slow")
+				$("#c").fadeOut(3000,function(){
+					alert("动画执行完毕")
+				})
+			}
+			function fadeTo(){
+				$("#a").fadeTo(600,0.5);
+				$("#b").fadeTo("normal",0.3);
+				$("#c").fadeTo(3000,0.4,function(){
+					alert("动画执行完毕");
+				})
+			}
+			function special2(){
+				$("#a").fadeToggle(1000)
+				$("#b").fadeToggle("slow")
+				$("#c").fadeToggle(3000,function(){
+					alert("动画执行完毕")
+				})
+			}
+			
+			/*
+			 * 3.上拉下拉动画
+			 * 	a.slideUp  上拉动画
+			 * 	b.slideDown  下拉动画
+			 * 	c.slideToggle  上拉下拉开关动画
+			 * 
+			 */
+			
+			function slideUp(){
+				$("#a").slideUp(600);
+				$("#b").slideUp(600);
+				$("#c").slideUp(3000,function(){
+					alert("动画执行完毕");
+				})
+			}
+			function slideDown(){
+				$("#a").slideDown(600);
+				$("#b").slideDown(600);
+				$("#c").slideDown(3000,function(){
+					alert("动画执行完毕");
+				})
+			}
+			function special3(){
+				$("#a").slideToggle(600);
+				$("#b").slideToggle(600);
+				$("#c").slideToggle(3000,function(){
+					alert("动画执行完毕");
+				})
+			}
+			
+			//自定义动画
+			//只有数字值可创建动画（比如 "margin:30px"）。字符串值无法创建动画（比如 "background-color:red"）
+			function DIY(){
+//				$("#div1").animate({
+//					width:500,
+//					height:500,
+//					borderRadius:"50%",
+//				},2000,function(){
+//					alert("动画执行完毕")
+//				})
+				//JQuery提供了动画组  把每种要修改的样式单独写成一个自定义动画效果,系统会逐个执行.
+				$("#div1").animate({
+					width:500
+				},500)
+				$("#div1").animate({
+					height:500
+				},500)
+				$("#div1").animate({
+					borderRadius:"50%"
+				},500)
+			}
+			
+			
+		</script>
+	</body>
+</html>

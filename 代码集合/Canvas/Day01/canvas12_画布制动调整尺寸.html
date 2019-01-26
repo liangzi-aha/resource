@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas12_画布制动调整尺寸</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			canvas {
+				border: 1px solid red;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="Canvas" width="500" height="500">
+			您的浏览器不支持canvas,请升级或者更换浏览器.
+		</canvas>
+		<script type="text/javascript">
+			//1. 获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas");
+
+			canvas.width = 1000;
+			canvas.height = 500;
+
+			//2. 获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d");
+
+			//3.
+			/*
+			 * onresize 事件  当改变大小时执行
+			 */
+			resizeCanvas();
+			window.onresize = resizeCanvas;
+			function resizeCanvas(){
+				canvas.width = this.innerWidth
+				canvas.height = this.innerHeight
+			}
+		</script>
+	</body>
+
+</html>

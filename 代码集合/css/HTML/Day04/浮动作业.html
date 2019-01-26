@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>浮动作业</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #wrapper {
+                width: 1200px;
+                margin: 50px auto;
+            }
+            
+            .title>span {
+                font-size: 30px;
+                color: gray;
+            }
+            
+            .title>a {
+                font-size: 14px;
+                color: gray;
+                text-decoration: none;
+            }
+            
+            .title>a+a {
+                border-left: 1px solid;
+                padding-left: 15px;
+                margin-left: 15px;
+            }
+            
+            #c1_c {
+                overflow: hidden;
+                margin-top: 10px;
+            }
+            
+            #c1_c>div {
+                float: left;
+            }
+            
+            #left {
+                width: 400px;
+                height: 342px;
+                background-color: lightgray;
+            }
+            
+            #center {
+                width: 560px;
+                height: 342px;
+                margin: 0 20px;
+            }
+            
+            #right {
+                width: 200px;
+                height: 342px;
+                background-color: lightgray;
+            }
+            
+            #left>img {
+                /*
+			    img标签允许设置宽高, 且如果只设置了宽或者高的值.另外一个按比例缩放.
+			    */
+                width: 400px;
+            }
+            
+            .t1 {
+                text-indent: 12px;
+            }
+            
+            .t2 {
+                text-indent: 12px;
+                font-size: 14px;
+                color: gray;
+                margin: 5px 0;
+            }
+            
+            #center>div,
+            #c2_c>div {
+                width: 176px;
+                height: 166px;
+                background-color: lightgray;
+                float: left;
+            }
+            
+            .bMargin {
+                margin-bottom: 10px;
+            }
+            
+            .lrMargin {
+                margin: 0 16px;
+            }
+            
+            #center>div>img,
+            #c2_c>div>img {
+                width: 176px;
+                height: 105px;
+            }
+            
+            #right>img {
+                width: 200px;
+            }
+            
+            ol {
+                padding-left: 30px;
+                margin-top: 16px;
+            }
+            
+            li {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+            
+            #right p {
+                width: 170px;
+                margin: 0 auto;
+                border-bottom: 1px dotted black;
+                padding-bottom: 10px;
+            }
+            
+            #c2 {
+                margin-top: 70px;
+            }
+            
+            #c2_c {
+                overflow: hidden;
+                margin-top: 15px;
+            }
+            #c2_c>div+div {
+                margin-left: 28.8px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <!--上半部分-->
+            <div id="c1">
+                <!--标题-->
+                <div class="title">
+                    <span>内地剧</span>
+                    <a href="###">爱情</a>
+                    <a href="###">古装</a>
+                    <a href="###">喜剧</a>
+                    <a href="###">更多 ></a>
+                </div>
+                <!--内容-->
+                <div id="c1_c">
+                    <div id="left">
+                        <img src="1.jpg" alt="" />
+                        <p class="t1">大学生来了</p>
+                        <p class="t2">吴莫愁现场气息教学 唱《演员》气哭薛之谦</p>
+                    </div>
+                    <div id="center">
+                        <div class="bMargin">
+                            <img src="2.jpg" alt="" />
+                            <p class="t1">跨界歌王</p>
+                            <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                        </div>
+                        <div class="bMargin lrMargin">
+                            <img src="2.jpg" alt="" />
+                            <p class="t1">跨界歌王</p>
+                            <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                        </div>
+                        <div class="bMargin">
+                            <img src="2.jpg" alt="" />
+                            <p class="t1">跨界歌王</p>
+                            <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                        </div>
+                        <div>
+                            <img src="2.jpg" alt="" />
+                            <p class="t1">跨界歌王</p>
+                            <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                        </div>
+                        <div class="lrMargin">
+                            <img src="2.jpg" alt="" />
+                            <p class="t1">跨界歌王</p>
+                            <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                        </div>
+                        <div>
+                            <img src="2.jpg" alt="" />
+                            <p class="t1">跨界歌王</p>
+                            <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                        </div>
+                    </div>
+                    <div id="right">
+                        <img src="img/img3.jpg" alt="" />
+                        <p>小s上演复古装魅惑歌舞</p>
+                        <ol>
+                            <li>撒贝宁兔牙造型装可爱</li>
+                            <li>Boom唱功震惊陪审团</li>
+                            <li>黄子韬出演至尊宝</li>
+                            <li>Selina应采儿开撕男神</li>
+                            <li>跑男十大精彩瞬间盘点</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!--下半部分-->
+            <div id="c2">
+                <!--标题-->
+                <div class="title">
+                    <span>内地剧</span>
+                    <a href="###">爱情</a>
+                    <a href="###">古装</a>
+                    <a href="###">喜剧</a>
+                    <a href="###">更多 ></a>
+                </div>
+                <!--内容-->
+                <div id="c2_c">
+                    <div>
+                        <img src="2.jpg" alt="" />
+                        <p class="t1">跨界歌王</p>
+                        <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                    </div>
+                    <div>
+                        <img src="2.jpg" alt="" />
+                        <p class="t1">跨界歌王</p>
+                        <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                    </div>
+                    <div>
+                        <img src="2.jpg" alt="" />
+                        <p class="t1">跨界歌王</p>
+                        <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                    </div>
+                    <div>
+                        <img src="2.jpg" alt="" />
+                        <p class="t1">跨界歌王</p>
+                        <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                    </div>
+                    <div>
+                        <img src="2.jpg" alt="" />
+                        <p class="t1">跨界歌王</p>
+                        <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                    </div>
+                    <div>
+                        <img src="2.jpg" alt="" />
+                        <p class="t1">跨界歌王</p>
+                        <p class="t2">巫启贤大唱情歌表白刘涛</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

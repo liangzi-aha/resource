@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义字体</title>
+		<style type="text/css">
+			@font-face{
+				font-family:帅体;
+				src: url(font/自定义字体.ttf);
+			}
+			p{
+				font-size: 50px;
+				font-family: 帅体;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			字体包格式:
+			1.ttf,最常用,Chrome,Safari,Opera,Firefox,iOS,Android都支持ttf格式.
+			2.eot,只支持ie
+			3.svg,支持iOS
+			4.woff,Chrome和Firefox
+			
+			步骤:
+				给字体包起名字,并将字体包的位置与名字都给赋值font-family
+				
+				@font-face{
+					font-family:名字
+					src:字体包路径
+				}
+		-->
+		<p>1.ttf,最常用,Chrome,Safari,Opera,Firefox,iOS,Android都支持ttf格式. 2.eot,只支持ie 3.svg,支持iOS 4.woff,Chrome和Firefox
+		</p>
+	</body>
+
+</html>

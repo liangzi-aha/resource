@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ放大镜</title>
+		<style type="text/css">
+			#small{
+				width: 200px;
+				height: 200px;
+				border:3px solid red;
+			}
+			#small>img{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--原图区域-->
+		<div id="small">
+			<img src="img/1.jpg" alt="" />
+		</div>
+		<!--以后再引入jq插件时,先引入jq文件,再引入jq插件文件-->
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jzoom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("#small").jzoom({
+				width:200,
+				height:200,
+				position:"right",
+				offsetX:100,
+				offsetY:100,
+				suffixName:"max"
+			})
+		</script>
+	</body>
+</html>

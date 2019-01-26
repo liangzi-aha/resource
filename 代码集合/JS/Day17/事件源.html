@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件源</title>
+		<style type="text/css">
+			#div3{
+				width: 200px;
+				height: 200px;
+				background-color: green;
+			}
+			#div2{
+				width: 500px;
+				height: 500px;
+				background-color: yellow;
+			}
+			#div1{
+				width: 800px;
+				height: 800px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			/*
+			 * 事件源:真正触发对应事件的源头对象.
+			 * 事件对象.target
+			 * 
+			 * IE浏览器下的兼容写法
+			 * 事件
+			 */
+			div1.onclick = function(e){
+				var even = e || event
+				console.log(even.target);
+			}
+		</script>
+	</body>
+</html>

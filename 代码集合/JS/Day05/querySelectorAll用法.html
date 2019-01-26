@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<div id="div">163邮箱</div>
+			<div id="div">126邮箱</div>
+			<div id="div">yeah.net</div>
+			<div id="div">网易手机邮箱</div>
+		</div>
+		<script type="text/javascript">
+			//通过id找box下面的4个div
+			//console.log((document.querySelectorAll("#box div"))
+			//querySelectorAll得到的是一个数组.
+			//box下面的div没有设置id,把用#box div找出来的数组赋给一个变量在设置[第几个]例如:
+			var div = document.querySelectorAll("#box div")
+			div[0].style.backgroundColor = "green";
+			
+			//通过id找box下面的4个div
+			console.log(document.querySelectorAll("#div"))
+			//box下面的div设置了id的可以直接用div[2]去找,[2]从0开始2时第三个div
+			div[2].style.backgroundColor = "red"
+			
+			//用标签选择器找所有div
+			var div = document.querySelectorAll("div")
+			console.log(document.querySelectorAll("div"))
+			
+		</script>
+	</body>
+</html>

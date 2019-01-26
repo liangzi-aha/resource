@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象04</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 继承
+			 * 1.什么时候需要继承???
+			 * 当多个类拥有公共的属性或者方法
+			 * 
+			 * 2.继承有什么优点?
+			 * 减少代码量,公共的父类可以复用,耦合度低
+			 */
+			
+			//js继承的两种方法
+			/*
+			 * 1.通过改变构造函数中对象的指向实现继承
+			 * 2.原型链实现继承
+			 */
+			
+			//创建一个'动物'构造函数
+			function Animal(){
+				this.species = "生物";
+			}
+			Animal.prototype.head = 1;
+			//创建一个"猫"的构造函数
+			function Cat(type,color){
+				Animal.call(this);
+				this.type = type;
+				this.color = color;
+			}
+			var cat1 = new Cat("咖菲","橘黄色")
+			//call()方法 和 apply()方法,都可以改变函数里this对象的指向.
+			/*
+			 * 语法:
+			 * 函数.call(参数1,参数2,...)
+			 * 参数1:要更改成的对象
+			 * 参数2,.....:实参
+			 */
+			
+			//this
+			function abc(){
+//				console.log(this)
+			}
+			//window.abc()
+			abc()
+			
+			//2.原型链实现继承
+			//使用的prototype属性,将Animal的实例对象赋值给Cal的原型对象.
+			Cat.prototype = new Animal();
+			var cat2 = new Cat("Tom","灰蓝色");
+			console.log(cat2.type,cat2.color,cat2.species,cat2.head);
+			
+			//修复constructor问题
+			console.log(Cat.prototype.constructor);
+			Cat.prototype.constructor = Cat;
+			console.log(Cat.prototype.constructor);
+		</script>
+	</body>
+</html>

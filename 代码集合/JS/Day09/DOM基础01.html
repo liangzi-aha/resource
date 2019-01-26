@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM基础</title>
+		<style type="text/css">
+			#div1 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p>这是段落1</p>
+		<p>这是段落2</p>
+		<div id="div1">div1</div>
+		<div id="div2">div2</div>
+		<div id="div3"></div>
+		<div id="div4">
+			这是div4
+			<span style="display: none;">这是span标签</span>
+			<!--这是thml注释-->
+		</div>
+		<img src="../../HTML/抖音链接/st6.jpg" alt="神偷奶爸" />
+		<script type="text/javascript">
+			/*
+			 * DOM:
+			 * DOM Document Object Model 文档对象模型
+			 * 
+			 * DOM树 当html文档加载完毕时,浏览器会根据我们书写的代码,创建出一个树状结构.
+			 * 
+			 * DOM树是由一个个的节点组成的
+			 * 
+			 * 节点类型
+			 * 1.元素节点<body> <html> <div> ...
+			 * 2.声明节点 <!DOCTYPE html>
+			 * 3.文本节点 文字内容
+			 * 4.文档节点 document 
+			 * 5.注释节点
+			 * 
+			 * 节点之间的关系
+			 * 子节点
+			 * 父节点
+			 * 兄弟节点
+			 */
+
+			/*
+			 * 一.特殊节点及获取方式
+			 */
+			//1.文档节点
+			//			console.log(document);
+
+			//2.html节点
+			//			console.log(document.documentElement);
+
+			//3.body节点
+			//			console.log(document.body);
+
+			//4.head节点
+			//			console.log(document.head);
+
+			//5.声明节点
+			//			console.log(document.doctype);
+
+			/*
+			 * 二.通过节点之间的关系获取节点
+			 */
+			//1.childNodes 获取某个节点的所有子节点,会得到一个节点数组
+			//			console.log(document.head.childNodes);
+
+			//2.parentNode 获取某个节点的父节点(节点的父节点只有一个)
+			//			console.log(document.body.parentNode);
+
+			//3.firstChild 获取某个节点里第一个子节点
+			//			console.log(document.body.firstChild);
+
+			//4.lastChild 获取某个节点里最后一个节点
+			//			console.log(document.body.lastChild)
+
+			//5.firstElementChild 获取某个节点里第一个元素节点
+			console.log(document.body.firstElementChild)
+			//javascript的firstChild属性用法介绍:
+			//本章节介绍一下firstChild属性的用法， 因为可能在一些dom操作会用到。
+			//此属性可以获取指定元素的第一个子元素。
+
+			//6.lastChild 获取某个节点里最后一个元素节点
+			//console.log(document.body.lastElementChild)
+//			firstElementChild属性用法详解:
+//			此属性可以返回当前元素的第一个元素子节点。
+//			如果没有元素子节点， 那么返回null。
+
+			//7.previousSibling 获取某个节点的上一个兄弟节点.
+			var div1 = document.getElementById("div1")
+			console.log(div1.previousSibling);  //previous: |priːvɪəs|
+
+			//8.previousElementSibling 获取某个节点的上一个兄弟元素节点.
+			console.log(div1.previousElementSibling)  //previous 以前的
+
+			//9.nextSibling 获取某个节点的下一个兄弟节点
+			console.log(div1.nextSibling)
+
+			//10.nextElementSibling 获取某个节点的下一个兄弟元素节点
+			console.log(div1.nextElementSibling)
+
+			/*
+			 * 三.操作元素节点里的内容
+			 * 1.innerHTML 获取元素节点里的内容,包括文本节点.元素节点,注释节点,空格也会保留,获取的值是字符串格式.
+			 * 2.innerText 获取元素节点里的文本节点,不保留多余的空格,不显示隐藏元素里的文本
+			 * 3.textContent 获取元素节点里的文本节点,保留多余的空格,显示隐藏元素里的文本
+			 */
+
+			//对象的属性在等号的左边是设置,在等号的右边或者没有等号是在获取.
+			//			div3.innerHTML = "这是div3--innerHTML";
+			//			var a = div3.innerHTML;
+			//			console.log(div3.innerHTML);
+			//			div3.innerHTML + = "ABC"
+
+			//			div3.innerText = "这是div3--innerText"
+			//			console.log(div3.innerText)
+
+			//			div3.textContent = "这是div3--textContent"
+			//			console.log(div3.textContent)
+
+			var div4 = document.getElementById("div4");
+
+			console.log(div4.innerHTML)
+			console.log(div4.innerText)
+			console.log(div4.textContent)
+
+			/*
+			 * 四.操作元素的属性
+			 */
+			var img = document.querySelector("img")
+
+			//1.获取属性值 元素.getAttribute("属性名");
+			console.log(img.src)
+			console.log(img.getAttribute("src"))
+
+			console.log(img.alt)
+			console.log(img.getAttribute("alt"))
+
+			//2.设置属性值 setAttribute("属性名","属性值");
+			img.alt = "123";
+			img.setAttribute("alt", "123");
+
+			/*
+			 * 以上两种设置或者获取元素属性值的方法的区别:
+			 * 如果元素的属性名是字符串类型,只能使用get/setAttribute方法实现设置或者获取属性,无法使用点语法直接进行操作.
+			 */
+
+			/*
+			 * 五.创建元素节点
+			 */
+			/*
+			 * document.createElement("元素名")
+			 * 返回值:创建好的html元素
+			 */
+			//1.创建
+			var img = document.createElement("img");
+
+			//2.设置属性或者样式
+			img.src = "../../HTML/抖音链接/st2.jpg";
+			img.style.border = "5px solid red";
+
+			//3.将标签插入到文档里
+			//元素.appendChild(要插入的元素)
+			document.body.appendChild(img);
+
+			//4.删除元素
+			//父元素.removeChild(要删除的元素)
+			var div4 = document.getElementById("div4");
+			var span = document.querySelector("span")
+			div4.removeChild(span);
+
+			/*
+			 * 插入节点的方式:
+			 * 1.父节点.appendChild(要插入的元素)
+			 * 2.父节点.insertBefore(要插入的元素,要被放到其前面的兄弟元素)
+			 */
+			var h3 = document.createElement("h3");
+			h3.innerHTML = "这是啥,这是h3标签";
+			var div1 = document.getElementById("div1")
+			document.body.insertBefore(h3, div1)
+
+			/*
+			 * 替换节点
+			 * 父节点.replaceChild(要替换的元素,被替换的元素)
+			 */
+			var newImg = document.createElement("img")
+			newImg.src = "../../HTML/抖音链接/st2.jpg"
+			var div2 = document.getElementById("div2")
+			document.body.replaceChild(newImg, div2)
+
+			/*
+			 * 六.操作元素节点的样式
+			 */
+
+			/*
+			 * 1.style属性操作元素的样式
+			 * 注意:凡是使用style属性语法设置的样式,全部在元素的行间!那么当使用style属性获取样式时,系统也会从行间获取!!!!!
+			 * 
+			 * 如果样式没有设置到行间,不能使用style属性获取样式!!!!!
+			 */
+
+			/*
+			 * 2.获取内联或者外联css样式
+			 * getComputedStyle(要获取样式的元素)
+			 */
+			//⬇️获取div1的所有样式
+			var div1s = getComputedStyle(div1);
+
+			//⬇️获取div1指定的一个样式值
+			/*
+			 * 如何获取样式对象里指定样式的值??
+			 * 1.对象.样式名
+			 * 2.对象["样式名"]
+			 */
+			console.log(div1s.width, div1s["width"]);
+		</script>
+	</body>
+
+</html>

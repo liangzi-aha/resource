@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>nth-child选择器</title>
+		<style type="text/css">
+			/*
+			 1.E:nth-child(number){
+			 	
+			 }
+			 找到E选择器对应的元素的父级里第number个子元素,且保证其是E类型.
+			 * */
+			/*#ul1>li:nth-child(5){
+				background-color:red;
+			}*/
+			/*
+			 2.E:nth-child(n){
+			 	
+			 }
+			 能找到E选择器对应的元素的父级里所有的子元素,且保证其是E类型.
+			 */
+			/*#ul1>li:nth-child(2n+1){
+				background-color: blue;
+			}*/
+			/*
+			 3.E:nth-child(2n+1){
+			 	
+			 }
+			 E:nth-child(odd){
+			 	
+			 }
+			 能找到E选择器对应的元素的父级里所有编号是奇数的子元素,且保证是E类型.
+			 */
+			/*
+			 4.E:nth-child(2n){
+			 	
+			 }
+			 E:nth-child(even){
+			 	
+			 }
+			 能找到E选择器对应的元素的父级里所有编号是偶数的子元素,且保证是E类型.
+			 */
+			/*
+			 5.E:nth-child(-n+number){
+			 	
+			 }
+			 能找到E选择器对应的元素的父级里编号number上面的子元素(包含第number个),且保证是E类型.
+			 相对n等于正值就是找number下面的值
+			 */
+			li:nth-child(n+3){
+				background-color:red;
+			}
+			li:nth-child(n+9){
+				background-color:transparent;
+			}
+			li:nth-child(n+3):nth-child(-n+8){
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>这是第1个li</li>
+			<li>这是第2个li</li>
+			<li>这是第3个li</li>
+			<li>这是第4个li</li>
+			<li>这是第5个li</li>
+			<li>这是第6个li</li>
+			<li>这是第7个li</li>
+			<li>这是第8个li</li>
+			<li>这是第9个li</li>
+			<li>这是第10个li</li>
+		</ul>
+	</body>
+</html>

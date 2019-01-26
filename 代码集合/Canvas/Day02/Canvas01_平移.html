@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas01_平移</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+
+			//3.平移
+			/*
+			 * translate(x,y)
+			 * X:坐标原点水平方向的平移值
+			 * Y:坐标原点竖直方向的平移值
+			 */
+			content.fillStyle = "crimson"
+			content.fillRect(100,100,200,200);
+			
+			//平移
+			content.translate(500,0)
+			content.fillRect(100,100,200,200)
+			
+			/*
+			 * Canvas平移影响的是坐标轴.
+			 * Canvas里的平移并不是移动已经绘制出的图像,而是会影响设置了平移之后的图像.
+			 */
+		</script>
+	</body>
+
+</html>

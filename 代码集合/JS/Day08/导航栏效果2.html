@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>导航栏效果</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            a {
+                text-decoration: none;
+            }
+            
+            ul {
+                width: 500px;
+                height: 50px;
+                margin: 50px auto;
+                position: relative;
+            }
+            
+            li {
+                text-align: center;
+                list-style: none;
+                font-size: 30px;
+                width: 100px;
+                height: 50px;
+                line-height: 50px;
+                float: left;
+                background-color: pink;
+                color: black;
+            }
+            
+            #line {
+                width: 100px;
+                height: 5px;
+                background-color: red;
+                position: absolute;
+                left: 0;
+                bottom: -10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li>
+                <a href="###">新闻</a>
+            </li>
+            <li>
+                <a href="###">体育</a>
+            </li>
+            <li>
+                <a href="###">娱乐</a>
+            </li>
+            <li>
+                <a href="###">历史</a>
+            </li>
+            <li>
+                <a href="###">军事</a>
+            </li>
+            <div id="line"></div>
+        </ul>
+        <script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            var eles = document.querySelectorAll("li");
+            var line = document.getElementById("line");
+            for(var i = 0; i < eles.length; i++) {
+                eles[i].onmouseover = overEle(i);
+            }
+            
+            var timer;
+            function overEle(index) {
+                return function() {
+                    clearInterval(timer);
+                    var t = 0;
+                    //获取小条距离父元素左端的距离
+                    var b = line.offsetLeft;
+                    var c = index * 100 - b;
+                    var d = 20;
+                    timer = setInterval(function(){
+                        t++;
+                        if (t == d) {
+                        	   clearInterval(timer);
+                        }
+                        line.style.left = Tween.Linear(t, b, c, d) + "px";
+                    }, 20);
+                }
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas06_绘制圆</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+
+			//3.绘制圆形
+			/*
+			 * arc(x,y,radius,startAngle,endAngle,counterClockwise)
+			 * 六个参数:
+			 * x,y:圆心的位置
+			 * radius:半径
+			 * startAngle:开始位置
+			 * endAngle:结束位置
+			 * counterclockwise:是否逆时针绘制,true逆时针,false顺时针
+			 * 
+			 * 开始位置和结束位置填的值是弧度值
+			 * π = 180°   //弧度 = π/180×角度  //角度 = 180/π×弧度
+			 * 我们js里,math.pI表示π
+			 */
+			//			content.beginPath()
+			//			content.arc(500, 200, 100, 0, 1.5 * Math.PI, false)
+			//			content.lineTo(500,200)
+			//			content.closePath();
+			//			content.stroke();
+			//			content.fill();
+			
+			
+			//设置线宽
+			content.lineWidth = 25;
+			content.beginPath()
+			content.arc(500, 200, 100, 0, 2 * Math.PI, false)
+			
+			//创建线性渐变
+			var lineargrad = content.createLinearGradient(0, 0, 0, 400);
+			lineargrad.addColorStop(0, 'cyan');
+			lineargrad.addColorStop(1, 'magenta');
+			//设置绘制样式
+			content.strokeStyle = lineargrad;
+			content.stroke();
+			
+		</script>
+	</body>
+
+</html>

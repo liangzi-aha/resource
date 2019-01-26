@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas07_二次贝塞尔曲线</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.
+			/*
+			 * 二次贝塞尔曲线
+			 * quadraticCurveTo(cpx,cpy,x,y)
+			 * cpx, cpx : 控制点的坐标
+			 * x, y:一个普通点的坐标
+			 * 
+			 * 我们需要再提供一个普通点的坐标 就可以实现二次贝塞尔曲线的效果
+			 */
+			content.strokeStyle = "red"
+			content.beginPath()
+			content.moveTo(183,348); //第一个普通点)
+			content.quadraticCurveTo(190,137,325,331);//前两个参数表示控制点,后两个参数表示第二个普通点
+			content.closePath()
+			content.stroke())
+		</script>
+	</body>
+</html>

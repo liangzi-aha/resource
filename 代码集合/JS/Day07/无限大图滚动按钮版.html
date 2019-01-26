@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>无限大图滚动按钮版</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #wrap {
+                width: 300px;
+                height: 450px;
+                margin: 50px auto;
+                border: 3px solid red;
+                position: relative;
+                /*overflow: hidden;*/
+            }
+            
+            #content {
+                width: 2100px;
+                height: 450px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            
+            img {
+                width: 300px;
+                height: 450px;
+                float: left;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="wrap">
+            <div id="content">
+                <img src="img/1.png" alt="" />
+                <img src="img/2.jpeg" alt="" />
+                <img src="img/3.jpeg" alt="" />
+                <img src="img/4.png" alt="" />
+                <img src="img/5.jpeg" alt="" />
+                <img src="img/6.png" alt="" />
+                <img src="img/1.png" alt="" />
+            </div>
+        </div>
+        <button>下一张</button>
+        <button>上一张</button>
+        <script type="text/javascript">
+            var btns = document.querySelectorAll("button");
+            var contentDiv = document.getElementById("content");
+            var index = 0;
+
+            btns[0].onclick = moveNext;
+
+            btns[1].onclick = movePrevious;
+            
+            function moveNext() {
+                this.onclick = null;
+                if(index == 6) {
+                    index = 0;
+                }
+                var x = 0;
+                var timer1 = setInterval(function() {
+                    x += 5;
+                    contentDiv.style.left = index * -300 - x + "px";
+                    if(x == 300) {
+                        clearInterval(timer1);
+                        index++;
+                        btns[0].onclick = moveNext;
+                    }
+                }, 20);
+            }
+            
+            function movePrevious() {
+                this.onclick = null;
+                if(index == 0) {
+                    index = 6;
+                }
+                var x = 0;
+                var timer2 = setInterval(function() {
+                    x += 5;
+                    contentDiv.style.left = -index * 300 + x + "px";
+                    if(x == 300) {
+                        clearInterval(timer2);
+                        index--;
+                        btns[1].onclick = movePrevious;
+                    }
+                }, 20);
+            }
+        </script>
+    </body>
+
+</html>

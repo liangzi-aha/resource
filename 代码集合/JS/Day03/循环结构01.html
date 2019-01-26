@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 1.for循环(80%)
+			 * 2.white(循环)(15%)
+			 * 3.do...while(5%)
+			 */
+
+			/*
+			 * for循环
+			 * 语法
+			 * for(1;2;3){
+			 * 	4;
+			 * }
+			 * 1.循环变量初始值
+			 * 2.循环条件
+			 * 3.循环增量
+			 * 4.循环体
+			 * 
+			 * 
+//			 */
+			//			for(var a = 0; a < 5; a++) {
+			//				console.log("111111")
+			//			}
+			//
+			//			//练习1 循环输出1-5
+			//			////			var number = 1;
+			//			//			for(var a = 0; a<5; a++){
+			//			//				console.log(a+1);
+			//			////				console.log(number++);
+			//			//			}
+			//			//			练习2 循环0-5
+			//			//			for(var a = 5; a > 0; a--) {
+			//			//				console.log(a);
+			//			//一个循环里,循环变量使用合理可以快是解决问题,如果发现在循环体里,循环变量参与运算方便问题,那么需要妥善考虑循环变量的设置问题
+			//			//				如果不需要参与运算,只需要考虑满足循环次数即可
+			//
+			//			//练习3 输出1-100内的偶数
+			//			for(var a = 2; a < 101; a++) {
+			//				if(a % 2 == 0) {
+			//					console.log(a);
+			//				}
+			//			}
+			//			//练习5 输出1-100内,个位为7的数
+			//			for(var a = 1; a < 101; a++){
+			//				if(a % 10 == 7){
+			//					console.log(a);
+			//				}
+			//			}
+			//练习6 输出1-100内十位为7的数
+			//			for(var a = 1; a < 100; a++) {
+			//				if(Math.floor (a / 10) == 7) {
+			//					console.log(a);
+			//				}
+			//			}
+			//练习7 输出1-100的和
+			//			for(var a = 1; a < 100; a++){
+			//				
+			//			}
+			//			练习8 输出1-100内不包含7的数.
+//			for(var a = 1; a < 100; a++) {
+//				if(a % 10 !== 7) {
+//					if(a % 7 !== 0) {
+//						if(Math.floor(a / 10) !== 7)
+//							console.log(a)
+//					}
+//				}
+//			}
+//						for(var a = 1; a < 100; a++) {
+//							if(!(a % 7 == 0 || a % 10 == 7 || Math.floor(a / 10) == 7)){
+//								console.log(a);
+//							}	
+//						}
+			//练习9 输出10个随机数,随机范围[10,90]
+			//			for(var a = 10; a <= 20; a++){
+			//				var b =Math.floor(Math.floor()*(90-10+1)+10);
+			//				console.log(b);
+			//				
+			//			}
+			//在练习9的基础上,求10个随机数里的最大值.
+			//声明一个比较变量,要求:要比取值范围里的最小值还小.
+			//			var cmp = 0;
+			//			for (var i = 0 ; i < 10; i++ ){
+			//				var randomN = Math.floor(Math.random()*(90-10+1)+10);
+			//				console.log(randomN);
+			//				//比大小
+			//				cmp = cmp > randomN ? cmp : randomN;
+			//			}
+			//			console.log("最大值是:" + cmp)
+			/*
+			 * 求最大值时,比较变量的值要比范围的最小值还小
+			 * 
+			 * 求最小值时,比较变量的值要比范围的最大值还大
+			 */
+
+			/*
+			 * break 和 continue
+			 * break:跳出本层循环,中止循环.
+			 * continue:跳过本次循环,继续执行下一次
+			 */
+			//			for(var i = 1; i < 21; i++){
+			//				if(i == 15){
+			//					continue;
+			//				}
+			//				console.log(i);
+			//			}
+			//250-500随机 随机到300停止
+			//			for(var a = 10; a > 9; a++){
+			//				var rN = Math.floor(Math.random()*(500-250)+1)+250;
+			//				console.log(rN);
+			//				if (rN == 350){
+			//					break;
+			//				}
+			//			}
+
+			/*
+			 * 循环嵌套
+			 */
+						for(var i = 1; i < 10; i++){
+							for(var a = 1; a < i+1; a++){
+								document.write(a + "*" + i + "=" + a * i + " ");
+							}
+							document.write("<br>")
+						}
+		</script>
+	</body>
+
+</html>

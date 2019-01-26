@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>背景设置多个值</title>
+		<style type="text/css">
+			#div1{
+				width: 500px;
+				height: 500px;
+				background: url(bg-tl.png) no-repeat,
+				url(bg-tr.png) no-repeat right top/200px 200px,
+				url(bg-bl.png) no-repeat bottom left,
+				url(bg-br.png) no-repeat bottom right,
+				url(bg-repeat.png) ;
+			}
+			/*
+			 background可以支持多个值,一般应用在内径图片的拼凑上
+			 1.如果写多个值,可以理解成谁先写谁在上面
+			 2.每个值之间用逗号隔开,最后加分号
+			 */
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>写字板</title>
+		<style type="text/css">
+			.wrap {
+				width: 800px;
+				border: 1px solid gray;
+				overflow: hidden;
+			}
+			#myCanvas{
+				border: 1px solid gray;
+				display: block;
+				float: left;
+			}
+			ul {
+				width: 180px;
+				list-style: none;
+				padding: 0;	
+				float: right;
+			}
+			span {
+				width: 30px;
+				height: 30px;
+				display: inline-block;
+			}
+			#red{
+				background-color: red;
+			}
+			#green{
+				background-color: green;
+			}
+			#yellow{
+				background-color: yellow;
+			}
+			#blue{
+				background-color: blue;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<canvas id="myCanvas" width="600" height="400"></canvas>
+		    <ul>
+			  <li>
+				<p>画笔颜色</p>
+				<span id="red"></span>
+		        <span id="green"></span>
+		        <span id="yellow"></span>
+		        <span id="blue"></span>
+			  </li>
+		  	  <li>
+		  		<p>画笔粗细</p>
+		  		<input type="button" id="bold" value="变粗" />
+		        <input type="button" id="lighter" value="变细" />
+		  	  </li>
+		  	  <li>
+		  		<p>操作</p>
+		  		<input type="button" id="clear" value="橡皮擦" />
+		  		<input type="button" id="empty" value="清空画板" />
+		  	  </li> 
+		    </ul>
+		</div>
+		
+		
+	</body>
+	<script type="text/javascript">
+	    var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext("2d");
+	    var clearBtn = document.getElementById("clear");
+	    var emptyBtn = document.getElementById("empty");
+	    var red = document.getElementById("red");
+	    var green = document.getElementById("green");
+	    var yellow = document.getElementById("yellow");
+	    var blue = document.getElementById("blue");
+		
+		var boldLine = document.getElementById("bold");
+		var lighterLine = document.getElementById("lighter");		
+
+		var color = 'black';
+		var lineW = 3;
+		//添加鼠标按下事件
+		canvas.onmousedown = function  (e) {
+			var event2 = window.event || e;
+			var x = event2.offsetX;
+			var y = event2.offsetY;
+			context.beginPath();
+					
+			context.moveTo(x,y);
+			canvas.onmousemove = function (e) {
+				var event1 = window.event || e;				    
+				var x = event1.offsetX;
+				var y = event1.offsetY;
+				context.lineTo(x,y);
+				context.lineWidth = lineW;
+				context.strokeStyle = color;
+				context.stroke();
+			}
+			//添加鼠标松开事件
+			canvas.onmouseup = function () {
+				canvas.onmousemove = null;
+
+			}
+		}
+		//添加点击事件
+		red.onclick = function () {
+			color = 'red';
+		}
+		
+		green.onclick = function () {
+			color = 'green';
+		}
+		
+		yellow.onclick = function () {
+			color = 'yellow';
+		}
+		
+		blue.onclick = function () {
+			color = 'blue';
+		}
+
+		
+		//橡皮擦按钮添加点击事件
+		clearBtn.onclick = function () {
+			//鼠标按下事件
+			canvas.onmousedown = function () {
+				canvas.onmousemove = function (e) {
+				    var event1 = window.event || e;
+				    var x = event1.offsetX;
+				    var y = event1.offsetY;
+				    context.clearRect(x,y,20,20);
+			  }
+			}
+		}
+		//清空按钮添加点击事件
+		emptyBtn.onclick = function () {
+			context.clearRect(0,0,canvas.width,canvas.height);
+		};
+		
+		//变粗按钮的点击事件
+		boldLine.onclick = function () {
+			lineW = 5;
+		}
+		//变细按钮的点击事件
+		lighterLine.onclick = function () {
+			lineW = 1;
+		}
+	</script>
+</html>

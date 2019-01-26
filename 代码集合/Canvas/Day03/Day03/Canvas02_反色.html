@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas02_反色</title>
+        <style type="text/css">
+            canvas {
+                border: 1px solid red;
+                margin: 50px auto;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="Canvas" width="500" height="500">
+            您的浏览器不支持canvas, 请更换或者升级浏览器
+        </canvas>
+        <button id="btn">反色</button>
+        <script type="text/javascript">
+            //1. 获取canvas标签并设置大小
+            var canvas = document.getElementById("Canvas");
+
+            canvas.width = 1000;
+            canvas.height = 500;
+
+            //2. 获取 2D渲染上下文 对象
+            var content = canvas.getContext("2d");
+
+            //3. 反色
+            var img = new Image();
+            img.src = "img/girl1.jpg";
+            
+            img.onload = function(){
+                content.drawImage(this, 900, 0, 1000, 500, 0, 0, 1000, 500);
+            }
+            
+            btn.onclick = function(){
+              var dataObj = content.getImageData(0, 0, 1000, 500);
+              //获取像素数组
+              var pixelArray = dataObj.data;
+              for (var i = 0; i < pixelArray.length / 4; i++) {
+              	pixelArray[i*4] = 255 - pixelArray[i*4];
+              	pixelArray[i*4+1] = 255 - pixelArray[i*4+1];
+              	pixelArray[i*4+2] = 255 - pixelArray[i*4+2];
+              }
+              
+              //将修改完成的数组 重新绘制到canvas画布上
+              content.putImageData(dataObj, 0, 0);
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景</title>
+	<style type="text/css"> 
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#div1{
+		width: 500px;
+		height: 5000px;
+		border: 3px solid yellow;
+		/*背景色*/
+		/*background-color: green;*/
+		/*背景图*/
+		/*background-image: url(2.jpg);*/
+		/*背景图的平铺方式
+		1.repeat 水平垂直都平铺
+		2.repeat-x 水平方向平铺
+		3.repeat-y 垂直方向平铺
+		4.no-repeat 不平铺
+		*/ 
+		/*background-repeat: no-repeat;*/
+		/*
+		背景图片的位置
+		写法1:直接写px数值
+		x方向:正值右,负值左
+		y方向:正值下,负值上;
+
+		写法2:使用方位单词
+		X方向:left, center,right
+		y方向:top,center,bottom
+
+		写法3:使用百分比
+		x方向的百分比:
+		(容器的宽-图片的宽)*百分比
+
+		y方向的百分比:
+		(容器的高-图片的高)*百分比
+
+		*/
+		/*background-position: 100px 100px;*/
+		/*background-position: top center;*/
+		/*background-position: 20% 20%;*/
+		
+		/*
+		背景图跟随网页滚动
+		1.scroll 滚动
+		2.fixed 不滚动
+		*/
+		/*background-attachment: fixed;*/   /*attachment 依恋  附件*/
+
+		/*合写
+		background样式是以上多种样式的复合样式.
+		*/
+		background: url(4.jpg) green no-repeat top center fixed;
+	}
+	</style>
+</head>
+<body>
+	
+	<!-- 
+	1.背景色
+	2.背景图片
+	3.背景图片的平铺方式
+	4.背景图片的位置
+	5.背景图片是否跟随页面滚动
+
+	所有跟背景有关的设置都依托于元素,且要保证元素有大小.
+	 -->
+	 <div id="div1">背景图片是否跟随页面滚动背景图片是否跟随页面滚动背景图片是否跟随页面滚动</div>
+</body>
+</html>

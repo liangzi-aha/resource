@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ基础02</title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				border: 3px solid black;
+			}
+			.bgc{
+				background-color: red;
+			}
+			.fontSize{
+				font-size: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">这是div1</div>
+		<div id="div2">这是div2</div>
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 * jq操作类名
+			 */
+			//1.添加class addClass("类名");
+//			$("#div1").addClass("bgc")
+//			$("#div1").addClass("fontSize")
+			
+			//2.添加多个class  addClass("类名1 类名2 类名3 ...")
+			$("#div1").addClass("bgc fontSize")
+			
+			//如果jq对象里有多个dom元素,所有dom都被加上对应的class.
+			//$("div").addClass("bgc");
+			
+			//3.给多个元素分别添加不同的class addClass(回调函数)
+			
+//			var fontArr = ["bgc", "fontSize"];
+//			$("div").addClass(function(i){
+//				if(i == 0){
+//					return "bgc";
+//				}
+//				if(i == 1){
+//					return "fontSize";
+//				}
+//				return fontArr[i];
+//			});
+			
+			//删除class removeClass()
+			//写法与addClass 的写法一样有三种,语法相同
+//			$("#div1").removeClass("bgc");
+//			$("#div1").removeClass("bgc fontSize");
+//			$("div").removeClass(function(i){
+//				return fontArr[i];
+//			});
+			
+			//3.toggleClass()  toggle:开关
+			//写法与addClass的写法一样有三种,语法相同 如果已经有对应class,就删除,没有就添加.
+			$("div:eq(0)")[0].onclick = function(){
+				$("div:eq(0)").toggleClass("bgc");
+			}
+		</script>
+	</body>
+</html>

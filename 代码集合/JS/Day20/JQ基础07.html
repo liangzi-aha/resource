@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ基础07_DOM操作</title>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		
+		<button>按钮1</button>
+		<button>按钮2</button>
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//A.append(B)  在A元素的里面的最后添加B元素   参数可以是dom元素,html字符串,元素数组,jq对象,如果jq对象表示的是多个,添加时,每个元素都加上.
+			var p = document.createElement("p")
+			p.innerHTML = "这是段落1";
+			$("body").append(p)
+
+//			$("body").append("<p>这是段落1</p>");
+			
+			$("body").append($(p));
+			
+			//2.A.prepend(B) 在A元素里面的最前面添加B元素,参数可以填dom元素,元素数组,html字符串,jq对象,如果jq对象表示的是多个,添加时,每个元素都加上.
+			var p1 = "<p>这是段落2</P>"
+			$("body").prepend(p1)
+			
+			var span1 = document.createElement("span")
+			span1.innerHTML = "span1"
+			var span2 = document.createElement("span")
+			span2.innerHTML = "span2"
+//			var eleArr = [span1,span2];
+//			var eleArr = ["<span>span1</span>","<span>span2</span>"]
+			var eleArr = [$(span1),$(span2)]
+			$("body").append(eleArr)
+			
+			
+			//3. $(A).prependTo(B)  在B元素里面的最前面添加A元素.
+			var p1 = document.createElement("p");
+			$(p1).prependTo("p:first");
+			
+			//$()方法里面可以传html字符串实现创建jq对象
+			$("<h2>这是h2</h2>").prependTo("body")
+			
+			
+			//4. $(A).after(B) 在A元素的后面添加B元素
+			$("h2").after("<a href='http://www.baidu.com'>点击跳转</a>");
+			
+			
+			//5. $(A).before(B) 在A元素的前面添加B元素
+			$("h2").before("<a href='http://www.baidu.com'>点击跳转</a>");
+			
+			/*
+			 * jq删除元素
+			 * 1.remove()
+			 * 2.detach()
+			 * 以上方法都有返回值,返回值是被移除的元素的jq对象.
+			 * 区别??
+			 */
+			//$("a").remove();
+			//$("a").detach()
+			//$("p").remove();
+			//$("p").detach();
+			
+			
+			//问题,查询remove的参数
+//			$("p").remove();
+			
+			//console.log($("p").remove())
+			
+			$("button:eq(0)").click(function(){
+				alert("按钮被1触发");
+			})
+			$("button:eq(1)").click(function(){
+				alert("按钮被2触发");
+			})
+			
+			var btn1 = $("button:eq(0)").remove();
+			$("body").append(btn1)
+			
+			var btn2 = $("button:eq(0)").detach();
+			$("body").append(btn2)
+			/*
+			 * remove和detach的区别
+			 * remove不但移出元素,也解除与该元素绑定的事件.
+			 * detach只移出元素,但不解除与该元素绑定的事件.
+			 *
+			 */
+			
+			//克隆元素  clone(布尔值) 返回值是克隆出的元素
+			var cloneBtn = $("button:eq(1)").clone(false);
+			$("body").append(cloneBtn);
+			
+			//clone方法里的布尔值的作用,是否拷贝绑定的事件,true--绑定  false--不绑定
+			
+			//作业:替换元素  包裹元素  
+			
+			//元素遍历,遍历的是集合,便利最终得到的是集合里的值. 集合--(数组, 对象)
+			var arr = [1,2,3,4,5,6]
+			var obj = {
+				name:"张三",
+				age:20,
+				sex:"男",
+				school:"郑州大学"
+			}
+			//1.for循环遍历
+			for(var i = 0;i < arr.length;i++){
+//				console.log(arr[i])
+			}
+			
+			//2.for...in遍历
+			/*
+			 * for(变量 in 集合){
+			 * 
+			 * }
+			 * for..in 既可以遍历数组,又可以遍历对象
+			 */
+			//遍历数组
+			for (var i in arr) {
+				console.log(arr)
+			}
+			
+			//遍历对象
+			for(var k in obj){
+				console.log(obj[k])
+			}
+			
+			/*
+			 * 在使用for..in进行集合遍历时,
+			 * 遍历数组,得到的是数组的下标
+			 * 遍历对象,得到的是对象的属性名
+			 */
+			
+			var jqObj = $("p");
+//			console.log(jqObj)
+//			for (var i = 0;i < jqObj.length;i++) {
+//				console.log(jqObj[i])
+//			}
+			
+//			for (var e in jqObj) {
+//				console.log(jqObj[e])
+//			}
+			
+			//如果要遍历jq对象,使用jq自带的方法each()
+			jqObj.each(function(i,v){
+				$(v).css("background-color","red")
+				console.log(i,v)
+			});
+			
+			$("button:eq(0)").click(function(){
+				//在jq的事件函数里,this依旧表示对应的dom元素,而非jq'对象!!
+				//this.style.backgroundColor = "red";
+				$(this).css("background-color","yellow")
+			});
+		</script>
+	</body>
+</html>

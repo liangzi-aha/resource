@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外联css样式</title>
+	<!-- 
+	如果采用外联css样式,需要引入外部css文件.
+	1.link标签引入
+	2.@imprt引入 @import是css语法
+	 -->
+	 <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	 	<!--   rel="stylesheet"  rel 属性规定当前文档与被链接文档之间的关系    "stylesheet"文档的外部样式表。-->
+	 <style type="text/css">
+	 @import url(style.css);
+	 </style>
+	 <!-- link标签引入和@import的区别:
+	 1.link是HTML语法,@import是css语法
+	 2.link方式引入是在html文档加载的同时就开始加载css文件;而@import引入需要等到html文档加载完毕之后在开始加载css文件.
+	 3.link方式可以引入任何类型的文件,@import只能引入css文件.
+	 4.link方式引入的css样式后期可以通过js进行修改,@import方式引入的css样式后期无法修改.
+
+	 我们以后使用link方式引入css外部文件
+	  -->
+
+
+</head>
+<body>
+	<!-- 外联css样式的优缺点:
+		优点:
+			完全符合W3C的编码理念,可以做到公共样式的抽离,提高编码效率
+		缺点:
+			需要新建文件
+	 -->
+	<div>
+		外联css样式
+	</div>
+</body>
+</html> 

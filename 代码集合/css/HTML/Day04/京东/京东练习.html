@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>京东练习</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrapper {
+				width: 1194px;
+				height: 480px;
+				margin: 50px auto;
+			}
+			
+			#wrapper>div {
+				width: 390px;
+				height: 450px;
+				float: left;
+			}
+			
+			#wrapper>div+div {
+				margin-left: 10px;
+			}
+			
+			.head {
+				width: 350px;
+				height: 60px;
+				padding: 0 20px;
+				clear: left;
+			}
+			
+			.head>img {
+				width: 23px;
+				height: 23px;
+				margin: 17px 0 0 5px;
+				float: left;
+			}
+			
+			.head>h3 {
+				/*将元素的类型设置成行级块元素*/
+				/*display:inline-block;*/
+				float: left;
+				margin-top: 17px;
+			}
+			
+			.head>span {
+				float: left;
+				margin: 18px 0 0 5px;
+				font-size: 14px;
+				color: gray;
+			}
+			
+			#menu {
+				height: 34px;
+				background-color: #f7f7f7;
+			}
+			
+			#menu>div {
+				width: 78px;
+				height: 34px;
+				float: left;
+				text-align: center;
+				line-height: 34px;
+			}
+			
+			#menu>div>a {
+				font-size: 12px;
+				color: gray;
+				text-decoration: none;
+			}
+			/*hover伪类选择器,鼠标放到上面的效果*/
+			
+			#menu>div>a:hover {
+				color: red;
+			}
+			
+			#product {
+				width: 350px;
+				height: 321px;
+				margin: 0 20px;
+			}
+			
+			#product>div {
+				height: 107px;
+			}
+			
+			#product>div>img {
+				width: 80px;
+				height: 80px;
+				margin-top: 13.5px;
+				float: left;
+			}
+			
+			.rank {
+				float: left;
+				width: 30px;
+				height: 40px;
+				font-size: 32px;
+				text-align: center;
+				line-height: 40px;
+				color: #FF0000;
+				margin: 33.5px 0 0 10px;
+				font-family: 'impact';
+			}
+			
+			.intor {
+				height: 32px;
+				width: 225px;
+				font-size: 12px;
+				color: #666;
+				float: left;
+				margin-top: 37.5px;
+				/*对溢出的内容做处理*/
+				overflow: hidden;
+			}
+			
+			#shrimp {
+				width: 350px;
+				height: 355px;
+				margin: 0 20px;
+			}
+			/*nth-child(3)第三个图*/
+			
+			#shrimp>img:nth-child(3) {
+				margin: 0 17.5px;
+			}
+			
+			#shrimp>img {
+				float: left;
+			}
+			
+			#shrimp>h3 {
+				clear: both;
+				text-align: center;
+				height: 58px;
+				line-height: 58px;
+			}
+			
+			#shrimp>p {
+				height: 36px;
+				overflow: hidden;
+				font-size: 14px;
+				color: #666666;
+				text-align: center;
+			}
+			
+			#ticket {
+				width: 350px;
+				height: 355px;
+				margin: 0 auto;
+			}
+			
+			#ticket>div {
+			    height: 118px;
+			    /*圆角*/
+			    border-radius: 6px;
+			    background-color: #f6f6f6;
+			    /*设置相对定位*/
+			    position: relative;
+			}
+			
+			#ticket>.imte2 {
+				background-color: #eeefed;
+			}
+			
+			.icon {
+				width: 70px;
+				height: 70px;
+				padding: 10px;
+				margin: 14px 0 0 10px;
+				background-color: #eeefed;
+				border-radius: 50%;
+				/*背景图片*/
+				background-image: url(8.jpeg);
+				/*设置背景图的尺寸*/
+				background-size: 100% 100%;
+				float: left;
+			}
+			
+			.info {
+				width: 158px;
+				height: 86px;
+				padding-top: 15px;
+				margin-left: 10px;
+				float: left;
+			}
+			
+			.info span {
+				color: #e33333;
+			}
+			
+			.info span+span {
+				font-size: 34px;
+				font-family: 'impact';
+			}
+			
+			.info>p:nth-child(2) {
+				color: #b1b3b0;
+				font-size: 14px;
+				height: 28px;
+				line-height: 28px;
+			}
+			.info>p:nth-child(3){
+				color: #767b77;
+				font-size: 14px;
+				height: 28px;
+				line-height: 28px;
+				/*以下三行可以实现多于文字以...显示效果*/
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.more{
+				width: 5px;
+				height: 90px;
+				float: left;
+				font-size: 12px;
+				color: #666666;
+				margin:14px 0 0 15px;
+				line-height: 15px;
+			}
+			.circle {
+			    width: 16px;
+			    height: 16px;
+			    background-color: white;
+			    border-radius: 50%;
+			    /*定位*/
+			    position: absolute;
+			    left:260px;
+			    top: -8px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<div id="left">
+				<!--头部-->
+				<div class="head">
+					<h3>排行榜</h3>
+					<img src="f.png" alt="" />
+					<span>专属你的购物指南</span>
+				</div>
+				<!--菜单栏-->
+				<div id="menu">
+					<!--(div>a[href=###])*5-->
+					<div><a href="###">大 家 电</a></div>
+					<div><a href="###">手机通讯</a></div>
+					<div><a href="###">生活电器</a></div>
+					<div><a href="###">厨房小电</a></div>
+					<div><a href="###">饮料冲调</a></div>
+				</div>
+				<div id="product">
+					<div>
+						<img src="5.jpeg" alt="" />
+						<span class="rank">1</span>
+						<span class="intor">小鸭 3.5公斤迷你洗衣机 半自动单桶婴儿童小洗衣机 蓝光款 抹茶绿 XPB35-1708</span>
+					</div>
+					<div>
+						<img src="6.jpeg" alt="" />
+						<span class="rank">1</span>
+						<span class="intor">奥克斯（AUX）正1匹 冷暖 定速 空调挂机(KFR-25GW/NFW+3)</span>
+					</div>
+					<div>
+						<img src="7.jpeg" alt="" />
+						<span class="rank">1</span>
+						<span class="intor">TCL 118升 小型双门电冰箱 LED照明 迷你节能 办公居家便捷之选 环保内胆 （芭蕾白）BCD-118KA9</span>
+					</div>
+				</div>
+			</div>
+			<div id="center">
+				<!--头部-->
+				<div class="head">
+					<h3>会买专辑</h3>
+					<img src="f.png" alt="" />
+					<span>甄选优质好品质</span>
+				</div>
+				<!--内容部分-->
+				<div id="shrimp">
+					<img src="4.png" alt="" />
+					<img src="3.jpg" alt="" />
+					<img src="2.jpg" alt="" />
+					<img src="1.jpg" alt="" />
+					<h3>口感鲜嫩弹牙,美味又好吃</h3>
+					<p title="又是一年一度的小龙虾季，街边的烧烤摊随处可见各种小龙虾的招牌菜谱。约上三五好友来上一瓶冰啤酒加上一盘鲜嫩弹牙的小龙虾，这滋味想一想就让人觉得很销魂。如果你讨厌小龙虾繁琐的打理细节不愿意自己下厨，这些办成品小龙虾一定能满足你的需求，购买回家之后只需简单的加热即可享受这人间美味。">又是一年一度的小龙虾季，街边的烧烤摊随处可见各种小龙虾的招牌菜谱。约上三五好友来上一瓶冰啤酒加上一盘鲜嫩弹牙的小龙虾，这滋味想一想就让人觉得很销魂。如果你讨厌小龙虾繁琐的打理细节不愿意自己下厨，这些办成品小龙虾一定能满足你的需求，购买回家之后只需简单的加热即可享受这人间美味。</p>
+				</div>
+			</div>
+			<div id="right">
+				<!--头部-->
+				<div class="head">
+					<h3>领卷中心</h3>
+					<img src="f.png" alt="" />
+					<span>甄选优质好品质</span>
+				</div>
+				<!--内容-->
+				<div id="ticket">
+					<div class="imte1">
+						<div class="icon"></div>
+						<div class="circle"></div>
+						<div class="info">
+							<p>
+								<span>¥</span>
+								<span>5</span>
+							</p>
+							<p>满105元可用</p>
+							<p>全品类（除特殊商品）【10点限量抢】</p>
+						</div>
+						<div class="more">
+								更多精彩奖券
+						</div>
+					</div>
+					<div class="imte2">
+						<div class="imte1">
+						<div class="icon"></div>
+						<div class="circle"></div>
+						<div class="info">
+							<p>
+								<span>¥</span>
+								<span>5</span>
+							</p>
+							<p>满105元可用</p>
+							<p>全品类（除特殊商品）【10点限量抢】</p>
+						</div>
+						<div class="more">
+								更多精彩奖券
+						</div>
+					</div>
+					</div>
+					<div class="imte3">
+						<div class="imte1">
+						<div class="icon"></div>
+						<div class="circle"></div>
+						<div class="info">
+							<p>
+								<span>¥</span>
+								<span>5</span>
+							</p>
+							<p>满105元可用</p>
+							<p>全品类（除特殊商品）【10点限量抢】</p>
+						</div>
+						<div class="more">
+								更多精彩奖券
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

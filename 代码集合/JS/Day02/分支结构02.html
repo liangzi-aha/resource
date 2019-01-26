@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分支结构02</title>
+	</head>
+
+	<body>
+		<!--
+			switch...case分支结构
+			语法:
+			switch(普通表达式){
+				case值1:{
+					代码...
+					break;
+				}
+				case值2:{
+					break;
+				}
+				case值3:{
+					break
+				}
+				....
+				default:{
+					break
+				}
+			}
+			匹配与表达式的值相同的case语句,如果匹配成功,执行对应case大括号里的代码,如果任何一个case都无法匹配,执行default大括号里的代码
+			switch....vase语句适合情况类型多的场景.
+		-->
+		<input type="text" placeholder="请输入分机号1-5" id="pNum" />
+		<button onclick="call()">拨号</button>
+		<input type="text" id="Day" placeholder="请输入月份" />
+		<button onclick="howmanydays()">月份天数</button>
+		<script type="text/javascript">
+			function call() {
+				var num = document.getElementById("pNum").value - 0
+				switch(num) {
+					case 1:
+						{
+							alert("行政部")
+							break;
+						}
+					case 2:
+						{
+							alert("财务部")
+							break;
+						}
+					case 3:
+						{
+							alert("人事部")
+							break;
+						}
+					case 4:
+						{
+							alert("技术部")
+							break;
+						}
+					case 5:
+						{
+							alert("市场部")
+							break;
+						}
+					default:
+						{
+							alert("拨打错误")
+							break;
+						}
+				}
+			}
+			//break关键字在switch语句里的作用:跳出整个switch语句!如果一个case语句里没有break,代码会继续执行到下一个case语句,直到遇到break才会跳出.
+
+			//练习,输入月份,输出月份的天数,默认2月28天
+			function howmanydays() {
+				var Day = document.getElementById("Day").value - 0;
+				switch(Day) {
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+						{
+							alert("31天")
+							break;
+
+						}
+					case 2:
+						{
+							alert("28天")
+							break;
+						}
+
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+						{
+							alert("30天")
+							break;
+						}
+					default:
+						break;
+				}
+			}
+		</script>
+	</body>
+
+</html>

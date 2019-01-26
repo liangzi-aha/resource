@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>抖音2</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 120%;
+			}
+			
+			#div1_1 {
+				width: 80%;
+				margin: 50px auto 0;
+			}
+			
+			#div1_1>img {
+				width: 100%;
+				display: block;
+			}
+			
+			#div2_2 {
+				width: 80%;
+				margin: 0 auto;
+				/*border: solid;*/
+				margin-top: 20px;
+				background-color: #000000;
+				overflow: hidden;
+			}
+			#div2_2>a{
+				display: block;
+				float: left;
+				width:20%;
+				box-sizing: border-box;
+				text-align: center;
+				
+			}
+			#div2_2>a{
+				text-decoration: none;
+				color:grey;
+				font-size: 30px;
+				display:inline-block;
+				height: 60px;
+				line-height: 60px;
+			}
+			#div2_2>a:hover{
+				background-color:red;
+			}
+			#box {
+				width: 400px;
+				height: 400px;
+				background-color: transparent;
+				position: relative;
+				margin: 0 auto;
+				margin-top: 400px;
+				transform: rotateX(50deg) rotateY(50deg);
+				transform-style: preserve-3d;
+				animation: zhuan 5s infinite linear;
+			}
+			@keyframes zhuan {
+				from {
+					transform: rotateX(50deg) rotateY(360deg);
+					
+				}
+				to {
+					transform: rotateX(410deg) rotateY(720deg);
+				}
+			}
+			#box>div:nth-child(n+7){
+				animation: se 3s infinite linear;
+			}
+			@keyframes se{
+				from{
+					box-shadow: 10px 10px 30px 10px white;
+				}
+				33%{
+					box-shadow: 10px 10px 30px 10px yellowgreen;
+				}
+				66%{
+					box-shadow: 10px 10px 30px 10px mediumvioletred;
+				}
+				to{
+					box-shadow: 10px 10px 30px 10px white;
+				}
+			}
+			#box>div:nth-child(-n+6){
+				width: 200px;
+				height: 200px;
+				margin-top: 100px;
+				margin-left: 100px;
+				animation: yanse 3s infinite linear;
+			}
+			@keyframes yanse{
+				from{
+					box-shadow: 10px 10px 30px 10px blue;
+				}
+				33%{
+					box-shadow: 10px 10px 30px 10px black;
+				}
+				66%{
+					box-shadow: 10px 10px 30px 10px red;
+				}
+				to{
+					box-shadow: 10px 10px 30px 10px blue;
+				}
+			}
+			#box>div {
+				width: 400px;
+				height: 400px;
+				font-size: 100px;
+				color: white;
+				text-align: center;
+				line-height: 400px;
+			}
+			
+			#div1 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateY(-90deg) translateZ(100px);
+				z-index: 1;
+				box-shadow: 10px 10px 30px 10px red;
+			}
+			
+			#div2 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateY(90deg) translateZ(100px);
+				z-index: 1;
+				box-shadow: 10px 10px 30px 10px red;
+			}
+			
+			#div3 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateX(-90deg) translateZ(100px);
+				z-index: 1;
+				box-shadow: 10px 10px 30px 10px red;
+			}
+			
+			#div4 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateX(90deg) translateZ(100px);
+				z-index: 1;
+				box-shadow: 10px 10px 30px 10px red;
+			}
+			
+			#div5 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateX(180deg) translateZ(100px);
+				z-index: 1;
+				box-shadow: 10px 10px 30px 10px red;
+			}
+			
+			#div6 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translateZ(100px);
+				z-index: 1;
+				box-shadow: 10px 10px 30px 10px red;
+			}
+			
+			#div7 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateY(-90deg) translateZ(200px);
+				z-index: 1;
+				transition: all 1s linear;
+				box-shadow: 10px 10px 30px 10px white;
+			}
+			
+			#box:hover #div7 {
+				transform: rotateY(-90deg) translateZ(400px);
+			}
+			
+			#div8 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateY(90deg) translateZ(200px);
+				z-index: 1;
+				transition: all 1s linear;
+				box-shadow: 10px 10px 30px 10px white;
+			}
+			#box:hover>div#div8 {
+				transform: rotateY(90deg) translateZ(400px);
+			}
+			#div9 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateX(-90deg) translateZ(200px);
+				z-index: 1;
+				transition: all 1s linear;
+				box-shadow: 10px 10px 30px 10px white;
+			}
+			#box:hover>div#div9 {
+				transform: rotateX(-90deg) translateZ(400px);
+			}
+			#div10 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateX(90deg) translateZ(200px);
+				z-index: 1;
+				transition: all 1s linear;
+				box-shadow: 10px 10px 30px 10px white;
+			}
+			#box:hover>div#div10 {
+				transform: rotateX(90deg) translateZ(400px);
+			}
+			#div11 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateX(180deg) translateZ(200px);
+				z-index: 1;
+				transition: all 1s linear;
+				box-shadow: 10px 10px 30px 10px white;
+			}
+			#box:hover>div#div11 {
+				transform: rotateX(180deg) translateZ(400px);
+			}
+			#div12 {
+				background-color:transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translateZ(200px);
+				z-index: 1;
+				transition: all 1s linear;
+				box-shadow: 10px 10px 30px 10px white;
+			}
+			#box:hover>div#div12 {
+				transform: translateZ(400px);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1_1">
+				<img src="02.jpg" alt="" />
+			</div>
+			<div id="div2_2">
+				<a href="nav.html">首页</a>
+				<a href="抖音1.html">抖音1</a>
+				<a href="抖音3.html">抖音3</a>
+				<a href="抖音4.html">抖音4</a>
+				<a href="抖音5.html">抖音5</a>
+			</div>
+			<div id="box">
+				<div id="div1"></div>
+				<div id="div2"></div>
+				<div id="div3"></div>
+				<div id="div4"></div>
+				<div id="div5"></div>
+				<div id="div6"></div>
+				<div id="div7"></div>
+				<div id="div8"></div>
+				<div id="div9"></div>
+				<div id="div10"></div>
+				<div id="div11"></div>
+				<div id="div12"></div>
+			</div>
+	</body>
+</html>

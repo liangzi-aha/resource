@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>记住用户名和密码</title>
+	</head>
+
+	<body>
+		<input type="text" placeholder="请输入用户名" id="un" name="username"/>
+		<input type="text" placeholder="请输入密码" id="pw" name="password"/>
+		<input type="checkbox" id="isCheck" />
+		<input type="submit" value="登录" onclick="login()"/>
+	</body>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//1.点击按钮时,判断用户是否勾选记住密码框,如果勾选,将用户名和密码输入框里的值配上对应的key组成两条cookie存储.
+		//2. 点击按钮时, 如果用户没有勾选记住密码框, 将之前存储的cookie 移除
+		//3.当再次进入网页时,判读服务器是否有对应的cookie,如果有,将每条cookie对应的value显示在用户和密码输入框里.
+		
+		if(hasKey("username")){
+			un.value = getValueByKey("username");
+		}
+		if(hasKey("password")){
+			pw.value = getValueByKey("password");
+			isCheck.checked = true;
+		}
+		
+		function login(){
+			if(isCheck.checked){
+				//储存cookie
+				addCookie("username", un.value, 60*60*24)
+				addCookie("password", pw.value, 60*60*24);
+			} else{
+				//删除cookie
+				deleteCookie("username")
+				deleteCookie("password")
+			}
+		}
+	</script>
+
+</html>

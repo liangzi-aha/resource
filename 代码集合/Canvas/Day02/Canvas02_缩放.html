@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas02_缩放</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.缩放
+			/*
+			 * scale(x,y)
+			 * x: x轴的单位长度,水平方向的缩放倍数
+			 * y: y轴的单位长度,竖直方向的缩放倍数
+			 */
+			content.fillStyle = "#000000"
+			content.fillRect(100,100,100,100)
+			content.scale(2,2)
+			content.fillRect(100,100,100,100)
+			/*
+			 * canvas里的缩放影响的是坐标轴,一旦坐标轴发生了缩放,会影响之后绘制的所有图像.
+			 */
+		</script>
+	</body>
+</html>

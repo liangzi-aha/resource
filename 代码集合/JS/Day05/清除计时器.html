@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>清除计时器</title>
+	</head>
+
+	<body>
+		<span>用时</span>
+		<span id="jy212"></span>
+		<span>秒</span>
+		<button onclick="settime()">开始</button>
+		<button onclick="cleartime()">结束</button>
+		<script type="text/javascript">
+						var num = 0;
+						var a;
+			
+						function settime() {
+							a = setInterval(function() {
+								jy = document.getElementById("jy212");
+								jy.innerHTML = num;
+								num++;
+							}, 1000);
+						}
+			
+						function cleartime() {
+							clearInterval(a);
+						}
+		</script>
+	</body>
+
+</html>

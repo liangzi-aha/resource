@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>em和rem</title>
+		<style type="text/css">
+		    html {
+		        font-size:20px;
+		    }
+			* {
+			    margin: 0;
+			    padding: 0
+			}
+			#div1 {
+			    width: 300px;
+			    height: 300px;
+			    border:2px solid red;
+			    font-size: 2em;
+			}
+			#div2 {
+			    font-size: 2rem;
+			    width: 10em;
+			    height: 200px;
+			    border:2px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+	    这是body标签
+	    <!--
+	        em和rem都是长度单位
+	        1.em, 一个em单位表示当前元素的font-size的值.
+	        2.rem, 一个rem单位表示html标签的font-size的值
+	        
+	    -->
+	    <div id="div1">
+	        这是div1
+	        <div id="div2">这是div2</div>
+	    </div>
+	</body>
+</html>

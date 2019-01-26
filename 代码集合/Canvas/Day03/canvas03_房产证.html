@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas03_房产证</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" placeholder="输入姓名" id="text"/>
+		<input type="submit" value="生成房产证" onclick="createZ()"/>
+		<input type="button" value="导出房产证" onclick="exportZ()"/>
+		<img src="" alt="" />
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.房产证
+			var zheng = new Image()
+			zheng.src = "zheng.jpg";
+			zheng.onload = function(){
+				content.drawImage(this,0,0,500,412,0,0,500,412,)
+			}
+			
+			function createZ(){
+				var name = document.getElementById("text").value
+				content.fillStyle = "gray";
+				content.font = "italic 10px 宋体";
+				content.fillText(name,180,120);
+			}
+			function exportZ(){
+				//toDataURL()  将canvas里的图像转换为base64的编码结构.img标签可以直接接收base64的编码 展示图片.该方法属于canvas标签
+				
+				var base64Url = canvas.toDataURL();
+				console.log(base64Url)
+				var img = document.querySelector("img");
+				img.src = base64Url
+			}
+		</script>
+	</body>
+</html>

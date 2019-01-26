@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>无限大图滚动按钮版</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 300px;
+				height: 450px;
+				margin: 50px auto;
+				border: 3px solid red;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#content {
+				width: 2100px;
+				height: 450px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			img {
+				width: 300px;
+				height: 450px;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="content">
+				<img src="img/1.png" alt="" />
+				<img src="img/2.jpeg" alt="" />
+				<img src="img/3.jpeg" alt="" />
+				<img src="img/4.png" alt="" />
+				<img src="img/5.jpeg" alt="" />
+				<img src="img/6.png" alt="" />
+			</div>
+		</div>
+		<!--<button>下一张</button>
+		<button>上一张</button>-->
+		<script src="JS/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var contentDiv = document.getElementById("content");
+			//querySelectorAll静态获取
+			//getElementsByTagName动态获取
+			var imgs = document.getElementsByTagName("img")
+			contentDiv.innerHTML += contentDiv.innerHTML
+			contentDiv.style.width = imgs.length * 300 + "px";
+			
+			//写法一
+			//			var t = 0;
+			//			var b = 0;
+			//			var c = -1800;
+			//			var d = 100;
+			//			setInterval(function(){
+			//				t++;
+			//				if(t == d){
+			//					t = 0;
+			//				}
+			//				contentDiv.style.left = Tween.Linear(t,b,c,d) + "px"
+			//			},20)
+
+			//写法二
+			//t-- 开始时间 给0
+			//b-- - 初始值 
+			//c-- - 改变量 
+			//d-- - 结束时间  
+			var t = 0;
+			var c = -300;
+			var d = 100;
+			//声明一个变量储存当前是第几张图片
+			var index = 0;
+			setInterval(function() {
+				if(index == 6) {
+					index = 0;
+				}
+				var b = index * -300;
+				t++;
+				contentDiv.style.left = Tween.Linear(t, b, c, d) + "px";
+				if(t == d) {
+					t = 0;
+					index++;
+				}
+			}, 20);
+		</script>
+	</body>
+
+</html>

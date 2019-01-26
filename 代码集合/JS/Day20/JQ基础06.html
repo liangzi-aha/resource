@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ基础06_DOM操作</title>
+		<style type="text/css">
+			div{
+				border:1px solid red;
+				padding:10px;
+				font-size: 30px;
+				background-color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p>这是p</p>
+		<div id="div1">这是div1
+			<div id="div2">这是div2</div>
+			<p>这是p</p>
+			<div id="div3">这是div3</div>
+			<p>这是p</p>
+			<div id="div4">这是div4
+				<div id="div5">这是div5</div>
+				<div id="div6">这是div6
+					<div id="div7">这是div7</div>
+				</div>
+			</div>
+		</div>
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//利用元素之间的关系查找元素
+			//1.找元素的父元素
+			//$("#div1").parent().css("background-color","red")
+			
+			//2.找元素的所有直系祖先元素
+			//$("#div7").parents().css("background-color","red")
+			
+			//3.找到某个直系祖先元素停止,不包含指定的结束元素   Until:到…为止 parents:父级 
+			//$("#div7").parentsUntil("#div1").css("background-color","red")
+			
+			//4.找到某个元素的所有子元素
+			//$("body").children("div").css("background-color","red")
+			
+			//5.找到某个元素的所有后代元素
+			//$("body").find("*").css("background-color","red")
+			//问题,继续查询find的用法
+			
+			//6.找上一个兄弟元素
+			//("#div3").prev().css("background-color","blue")
+			
+			//7.找上面所有的兄弟元素
+			//$("#div4").prevAll().css("background-color","blue")
+			
+			//8.找上面所有的兄弟元素到某个位置停止,不包含指定停止的元素.
+			//$("#div4").prevUntil("#div2").css("background-color","red")
+			
+			//9.找下一个兄弟元素
+			//$("#div5").next().css("background-color","yellow")
+			
+			//10.找下面所有的兄弟元素
+			//$("#div2").nextAll().css("background-color","blue")
+			
+			//11.找下面所有的兄弟元素到某个位置停止,不包含指定停止的元素.
+			//$("#div2").nextUntil("#div4").css("background-color","red")
+			
+			//12.找到某个元素的所有兄弟元素
+			//$("#div3").siblings().css("background-color","red")
+			
+		</script>
+	</body>
+
+</html>
