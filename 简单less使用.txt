@@ -1,0 +1,45 @@
+1.首先less基于node环境，所以呵呵   安装node就不多说了；
+2.安装之后新建less文件，书写less语法，比如新建一个style.less文件里面编写一个嵌套的例子：
+.container{
+  h1{
+       font-size: 25px;
+       color:#E45456;
+ }
+  p{
+       font-size: 25px;
+       color:#3C7949;
+  }
+
+ .myclass{
+  h1{
+        font-size: 25px;
+        color:#E45456;
+  }
+  p{
+       font-size: 25px;
+       color:#3C7949;
+  }
+ }
+}
+
+//然后我们把style.less转为css样式
+在终端打开style.less的路径 在输入：lessc style.less style.css    lessc 不多说我也不知道就是人家的语法   style.less 是你要转换的less文件， style.css 为转换之后的css文件名    转换之后代码如下
+
+.container h1 {
+  font-size: 25px;
+  color: #E45456;
+}
+.container p {
+  font-size: 25px;
+  color: #3C7949;
+}
+.container .myclass h1 {
+  font-size: 25px;
+  color: #E45456;
+}
+.container .myclass p {
+  font-size: 25px;
+  color: #3C7949;
+}
+
+在深入的就不会了
