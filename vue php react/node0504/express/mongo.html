@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mongodb操作实例</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+    </tr>
+</table>
+<button id="add">添加</button>
+<br>
+姓名:<input type="text" id="name"><br>
+年龄:<input type="text" id="age"><br>
+<hr>
+<button id="amend">修改</button><br>
+姓名:<input type="text" id="name1" placeholder="被修改姓名">---<input type="text" id="name2" placeholder="修改姓名"><br>
+年龄:<input type="text" id="age1" placeholder="被修改年龄">---<input type="text" id="age2" placeholder="修改年龄">
+</body>
+</html>
+<script type="text/javascript" src="jq.js"></script>
+<script type="text/javascript">
+    function getAll(){
+        $.get('/getAll',function(data){
+            console.log(data);
+            var html = '';
+            for(var i=0;i<data.length;i++){
+                html+="<tr class='tr'><td>"+(i+1)+"</td><td>"+data[i].name+"</td><td>"+data[i].age+"</td><td><button sid='"+data[i]._id+"' class='del'>删除</button></td></tr>";
+            }
+            $('table').find('.tr').remove();
+            $('table').append(html);
+        });
+    }
+    getAll();
+
+//    点击删除按钮
+    $(document).on('click','.del',function(){
+        var id = $(this).attr('sid');
+        $.get('/del?id='+id,function(){
+            getAll();
+        });
+    });
+
+    //点击修改按钮
+    $(document).on('click','#amend',function(){
+        var name1 = $("#name1").val();
+        var name2 = $("#name2").val();
+        var age1 = $("#age1").val()-0;
+        var age2 = $("#age2").val()-0;
+        $.get('/amend?name1='+name1+'&name2='+name2+'&age1='+age1+'&age2='+age2,function(){
+            getAll();
+        });
+
+    });
+
+    //点击添加按钮
+    $(document).on('click','#add',function(){
+        var name = $('#name').val();
+        var age = $('#age').val()-0;
+        $.get('/add?name='+name+'&age='+age,function(){
+            getAll();
+        });
+    });
+</script>

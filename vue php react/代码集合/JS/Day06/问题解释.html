@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			/*
+			 * 值得传递 做的永远是拷贝操作.
+			 * 值得传递
+			 * 1.值传递
+			 * 2.址传递(地址,指针,引用)
+			 * 
+			 * Js里,数组和对象在进行传值时是址传递,
+			 * 其余数据类型是值传递
+			 * 
+			 */
+			//如果计时器里的函数需要传参数,把实参填写在setInterval()的三个参数的位置,如果参数有多个,继续往后一次书写即可.
+			setInterval(function(a,b){
+				console.log(a,b);
+			},1000, "哈哈","呵呵")
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>state</title>
+		<!--react.js是react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作的-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/babel">
+	//	state 状态,实质上也是属性的一种,只不过他也是可以动态改变
+	var ShowDoc = React.createClass({
+		//设置默认状态  getInitialState()
+		getInitialState(){
+			return {
+				bol:true
+			}
+		},
+		//改变状态值的方法 this.setState()
+		changeState(){
+			this.setState({
+				bol: !this.state.bol
+			})
+		},
+		// 获取状态的值 this.state.bol
+		render(){
+			return <div>
+				<p>{this.state.bol?'黑夜给了我黑色的眼睛':'假如生活欺骗了你'}</p>
+				<button onClick={this.changeState}>点击</button>
+			</div>
+		}
+	});
+	ReactDOM.render(<ShowDoc />,document.getElementById('test'));
+	</script>
+</html>

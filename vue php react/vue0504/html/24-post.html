@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>post提交</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{str}}</p>
+			<button @click="submit()">提交</button>
+		</div>
+	</body>
+</html>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="axios.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el:'#app',
+		data:{
+			str:'广寒宫',
+		},
+		methods:{
+			submit(){
+				// post提交,需要浏览器进行application/x-www-form-urlencoded格式化, 在web端使用URLSearchParams方法进行格式化, 然后再使用append方法添加数据,然后提交
+				var params = new URLSearchParams();
+				params.append('name','后裔');
+				params.append('age',340);
+				// 执行post提交
+				axios.post('post.php',params).then(function(res){
+					this.str = res.data;
+				}.bind(this));
+			}
+		}
+	})
+	
+</script>

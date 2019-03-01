@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>同源策略</title>
+	</head>
+	<body>
+		<pre>
+			前端可以通过AJAX向服务器发送数据请求,如果是同源,则可以顺利的获取数据,否则会将存在跨域问题.
+			什么是同源?
+			域名:
+			http(协议)://www.aa(三级域名).baidu(二级域名).com(一级域名):8080(端口号)
+			输入域名之后,进行DNS解析
+			IP地址
+			js同源:是指同协议,同域名,通端口为同源
+			js可以跨域,但是数据库不能跨域.
+			几种跨域问题:
+			1.协议不同,出现跨域问题
+			http://www.baidu.com
+			https://www.baidu.con
+			2.域名不同
+			http://www.baidu.com
+			http://www.Google.com
+			3.域名不同2
+			http://www.baidu.com
+			http://www.baidu.com.cn
+			4.端口号不同
+			127.0.0.1:8080
+			127.0.0.1:8020
+			5.父子级域名不一致
+			www.baidu.com
+			www.oa.baidi.com
+			
+			JS是可以解决跨域问题的,通过标签绕过浏览器的同源策略,img,script,video,link,iframe等标签,可以绕过同源策略
+			
+			怎么实现跨域访问?
+			1.jsonp 约定俗成的协议,原理是:根据script标签,访问要请求的数据接口,请求数据
+			2.后台直接设置CORS设置,可以实现跨域资源共享
+			3.HTML5新增的postMessage()方法解决跨域问题
+			
+			
+		</pre>
+	</body>
+</html>

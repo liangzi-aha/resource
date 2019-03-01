@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 1100px;
+				border: 3px red solid;
+				margin: 20px auto;
+				overflow: hidden;
+			}
+			
+			ul {
+				width: 200px;
+				margin: 0 10px;
+				float: left;
+			}
+			
+			li {
+				text-align: center;
+				font-size: 40px;
+				color: white;
+				list-style: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+		<script type="text/javascript">
+			/*
+			 * 瀑布流
+			 * 每一列等宽,里面的每一个item高度不等,每次新的item需要被放入的是最低的那一列.
+			 * 
+			 * 难点:如何判断最低的是那一列??
+			 */
+			function randomNumber(x, y) {
+				return Math.floor(Math.random() * (y - x + 1) + x)
+			}
+
+			function randomColor() {
+				var r = randomNumber(0, 255);
+//				var r = Math.floor(Math.random()*256)
+//				console.log(r)		
+				var g = randomNumber(0, 255);
+				var b = randomNumber(0, 255);
+				return "rgb(" + r + "," + g + "," + b + ")";
+			}
+			var uls = document.querySelectorAll("ul");
+			for(var i = 1; i < 1001; i++) {
+				var li = document.createElement("li")
+				//随机高度
+				li.style.height = randomNumber(100, 400) + "px";
+				//随机背景色
+				li.style.backgroundColor = randomColor();
+				//赋序号
+				li.innerHTML = i;
+				//上下居中
+				li.style.lineHeight = li.style.height;
+				minUl().appendChild(li)
+			}
+
+			function minUl() {
+				var min = Math.min(uls[0].offsetHeight, uls[1].offsetHeight, uls[2].offsetHeight, uls[3].offsetHeight, uls[4].offsetHeight);
+				for(var i = 0; i < uls.length; i++) {
+					if(uls[i].offsetHeight == min) {
+						return uls[i];
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

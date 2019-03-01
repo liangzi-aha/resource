@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件</title>
+	</head>
+	<body>
+		<div id="app">
+			<my-dom>	</my-dom>
+			<my-cont></my-cont>
+			<bai></bai>
+			<my-cuo></my-cuo>
+			<mo></mo>
+		</div>
+	</body>
+</html>
+<!--使用template标签书写组件内容-->
+<template id="bai">
+	<p>赵钱孙李,周吴郑王,冯陈楚卫,蒋沈韩杨</p>
+</template>
+<template id="mo">
+	<p>莫欺少年穷</p>
+</template>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/* 组件 使用组件开发项目是一个组件数,组件可复用,创建组件需注意:
+	 * 1. html标签不区分大小写,创建组件时候,不要和HTML标签重名
+	 * 2. 命名时支持w3w的命名规范,aaBd 在页面中写成<aa-bb>
+	 * 3. 可以使用驼峰命名,引用时需要把大写转成-小写,aaBb 在页面成 <aa-Bb> 
+	 * 
+	 * 全局组件: 创建全局组件,尽量使用驼峰命名
+	 * 创建组件, component方法,第一个参数组件名,第二个参数是一个对象,设置组件的内容
+	 */
+	Vue.component('myDom',{
+		// template 组件显示的内容
+		template:'<p>吸烟有害健康</p>'
+	});
+	Vue.component('myCont',{
+		// template 组件显示的内容
+		template:`
+		<div>
+		<p>往往鬼哭,天阴则闻</p>
+		<p>宁恋本乡一抷土</p>
+		</div>
+		`
+	});
+	//创建百家姓组件
+	Vue.component('bai',{
+		template:'#bai'
+	});
+	
+  var app = new Vue({
+	el:"#app",
+	data:{},
+	methods:{},
+	//局部创建组件
+	components:{
+	   myCuo:{
+		template:'<p>错错错</p>'
+	   },
+	   mo:{
+	   	template:'#mo'
+	   }
+	  }
+	});	
+</script>

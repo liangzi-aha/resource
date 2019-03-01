@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>路由传值</title>
+	</head>
+	<body>
+		<div id="app">
+			<router-link to="/">首页</router-link>
+			<router-link to="/reg/兰陵王/20">注册</router-link>
+			<router-link to="/tao">路由嵌套</router-link>		
+			<router-link to="/mm">mm页面</router-link>			
+			
+			<router-view></router-view>
+		</div>
+	</body>
+</html>
+
+<template id="index">
+	<p>一抔之土未干,六尺之孤何托</p>
+</template>
+<!--
+	通过 $route.params获取路由传来的数据, 如果路径上/reg/:name/:age 获取name的写法是 $route.params.name
+	
+-->
+<template id="reg">
+	<p>{{$route.params.name}}是刺客</p>
+</template>
+
+<!--
+	路由的嵌套效果
+-->
+<template id="tao">
+	<div>
+		<p>路由的嵌套效果</p>
+		<router-link to="/zi">子路由</router-link>
+		<router-view></router-view>
+	</div>
+</template>
+
+<template id="zi">
+	<div>
+		<p>旧时王谢堂前燕</p>	
+	</div>
+</template>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/router.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var router = new VueRouter({
+		routes:[
+		    {
+		    	    path:'/',
+		    	    component:{
+		    	    	    template:'#index'
+		    	    }		    	    
+		    },
+		    // 路由重定向
+		    {
+		    	    path:'/mm',
+		    	    redirect:'/',
+		    },
+		    {
+		    	    path:'/reg/:name/:age',
+		    	    component:{
+		    	    	    template:'#reg'
+		    	    }		    	    
+		    },
+		    {
+		    	    path:'/tao',
+		    	    component:{
+		    	    	    template:'#tao'
+		    	    },
+		    	    // 设置子路由, 使用children
+		    	    children:[
+		    	      {
+		    	     	path:'/zi',
+		    	    	    component:{
+		    	    	    template:'#zi'
+		    	        },
+		    	      }
+		    	    ]
+		    }, 
+		]
+	});
+	
+	var app = new Vue({
+		el:'#app',
+		data:{},
+		methods:{},
+		router
+	});
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>倒影</title>
+		<style type="text/css">
+			#div1 img{
+				/*
+				 1.倒影出现的位置
+				 left 倒影在实物的左边
+				 right 倒影在实物的右边
+				 above 倒影在实物的上边
+				 below 倒影在实物的下面
+				 2.倒影与实物的距离 px数值
+				 3.渐变
+				 */
+				-webkit-box-reflect: right 200px;
+			}
+			h1{
+				background-color:red;
+				text-align: center;
+				-webkit-box-reflect: below 100px;
+			}
+			#div2>img{
+				-webkit-box-reflect: right 50px -webkit-linear-gradient(left,transparent,red); 
+			}
+			#div3>img{
+				width: 1000px;
+				height: 1000px;
+				-webkit-box-reflect: right 20px url(../Day11/haha.png);
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			倒影的样式:
+				1.渐变
+				2.蒙版图片(图片格式要求png)
+				
+				倒影只是一个映像,不占据网页内容的空间.
+		-->
+		<h3>右倒影</h3>
+		<div id="div1">
+			<img src="../Day01/3.gif" alt="" />
+		</div>
+		<h1>文字倒影</h1>
+		<div id="div2">
+			<h3>渐变倒影</h3>
+			<img src="../Day11/haha.png" alt="" />
+		</div>
+		<div id="div3">
+			<h3>遮罩倒影</h3>
+			<!--
+				注意:
+				1.遮罩的大小取决于实物图片的大小
+				2.如果要显示遮罩效果,倒影的三个值都要写.
+			-->
+			<img src="../Day05/d1.jpg" alt="" />
+		</div>
+	</body>
+</html>

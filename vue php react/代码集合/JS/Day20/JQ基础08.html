@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ基础08</title>
+
+	</head>
+
+	<body>
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//js里,文件加载 onload事件,该事件会在对应文件加载完毕时触发.
+//			window.onload = function() {
+//				alert("文件加载完毕")
+//				var div1 = document.getElementById("div1")
+//				console.log(div1)
+//			}
+			//jq onload事件
+//			$(window).load(function(){
+//				var div1 = document.getElementById("div1")
+//				console.log(div1)
+//			})
+
+			//jq onready事件
+//			$(document).ready(function(){
+//				var div1 = document.getElementById("div1")
+//				console.log(div1)
+//			})
+			
+			//jq ready事件 简写
+			$(function(){
+				var div1 = document.getElementById("div1")
+				console.log(div1)
+			})
+			
+			/*
+			 * load事件与ready事件的区别
+			 * 1.ready事件要等到当前文档里所有的HTML元素加载完毕后就会触发
+			 * 2.load事件不但要等到文档里所有的HTML元素加载完毕,还要等其他所有资源,如图片,音视频,外部链接文件等所有都加载完毕之后才会触发.
+			 */
+		</script>
+		<div id="div1"></div>
+	</body>
+
+</html>

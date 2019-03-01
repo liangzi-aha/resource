@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>JS基础</title>
+	</head>
+	<body>
+		<!--
+			HTML的组成部分
+			1.结构(HTML)
+			2.样式(css)
+			3.行为(JavaScript)
+			
+			Javascript.一种脚本语言,属于编程语言,负责网页的相关行为和操作.
+			
+			什么是脚本语言??
+			
+			C语言
+			书写->预编译->编译->链接->可执行的二进制文件.
+			Javascript 脚本语言省去了传统的编译语言繁琐的过程,使用JS写出的代码,直接编译生成的就是可执行的文件.
+			
+			什么是编程语言???
+			标准:具备"图灵完备"的计算机语言
+			图灵完备:任何可执行的计算都可以被计算.
+			
+			Java与Javascript没有关系
+			ECMAScript ES6  Javascript2015
+			
+			Javascript的组成部分
+				1.ECMAscript 基础语法
+				2.DOM: document 	object model 文档对象模型 描述处理文档内容有关的方法
+				3.BOM: browser['braʊzə] object model 浏览器对象默认 描述与浏览器信息有关的方法
+				
+				Javascript语言的特点:
+				1.解释性执行,脚本语言
+				2.面向对象,一切事物皆对象
+				3.弱类型,没有严格的数据类型
+				4.时间驱动.JS是一门以事件发出而驱动执行的语言
+				5.跨平台
+						
+		-->
+		<!--
+			基本语法:
+			一:如何导入JS
+				a.内联js 把所有的写到js代码里<script>标签里
+				b.外联js 新建一个js文件夹书写js代码
+			二:js的输出方式:
+				1.alert(内容) 显示一个带有确定按钮和指定内容的警告框
+				2.console.log(内容) 在控制台输出内容 多用于做代码调试.
+				3.document.write(内容) 向文挡里写内容,内容会依次拼接
+				4.元素.innerHTML 改变某个标签里的内容.
+				innerHTML在JS是双向功能：获取对象的内容  或  向对象插入内容;  
+					a.如：<div id="aa">这是内容</div> ，  
+					我们可以通过  document.getElementById('aa').innerHTML 来获取id为aa的对象的内嵌内容；  
+					也可以对某对象插入内容，如 document.getElementById('abc').innerHTML='这是被插入的内容';     
+					这样就能向id为abc的对象插入内容
+				5.操作(设置,获取)元素的style属性  元素.style
+				6.操作(设置,获取)元素的cs.0s样式
+			三.常量和变量
+				常量:在程序运行期间.值不可以被修改的量.
+					a.数字常量
+						1,10,-5,1.24,0,-1.2,π
+					b.字符串常量
+						"123" "sbc" "啦啦啦" "ab12" "-+="
+				变量:在程序运行期间.存储的值可以修改的量. 如果要使用变量.需要事先声明(创建).
+					语法:   var 变量名 = 初值
+			四.原始数据类型
+				js
+				var a=10;
+				var b=1.111;
+				var c="a"
+				c语言
+				int a = 10;  4字节
+	       		 a = "abc";(报错)
+	        		float b= 10.1111; 4字节
+	        		char c = 'a'; 1字节
+				
+				JS的变量在声明时不会指定对应的数据类型,统一用var表示.
+				最终变量的数据类型取决于当前变量里存储的值得数据类型.
+				a.number 数值类型
+				b.string 字符串类型 
+				c.boolean 布尔类型 一种非真既假的数据类型,该数据类型只有两个值,true和false.
+				d.null 空值类型
+				e.undefined 未定义类型
+				f.object 对象类型
+			五.运算符
+				a.算数运算符(+,-,*,/,%,++,--)
+				b.赋值运算符(=,+=,-=,*=,/=,%=)
+				c.关系运算符(>,<,>=,<=,!=,==,===,!==)
+				d.逻辑运算符(&&,||,!)
+				
+		-->
+		<!--<script type="text/javascript">
+			alet("123a");
+			alert("我是谁");
+			变量一旦声明之后,就可以使用变量,该变量的变量名就可以表示该变量.
+		</script>-->
+		<!--<script src="js/first.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--<script type="text/javascript">
+			console.log("这是一行log");
+			document.write("这是写入的文字");
+			document.write("这是写入的文字1");
+		</script>-->
+		<!--<script type="text/javascript">
+			var name="啦啦啦";
+			var a=20;
+			//我们在操作变量时,操作的都是变量里存储的数据
+			console.log(name);
+			var age=a;
+			console.log(name,age,a,);
+			//在JS里,如果一个变量只声明却不赋值,值为undefined.
+			var b;
+			 console.log(b);
+		</script>-->
+		<!--<script type="text/javascript">
+			//如何获取元素的类型??
+			//使用typeof关键字获取变量的数据类型
+			//var a = 10;
+			//console.log(typeof a);
+			//a = "abc";
+			//console.log(typeof a);
+			//a=false;
+			//console.log(typeof a);
+			//a = null; //null值打印数据类型时是object
+			//console.log(typeof a);
+			//a = undefined;
+			//console.log(typeof a);
+			//a = {};
+			//console.log(typeof a);
+
+			//null和undefined的区别??
+
+			/*数据类型之间的相互转化.
+			1.数字和字符串的互相转化
+			2.其他类型转布尔
+			
+				*/
+			//显示转换
+			//字符串转数字
+			//如果一个字符串无法转换成数字,会得到NaN(Not a number),
+			//表示一个不语任何数字相等的数字,但是其数据类型还是number类型.
+			var num1 = Number("abc");
+			console.log(num1);
+			
+			//数字转字符串
+			var str1 = String(9527);
+			console.log(typeof str1);
+			
+			//其他类型转布尔
+			//数字范围内,非0都是true,只有0时false.
+			//字符串范围内,非空串都是true,空串是false.
+			//null,undefined,NaN转布尔值都是假.
+			var bool1 = Boolean("");
+			console.log(bool1);
+			
+			
+			//隐式转换
+			//1.js里一个字符串与一个数字做加法运算,做的是字符串拼接
+			var n1 = 100;
+			var n2 = "20";
+			var res = n1+n2;
+			console.log(res);
+			
+			console.log("abc"+"def");
+			
+			console.log(123 + "")
+			
+			//js里,一个字符串与数字做了除加法外的其他运算操作,做的是算数运算.
+			var b1 = "100";
+			var b2 = 20;
+			var res2 = b1*b2;
+			var res2 = b1-b2;
+			var res2 = b1/b2;
+			console.log(res2);
+		</script>-->
+		<script type="text/javascript">
+			//算数运算符(+,-,*,/,%,++,--)
+			//			var a = 10;
+			//			var b = 0;
+			//			console.log(a+b);
+			//			console.log(a-b);
+			//			console.log(a*b);
+			//			console.log(a/b);
+			//			console.log(a%b);
+			//			
+			/*
+			 ++自加运算符
+			 --自减运算符
+			 ++和--每次的改变量是1.
+			 * */
+
+			//			var n = 5;
+			//			//n++;
+			//			console.log(n++);
+			//			var n=5;
+			//			var res = (n++)+(++n)+(++n);
+			//			console.log(res);
+			/*
+			 运算符在前,先进行自加(自减)运算,然后执行其余的操作
+			 运输符在后,先执行其余的操作,在进行自加(自减)运算 
+			*/
+
+			//赋值运算符(=,+=,-=,*=,/=,%=)
+			//=赋值运算符,把等号右边的值赋给等号左边
+
+			//			 var q = 5;
+			//			 q +=10; //q = q + 10
+			//			 q *= 10; //q = q * 10
+			//			 q -= 10;//q = q - 10
+			//			 q /= 10;//q = q / 10
+			//			 q %= 10;//q = q % 10
+			//			 console.log(q);
+			//c.关系运算符(>,<,>=,<=,==,!=,===,!==)
+//						 var n = 10;
+//						 var m = '10';
+			//			 console.log(n>m);
+			//			 console.log(n<m);
+			//			 console.log(n>=m);
+			//			 console.log(n>=m);
+
+			//==和!=在比较时,会把数据类型先统一,再进行值得比较.
+			//===和!==在比较时,先比较数据类型,在进行值得比较.
+//						 console.log(n==m);
+//						 console.log(n!=m);
+//						 console.log(n===m);
+//						 console.log(n!==m);
+
+			//逻辑运算符(&&,||,!)
+
+			//逻辑 与运算符 双目运算 只有运算符两边的结果都为真,整个式子的结果才为真,否则为假
+
+//			var x = 5;
+//			var y = 10;
+//			var z = 15;
+//			var res = x > y && y < z;
+//			console.log(res);
+//
+//			//|| 逻辑或 双目运算符 只要运算符两端有一个结果为真.整个结果就为真,两个结果都为假,
+//			//			整个结果才是假.
+//			var res1 = x > y || y < z;
+//			console.log(res1);
+//
+//			//!逻辑非 单目运算符 逻辑否定,颠倒结果.
+//			var b = 100;
+//			console.log(!b);
+
+			var x = 10;
+			var y = 20;
+			var z = 30;
+			var res = x>y && ++z;
+			console.log(res,z);
+			
+			/*
+			 逻辑与逻辑或的短路现象
+			 如果系统通过第一个式子已经可以判断出整个式子的结果,那么系统不会在执行第二个式子.
+			 * */
+		</script>
+	</body>
+
+</html>

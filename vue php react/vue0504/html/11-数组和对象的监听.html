@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组和对象的监听</title>
+	</head>
+	<body>
+		<div id="app">
+			<template v-for="item in arr">
+				<span>{{item}}&nbsp;</span>
+			</template>
+			<button @click="change()">点击修改</button>
+			<ul>
+				<li v-for="h in hero">
+					第{{h.num}}:{{h.name}}
+				</li>
+			</ul>
+			<button @click="changeHero()">点击修改英雄</button><hr />
+			<ul>
+				<li v-for="(obj,key) in qiong">{{key+':'+obj}}</li>
+			</ul>
+			<button @click="add()">点击添加英雄属性</button>
+			<button @click="del()">点击删除英雄属性</button>
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	// 引起数组更新的方法: 
+	//push,pop,shift,unshift,splice,sort,reverse
+	//在vue中,使用数组的this.arr[1]='aa'的方式修改数组内容,那么视图层的dom结构或者显示数据是不会发生改变的
+	//解决办法是:
+	// Vue.set(要改变的实例中的数组或者对象, 要改变的下标/key,要更新的值);
+	// 注意:对象的修改,是可以引起view层的修改的,但是添加或删除等操作不能够引起view层的重新渲染的 解决办法: Vue.set(参数同上)
+	// Object.assign({},要操作的对象,要添加的键值对{name:'罗士信',attr:'傻'});
+	var app =new Vue({
+		el:"#app",
+		data:{
+			arr:['苹果','香蕉','橘子','葫芦'],
+			hero:[
+			  {name:'李元霸', num:1},
+			  {name:'宇文成都', num:2},
+			  {name:'裴元庆', num:3},
+			  {name:'雄阔海'}
+			],
+			qiong:{
+			  name:'秦琼',
+			  age:32,
+			  sex:'男'
+			}
+		},
+		methods:{
+			change(){
+                //	this.arr[3] = '圣女果';
+               //  Vue.set(this.arr,3,'圣女果'); 经典操作
+               app.$set(this.arr,3,'圣女果');  //实例操作
+			   console.log(this.arr);
+			},
+			changeHero(){   
+			   this.hero[1].name = '宇文智及';
+			   this.hero[3].num = 4;
+			},
+			add(){
+				 // this.qiong.wuqi='锏';
+				 Vue.set(this.qiong,'wuqi','锏'); 
+				this.qiong = Object.assign({},this.qiong,{son:'秦俑',mobakie:'黄彪'});
+			},
+			del(){
+				// 删除键值对
+				Vue.delete(this.qiong,'sex');
+				app.$delete(this.qiong,'age');
+			}
+		}
+	});
+</script>

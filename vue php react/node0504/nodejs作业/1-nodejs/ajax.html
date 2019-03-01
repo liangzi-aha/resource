@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>post注册</title>
+</head>
+<body>
+    用户名: <input type="text" id="username"><br>
+    密码: <input type="text" id="password"><br>
+    头像: <input type="file" id="file"><br>
+    <input type="submit" value="注册" id="btn">
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <script type="text/javascript" src="jq.js"></script>
+    <script type="text/javascript">
+        var btn = document.getElementById('btn');
+        var file = document.getElementById('file');
+        var filePath1;
+        btn.onclick = function(){
+            var name = $('#username').val();
+            var password = $('#password').val();
+            filePath1 = file.value;
+            console.log(filePath1);
+            $.ajax({
+                type:'post',
+                url:'/post',
+                data:{name:name,password:password,filePath1:filePath1},
+                success:function(data){
+                   var data = data.split(",");
+                    $('#p1').text(data[0]);
+                    $('#p2').text(data[1]);
+                }
+            });
+            // var img = document.createElement("img");
+            // img.src = '../天行九歌1.jpg';
+            // document.body.appendChild(img);
+
+        }
+    </script>
+</body>
+</html>

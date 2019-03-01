@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas04_放大镜</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 960;
+			canvas.height = 540;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.放大镜
+			var img = new Image()
+			img.src = "../Day02/girl1.jpg";
+			img.onload = function(){
+				content.drawImage(this,0,0,canvas.width,canvas.height)
+			}
+			
+			//给canvas绑定鼠标按下事件
+			canvas.onmousedown = function(){
+			//当鼠标按下时绑定鼠标移动事件
+				canvas.onmousemove = function(e){
+					//在移动的过程中不断地清空画布
+					content.clearRect(0,0,canvas.width,canvas.height)
+					content.drawImage(img,0,0,canvas.width,canvas.height)
+					var even = event || e;
+					//获取鼠标的位置
+					var x = even.offsetX;
+					var y = even.offsetY;
+					content.globalCompositeOperation = "destination-out"
+					//绘制放大镜
+					content.beginPath()
+					content.arc(x,y,100,0,2*Math.PI)
+					content.closePath()
+					content.fill()
+					
+					//设置图形的组合方式
+					content.globalCompositeOperation = "destination-over";
+					//绘制放大区域的图片
+					content.drawImage(img,2*x-100,2*y-100,200,200,x-100,y-100,200,200)
+				}
+				
+				//鼠标抬起时,置空mousemove
+				canvas.onmouseup = function(){
+					this.onmousemove = null;
+					//清空画布
+					content.clearRect(0,0,canvas.width,canvas.height)
+					//重新绘制
+					content.drawImage(img,0,0,canvas.width,canvas.height)
+				}
+			}
+		</script>
+	</body>
+</html>

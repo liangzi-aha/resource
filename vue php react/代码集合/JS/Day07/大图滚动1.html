@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 300px;
+				height: 450px;
+				margin: 50 auto;
+				border: 3px solid red;
+				position: relative;
+				overflow: hidden;
+				margin: 50px auto;
+			}
+			
+			#content {
+				width: 2400px;
+				height: 450px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				transition: all 0.5s;
+			}
+			
+			img {
+				width: 300px;
+				height: 450px;
+				float: left;
+			}
+			#div1{
+				width: 80px;
+				position: absolute;
+				right: 0;
+				left: 0;
+				margin:0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="content">
+				<img src="img/1.png" alt="" />
+				<img src="img/2.jpeg" alt="" />
+				<img src="img/3.jpeg" alt="" />
+				<img src="img/4.png" alt="" />
+				<img src="img/5.jpeg" alt="" />
+				<img src="img/6.png" alt="" />
+				<img src="img/1.png" alt="" />
+			</div>
+		</div>
+		<div id="div1">
+			<button>上一张</button>
+			<button>下一张</button>
+		</div>
+		<script type="text/javascript">
+			var contentDiv = document.getElementById("content")
+			var wrapDiv = document.getElementById("wrap")
+			var buttons = document.querySelectorAll("button")
+			var x = 0;
+			buttons[0].onclick = function() {
+				if(contentDiv.style.left = "0px") {
+					x += 300
+					contentDiv.style.left = x + "px";
+					if(x == 300) {
+						x = -1500;
+						contentDiv.style.left = x + "px";
+						contentDiv.style.transition = "all 0"
+					}
+					if(x != -1500) {
+						contentDiv.style.transition = "all 0.5s"
+					}
+				}
+			}
+			buttons[1].onclick = function() {
+				if(contentDiv.style.left = "0px") {
+					x += -300
+					contentDiv.style.left = x + "px";
+					if(x == -1800) {
+						x = 0;
+					}
+					if(x == -300) {
+						contentDiv.style.transition = "all 0"
+					}
+					if(x != -300) {
+						contentDiv.style.transition = "all 0.5s"
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

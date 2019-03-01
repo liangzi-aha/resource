@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>H5的新标签</title>
+		<style type="text/css">
+			mark{
+				background-color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			HTML5的新特性:
+			1.新增很多标签
+			2.新增本地储存
+			3.新增音频,视频标签
+			4.新增canvas绘图标签
+			
+			HTmL5的新特性目前只有标准的浏览器支持(浏览器内核为webkit的浏览器,比如safari,谷歌,火狐)
+			
+			语义化
+		-->
+		
+		<!--
+			1.mark标签 双标签 标记标签 mark(做标记)
+		-->
+		<p>我是<mark>谁</mark></p>
+		
+		<!--
+			2.meter标签 双标签
+			一般用来表示电量或者内存使用情况
+			
+			value属性:表示当前值 默认取值范围0-1
+			min属性:最小值
+			max属性:最大值
+			
+			low属性:最低预警值
+			high属性:最高预警值
+			
+			如果同时设置了最高和最低预警值,value值同时小于最高和最低,颜色红色;处在最高和最低之间,颜色黄色;大于最高,颜色绿色
+			不建议设置最低预警值大于区域范围的一半
+			
+			meter的内容一般设置成提醒用户升级或者更换浏览器的文字,该内容会在浏览器无法识别meter标签时显示.
+		-->
+		<meter value="49" max="100" min="0" low="50">标签无法显示,请示升级浏览器!</meter>
+		
+		<!--
+			3.wbr 双标签 单词内换行
+		-->
+		<p><wbr></wbr></p>
+		<!--
+			4.拼音标注标签
+			ruby标签,需要与rt和rp配合使用
+			把需要进项标注的内容写到ruby标签里
+			标注内容写到rt标签里
+		-->
+		<ruby>
+			布拉布拉-不拉拉多
+			<rt>抠脚大汉</rt>
+			<rp>请升级浏览器</rp>
+		</ruby>
+		<!--
+			5.datalist标签 双标签 需结合input 标签使用
+		-->
+		<form action="">
+			<!--<input type="text" placeholder="请写出你所在的城市" list="city" name="city"/>-->
+			<datalist id="city">
+				<option>洛阳</option>
+				<option>上海</option>
+				<option>北京</option>
+				<option>广州</option>
+				<option>深圳</option>
+				<option>河南</option>
+				<option>广西</option>
+			</datalist>
+			<input type="submit" value="提交查询"/>
+			
+			<!--
+				6.details标签 双标签 自带折叠功能
+				需要结合summary
+			-->
+			<details>
+				<summary>这是文章的开头1111111111111</summary>
+				<!--把需要折叠的内容写到summary标签的下面,可以折叠任何内容-->
+				<p>6sd4f4ae48sa48f45sadf454as5d4f65as75fdsa56f48sdaf48as4d
+				f6as5d</p>
+				<img src="../Day05/饿了么/2.png" alt="" />
+				
+			</details>
+		</form>
+				<!--
+					7.音频标签 audio 双标签
+					支持mp3,ogg,wav格式的音频
+					常用属性
+					1.autoplay 资源加载完毕之后自动播放
+					2.controls 控制是否显示控制条
+					3.loop 控制是否循环播放
+					4.muted 是否静音
+				-->
+				
+				<audio src="孙语赛-不仅仅是喜欢.mp3"autoplay="autoplay" 
+				controls="controls"loop="loop"muted="muted"></audio>
+				
+				<!--
+					8.视频标签 video 双标签
+					支持mp4,ogg,webm格式的音频
+					常用属性
+					1.autoplay 资源加载完毕之后自动播放
+					2.controls 控制是否显示控制条
+					3.loop 控制是否循环播放
+					4.muted 是否静音
+				-->
+				<video src="HTML5的前世今生.mp4" autoplay="autoplay" controls="controls">
+					<source src="HTML5的前世今生.ogg" type="audio/ogg"></source>
+					<source src="HTML5的前世今生.webm" type="video/webm"></source>
+					
+				</video>
+				
+				<!--
+					source标签:解决不同的浏览器因为版本问题导致支持的资源文件不统一的问题.
+				-->
+				
+				<!--
+					H5新增的表单控件
+				-->
+				<form action="">
+					<!--调色板 type=color-->
+					<input type="color" />
+					
+					<!--邮箱格式输入框 type=email-->
+					<input type="email" />
+					<input type="submit" value="提交"/>
+					
+					<!--url格式输入框 type=url-->
+					<input type="url" />
+					
+					<!--数值格式的输入框 type=number
+						max:最大值
+						min:最小值
+						value:当前值
+						step:步长
+					-->
+					<input type="number" min="0" max="10" value="0" step="5"/>
+					
+					<!--滑竿 type=range
+						min:最小值
+						max:最大值
+						value:当前值
+					-->
+					<input type="range" name="hg" />
+					
+					<!--与日期和时间有关的控件-->
+					<!--显示年月日 type=date-->
+					<input type="date" />
+					<input type="submit" />
+					
+					<!--显示年月 type=month-->
+					<input type="month" />
+					
+					<!--显示年周 type=week-->
+					<input type="week" />
+					
+					<!--显示时间 type=time-->
+					<input type="time" />
+					
+					<!--本地时间 type=datetime-local-->
+					<input type="datetime-local" />
+					
+					<!--input标签的常用属性
+						1.required 添加了此属性的输入框内容必填
+						2.autofocus 自动聚焦,添加了此属性的控件默认被选中.
+					-->
+					<input type="text" required="required"/>
+					<input type="text" autofocus="autofocus"/>
+				</form>
+				
+				<!--
+					H5提供的语义化块标签
+				-->
+				<header></header>
+				<!--section标签里尽可能去写模块化的内容,尽可能保证section里的内容成段落且有标题-->
+				<section></section>
+				<footer></footer>
+				
+	</body>
+</html>

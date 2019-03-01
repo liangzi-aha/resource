@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2-vue基础.</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.aa{
+				color: #0f0;
+				font-size: 30px;
+			}
+			.bb{
+				background-color: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<p v-bind:class="'aa'">{{num}}</p>
+			<p>如果v-bind:class是对象形式,则键值对的含义为, 键名是要展示的class名, 键值放回一个布尔,如果是true则给当前dom添加一个class名</p>
+			<p v-bind:class="{aa:bol}">言寡尤,行寡悔</p>
+		    <p v-bind:class="['aa','bb']">言行寡悔</p>
+		    	<p v-bind:style="myStyle">墙里秋千</p>
+		    	<img :src="url" alt="孔子" />
+		    	<p :style="{color:'#f00',fontSize:'30px'}">一蓑烟雨任平生</p>
+		</div>
+		<div id="bpp">
+			<p>{{aa}}</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+/*
+ * 绑定属性:
+ *      v-bind 指令
+ *      修改元素的样式, 绑定class或者style
+ *      v-bind:class='class值'
+ *      v-bind实质上换是一个js域,在他里面是可以写语句的,还有三目运算符
+ *      实例:   v-bind:属性='变量名/表达式'
+ *      v-bind还可以直接写:
+ *       实例 :属性='变量名/表达式'
+ */
+ 
+
+	var app = new Vue({
+		el:'#app',
+		data:{
+			num:11,
+			bol:true,
+			myStyle:'color:#f00;font-size:30px',
+			url:'../img/1.jpg',
+		}
+	})
+	var bpp = new Vue({
+		el:'#bpp',
+		data:{
+			aa:22,
+		}
+	})
+	
+	
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax请求</title>
+	</head>
+	<body>
+		姓名:<input type="text" id="username" value="" /><br />
+		<button id="btn">get提交</button>
+		<p id="msg1"></p>
+		<hr />
+		姓名:<input type="text" id="username2" value="" /><br />
+		工作:<input type="text" id="job" value="" /><br />
+		年龄:<input type="text" id="age" value="" /><br />
+		<button id="btn2">post提交</button>
+		<p id="msg2"></p>
+	</body>
+</html>
+<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id)
+	}
+	//get请求
+	$('btn').onclick = function(){
+		Ajax({
+			type:'get',
+			url:'json.php',
+			//这里的data是要传到url文件的内容
+			data:{name:$('username').value},
+			//回调函数里的data是url文件最后返回的值,url那个页面后输出的内容。
+		},function(data){
+			$('msg1').innerHTML = data;
+			console.log(data);
+		})
+	}
+	
+	//post 提交
+//	$('btn2').onclick = function(){
+//		Ajax({
+//			type:'post',
+//			url:'post.php',
+//			data:{'name='+$('username2').value+'&job='+$('job').value+'&age='+$('age').value}
+//		},function(){
+//			$('msg2').innerHTML = data;
+//		})
+//	}
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--react.js是react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作的-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="test">
+		</div>
+	</body>
+</html>
+<script type="text/babel">
+		function as(str){
+			alert('别人怀宝剑,我有笔如刀'+str)
+		}
+		//添加事件,为了和原生作区分,也是使用驼峰命名法 例如,点击事件要是 onClick bind : 绑定
+		ReactDOM.render(<div> 
+			<button onClick={as.bind(this,'十年如一日')}>提交</button>
+		</div>,document.getElementById("test"));
+		
+		var arr=[
+		<p>高曾祖</p>,
+		<p>父而身</p>,
+		<p>身而子</p>,
+		<p>子而孙</p>, ];
+		
+		// map 循环操作数组内数据,有一个参数为回调函数,回调函数内部,传入当前循环的数组元素.
+		ReactDOM.render(<div>
+			{
+				arr.map(function(item){
+					return item
+				})
+			}
+		</div>,document.getElementById("test"))
+</script>

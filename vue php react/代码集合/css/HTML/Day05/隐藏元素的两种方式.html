@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>隐藏元素的两种方式</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			#p1{
+				width: 200px;
+				height: 200px;
+				background-color:red;
+				/*display: none;*/
+				visibility:hidden;
+			}		
+			#p2{
+				width: 200px;
+				height: 200px;
+				background-color:yellow;
+			}		
+			#div1{
+				width: 300px;
+				height: 300px;
+				background-color:pink;
+			}	
+			#div2{
+				width: 200px;
+				height: 200px;
+				background-color:green;
+			}
+			#div1:hover>#div2{
+				display: none;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			隐藏元素:
+			1.display:none
+			2.visibility:hidden
+			
+			两种隐藏方式的区别:
+			display会失去自己之前的位置
+			visibility会保留自己之前的位置
+			
+			display隐藏的元素如过想要再次显示,根据元素之前的类型,
+			选着使用inline,block或者inline-block
+			
+			visibility隐藏的元素如果想要再次显示,值是visible
+		-->
+		<!--<p id="p1"></p>
+		<p id="p2"></p>-->
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>关键帧</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#div1 {
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+				/*animation-name:bgc;*/
+				animation-duration: 2s;
+				/*关键帧动画改变元素大小*/
+				animation-name: bgd;
+				/*循环旋转*/
+				animation-iteration-count: infinite;
+				animation-direction: alternate-reverse;
+			}
+			
+			@keyframes bgd {
+				from {
+					margin-top: 0;
+					margin-left: 0;
+					background-color: yellow;
+				}
+				20% {
+					margin-top: 0;
+					margin-left: 500px;
+					background-color: red;
+				}
+				40% {
+					margin-top: 500px;
+					margin-left: 500px;
+					background-color: blue;
+				}
+				60% {
+					margin-top: 500px;
+					margin-left: 0;
+					background-color: pink;
+				}
+				80% {
+					margin-top: 0;
+					margin-left: 0;
+					background-color: green;
+				}
+				to {
+					margin-top: 0;
+					margin-left: 0;
+					background-color: yellow;
+				}
+			}
+			/*img{
+				width: 100%;
+			}*/
+			
+			#div1:hover {
+				animation-paly-state: paused;
+			}
+		</style>
+	</head>
+
+	<body>
+			<!--关键帧动画: animation
+			在规定的时间内,按步骤依次执行的动画效果.
+			1.动画执行的名字 animation-name,配合@keyframes 使用,注意,动画的名字使我们自己起的.
+			2.动画的持续时间animation-duration 单位 秒 s
+			3.动画重复的次数 animation-itertion-count 无数次 infinite(无数次)
+			4.动画的延迟时间 animation-delay
+			5.动画的运动方向 animation-direction
+				a.normal 默认值
+ 				b.reverse 反向播放
+				c.alternate 奇数次正向,偶数次反向
+				d.alternate-reverse 奇数次反向,偶数次正向
+			6.动画的播放状态 animation-paly-state
+				a.running 播放
+				b.paused 暂停
+				
+			7.合写
+			animation: name duration timing-function delay iteration-count direction;
+
+			name:keyframe的名称，也就是定义了关键帧的动画的名称,这个名称用来区别不同的动画。
+			duration:完成动画所需要的时间（2s 或者 2000ms）
+			timing-function:完成动画的速度曲线
+			delay：动画开始之前的延迟
+			iteration-count：动画播放次数
+			direction：是否轮流反向播放动画（normal:正常顺序播放，alternate下一次反向播放）如果把动画设置为只播放一次，则该属性没有效果。
+
+使用animation属性制作动画可以更加灵活的设置动画帧，通过不同keyframe（动画帧）的设置，实现很多优雅的效果，keyframe中的百分数是动画完成总时间的比例。
+			animation是设置总的动画效果，而keyframe中设置上相应的动画名字，然后在keyframe中设置具体的动画效果。当然由于是css3的属性，仍然需要注意它的兼容性，加上必须的前缀。-->
+		
+		<div id="div1">
+			<!--<img src="../../img/img01/1.gif" alt="" />-->
+		</div>
+	</body>
+
+</html>

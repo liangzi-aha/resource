@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>post提交</title>
+	</head>
+
+	<body>
+		<p id="msg"></p>
+		<input type="button" name="btn" id="btn" value="提交" />
+	</body>
+
+</html>
+<script type="text/javascript">
+	function $(id) {
+		return document.getElementById(id)
+	}
+	$('btn').onclick = function() {
+		ajax();
+	};
+
+	function ajax() {
+		if(window.XMLHttpRequest) {
+			var xhr = new XMLHttpRequest();
+		} else {
+			var xhr = ActiveXObject("Microsoft.XHTMLHTTP")
+		}
+		xhr.onreadystatechange = function() {
+			if(this.readyState == 4) {
+				if(this.status == 200 || this.status == 304) {
+					$('msg').innerHTML = this.responseText;
+				} else {
+					alert('未遂');
+				}
+			}
+		}
+		//post和get 有些许不同,需要设置请求头
+		xhr.open('POST', 'post.php');
+		//设置请求头
+		//设置数据格式为application/x-www-form-urlencoded,他是键值对的格式,例如:name=curry&age=30&job=ball
+		xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+		xhr.send("name=良子&age=30");
+
+	}
+</script>

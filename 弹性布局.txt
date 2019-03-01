@@ -1,0 +1,10 @@
+//开启弹性布局
+display: flex;
+//宽占满全屏
+flex: 1;
+//横轴元素靠边，中间距离相等
+justify-content: space-around;
+//纵轴元素居中对齐
+align-items: center;
+//默认是横轴方向排列，改变横轴为纵轴
+flex-direction: column;

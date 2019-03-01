@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>碰撞检测</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 1530px;
+				height: 530px;
+				border: solid red;
+				margin: 50px auto;
+				position: relative;
+			}
+			#div1{
+				width: 30px;
+				height: 30px;
+				background-color:blue;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="div1"></div>
+		</div>
+		<script type="text/javascript">
+			/*
+			 * 思路:
+			 * 1.元素移动,修改left和top值
+			 * 2.运动方向的拆分:
+			 * 	a.水平移动,修改left值,取值范围[0,970]
+			 * 	b.竖直移动,修改top值,取值范围[0,470]
+			 */
+			var smallDiv = document.querySelector("#box>div");
+			var x = 0;
+			var y = 0;
+			//声明一个布尔值存储当前元素应该移动的状态true -->  false <--
+			//水平方向移动的函数
+			var flagX = true;
+			var flagY= true;
+			function moveX(){
+				if(flagX){
+					x+=3;
+					if (x >= 1500) {
+						flagX = false;
+					}
+				}else{
+					x-=3;
+					if(x <= 0){
+						flagX = true;
+					}
+				}
+				//安全处理 ,保证X值在正确区间内
+				if(x > 1500){
+					x = 1500;
+				}
+				if(x < 0){
+					x = 0;
+				}
+				smallDiv.style.left = x + "px"
+			}
+			//竖直方向移动的函数
+			function moveY(){
+				if(flagY){
+					y+=10;
+					if (y >= 500) {
+						flagY = false;
+					}
+				}else{
+					y-=10;
+					if(y <= 0){
+						flagY = true;
+					}
+				}
+				//安全处理 ,保证y值在正确区间内
+				if(y > 500){
+					y = 500;
+				}
+				if(y < 0){
+					y = 0;
+				}
+				smallDiv.style.top = y + "px"
+			}
+			setInterval(function(){
+				moveX();
+				moveY();
+			},20);
+		</script>
+	</body>
+</html>

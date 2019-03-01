@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件的属性</title>
+	</head>
+	<body>
+		<div id="app">
+			<child :aa-sa="'雄辩是银'" v-bind:tag="'沉默是金'"></child>
+		</div>
+	</body>
+</html>
+
+<template id="child">
+	<div>
+		<p>{{tag}}</p>
+		<p>{{aaSa}}</p>
+		<p v-show="bol">戒急用忍</p>
+		<button @click="changeBol()">点击</button>	
+	    
+	</div>
+</template>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	// 组件书写时,template的内容是一个整体的标签,否则会报错
+	var app = new Vue({
+		el:"#app",
+		data:{},
+		methods:{},
+		components:{
+			child:{
+				template:"#child",
+				data(){
+					return {
+					  bol: true
+					}
+				},
+				// 添加属性 如果属性名是驼峰命名方式,那么在使用该属性时,需要转化为 -链接: aaSa 要写成 aa-sa
+				props:['tag','aaSa'],
+				// 在组件内部添加方法集合
+				methods:{
+					changeBol(){
+						this.bol = !this.bol;
+					}
+				}
+			}
+		}
+	})
+</script>

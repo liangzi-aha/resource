@@ -1,0 +1,23 @@
+header('Content-Type: text/html; charset=utf-8'); //网页编码
+
+header('Content-Type: text/plain'); //纯文本格式
+
+header('Content-Type: image/jpeg'); //JPG、JPEG
+
+header('Content-Type: application/zip'); // ZIP文件
+
+header('Content-Type: application/pdf'); // PDF文件
+
+header('Content-Type: audio/mpeg'); // 音频文件
+
+header('Content-type: text/css'); //css文件
+
+header('Content-type: text/javascript'); //js文件
+
+header('Content-type: application/json'); //json
+
+header('Content-type: application/pdf'); //pdf
+
+header('Content-type: text/xml'); //xml
+
+header('Content-Type: application/x-shockw**e-flash'); //Flash动画

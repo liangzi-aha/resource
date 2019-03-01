@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jsonp</title>
+	</head>
+	<body>
+		<p id="msg"></p>
+		<button id="btn">点击</button>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	jsonp 的具体步骤
+	1.创建一个script
+	2.在这个script标签的src属性上,绑定要访问的接口,以及提交的数据,另外一定要记得添加一个回调函数.用来处理返回的数据
+	3.把创建的script标签放在body里面(放入立即执行)
+	4.删除该script标签
+	*/
+	function $(id){
+		return document.getElementById(id);
+	}
+	$('btn').onclick = function(){
+		var sc = document.createElement('script');
+		//添加src属性并把接口和数据以及执行函数传递给后台,执行函数必须在代码的上下文中,也就是说当前代码必须有执行函数的函数实体
+		sc.src = "http://127.0.0.1/PHP/jsonp.php?name=james&age=33&callback=aa";
+		
+		//添加该标签到body
+		document.body.appendChild(sc);
+		
+		//删除该标签
+		document.body.removeChild(sc);
+	};
+	
+	function aa(str){
+		$('msg').innerHTML = str;
+		
+	}
+</script>

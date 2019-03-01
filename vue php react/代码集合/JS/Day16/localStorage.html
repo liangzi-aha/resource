@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>localStorage</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * localStorage 本地储存 HTML5的新技术
+			 * 1.没有时间限制
+			 * 2.自带增删改查函数
+			 */
+			//写法一
+			//增 改 查
+			localStorage.name = "张三";
+			localStorage.age = 20;
+			console.log(localStorage);
+			
+			localStorage.name = "李四";
+			
+			console.log(localStorage.name);
+			
+			//写法二
+			//增 查 改
+			localStorage["sex"] = "男";
+			
+			localStorage["sex"] = "女";
+			console.log(localStorage["sex"]);
+			
+			//写法三
+			//增 改 查
+			localStorage.setItem("school","五道口金融学院");
+			localStorage.setItem("school","哈尔滨佛学院");
+			console.log(localStorage.getItem("school"));
+			
+			//删除
+			//删除一条键值对
+			console.log(localStorage)
+			localStorage.removeItem("Age")
+			console.log(localStorage)
+			
+			//删除所有键值对
+			localStorage.clear();
+			console.log(localStorage);
+			
+			//cookie, localStorage ,sessionStorage的区别
+		</script>
+	</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css选择器</title>
+	<style type="text/css">
+		/*
+			1. 标签选择器(元素选择器)
+			语法:
+			标签名 {
+				
+			}
+			找到文档里所有与标签名相同的标签
+		*/
+		/*div {
+			background-color: pink;
+			font-size: 50px;
+		}
+		p {
+			background-color: cyan;
+		}
+		li {
+			background-color: gold;
+		}*/
+		/*通配符选择器, 找到文档里所有的标签*/
+		/* * {
+			background-color:red;
+		}*/
+
+
+		/*
+			2. id选择器 
+			语法:
+			 #id名 {
+					
+			 }
+			 事先需要给元素添加id值.
+			 找到文档里与id名相同的唯一的那个元素.
+		*/
+		/*#div2 {
+			font-size:50px;
+			background-color: pink;
+		}*/
+
+		/*
+			3. class选择器 
+			语法:
+			.class名 {
+			 
+			}
+			事先需要给对应的元素设置class值
+
+			找到文档里所有class值与class名相等的元素
+		*/
+		/*.bgc {
+			background-color:yellow;
+		}*/
+
+		/*
+			4. 群组选择器
+			语法:
+			  选择器1, 选择器2, ... {
+				
+			  }
+		*/
+		/*#div2, .bgc {
+			color: blue;
+		}*/
+
+		/*
+			5. 子选择器
+			语法:
+			  选择器1>选择器2>... {
+				
+			  }
+			找到文档里选择器1表示的元素里与选择器1成父子关系的选择器2表示的元素
+		*/
+		/*#ul2>li {
+			font-size:30px;
+		}*/
+
+		/*
+			6. 后代选择器
+			语法:
+				选择器1 选择器2 ... {
+	
+				}
+			找到文档里选择器1表示的元素里与选择器1成后代关系的选择器2表示的元素
+		*/
+		#div4 li {
+			font-size:30px;
+			color:red;
+		}
+		/*div+div{
+		background-color:blue;
+	}
+	ul>li+li{
+		background-color: red;
+	}*/
+	.bgc+div{
+		background-color:red;
+	}
+	/*
+		7.相邻兄弟选择器
+		语法:
+		选择器+选择器+...{
+		}
+		找到文档里与选择器1表示的元素相邻且在其下面的选择器2表示的元素.
+	*/
+	</style>
+</head>
+<body>
+	<!-- 
+		css选择器: 找元素
+	 -->
+	 <div class="bgc">这是div1</div>
+	 <div id="div2">这是div2</div>
+	 <div class="bgc">这是div3</div>
+	 <p>这是段落1</p>
+	 <p class="bgc">这是段落2</p>
+	 <ul>
+	 	<li class="bgc">这是列表项1</li>
+	 	<li class="bgc">这是列表项2</li>
+	 	<li class="bgc">这是列表项3</li>
+	 	<li class="bgc">这是列表项4</li>
+	 	<li class="bgc">这是列表项5</li>
+	 	<li>这是列表项6</li>
+	 	<li>这是列表项7</li>
+	 	<li>这是列表项8</li>
+	 	<li>这是列表项9</li>
+	 	<li>这是列表项10</li>
+	 </ul>
+	 <div id="div4">
+	 	<ul id="ul2">
+	 		<li>列表项1</li>
+	 		<li>列表项2</li>
+	 		<li>列表项3</li>
+	 		<li>列表项4</li>
+	 		<li>列表项5</li>
+	 	</ul>
+	 </div>
+</body>
+</html>

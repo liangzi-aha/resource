@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>node的jsonp操作</title>
+</head>
+<body>
+    姓名: <input type="text" value="" id="username"><br>
+    <button id="btn">提交</button>
+    <p id="msg"></p>
+<script type="text/javascript">
+    var username = document.getElementById('username')
+    var btn = document.getElementById('btn');
+    var msg = document.getElementById('msg');
+
+    btn.onclick = function(){
+        var val = username.value;
+        var sc = document.createElement('script');
+        sc.src = "http://127.0.0.1:8080/jsonp?name="+val+"+&cb=aa";
+        document.body.appendChild(sc);
+        document.body.removeChild(sc);
+    }
+    function aa(data){
+        msg.innerHTML = data;
+    }
+</script>
+</body>
+</html>

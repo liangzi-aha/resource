@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas08_三次贝塞尔曲线</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.
+			/*
+			 * 三次贝塞尔曲线
+			 * bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y)
+			 * 前四个参数确定两个控制点
+			 * 后两个参数确定一个普通点
+			 * 
+			 * 我们还需要自己提供一个普通点实现三次贝塞尔曲线效果
+			 */
+			content.beginPath()
+			content.moveTo(327,144);
+			content.bezierCurveTo(621,161,351,327,593,370)
+			content.stroke()
+//			content.fillStyle = "red"
+//			content.fill()
+		</script>
+	</body>
+</html>

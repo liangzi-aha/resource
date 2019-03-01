@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>input</title>
+	</head>
+	<body>
+		<div id="app">
+		<input type="text"  v-model="aa" />
+		<p>{{aa}}</p>
+		
+		<label >选择性别</label>:
+		<input type="radio"  name="sex" value="1" v-model="sex" /> 男
+		<input type="radio"  name="sex" value="2" v-model="sex" /> 女
+		<p>你选择了{{sex == 1?'男':'女'}}</p> 
+		<hr /> 
+		<label ><input type="checkbox" name="" id="" value="威少" v-model="arr" />威少</label>
+		<label ><input type="checkbox" name="" id="" value="库里" v-model="arr" />库里</label>
+		<label ><input type="checkbox" name="" id="" value="詹姆斯" v-model="arr" />詹姆斯</label>
+		<p>你选择了{{arr}}</p>
+		
+		<input type="text" v-model="bb"/>
+		<p>{{bb}}</p>
+		</div>
+		
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      //操作input必须使用 v-model作为input绑定数据的必须指令,他直接接收以及反馈给vue实例数据,v-model为双向绑定的指令
+
+var app = new Vue({
+	el:'#app',
+	data:{
+		aa:'',
+		sex:1,
+		arr:[],
+		bb:"",
+	},
+	methods:{
+     
+	}
+});
+</script>
+</html>

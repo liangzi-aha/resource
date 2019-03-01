@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>判断鼠标滚轮的方向</title>
+        <style type="text/css">
+            #div1 {
+                width: 500px;
+                height: 500px;
+                background-color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+        <script type="text/javascript">
+            div1.onmousewheel = function(e) {
+                var even = e || event;
+                if(even.wheelDelta < 0) {
+                    console.log("上");
+                } else {
+                    console.log("下");
+                }
+            }
+            
+            //火狐浏览器不支持onmousewheel事件, 其有自己的滚轮事件.如果要兼容火狐, 需要采用的是事件监听的方式, 事件类型是DOMMouseScroll, 判断滚轮方向的属性是detail, 值表示的方向与onmousewheel完全相反.
+            div1.addEventListener("DOMMouseScroll", function(e){
+                var even = e || event;
+                if(even.detail > 0) {
+                    console.log("上");
+                } else {
+                    console.log("下");
+                }
+            }, false);
+        </script>
+    </body>
+
+</html>

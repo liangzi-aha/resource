@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动造成的问题2</title>
+	<style type="text/css">
+	#box{
+		width: 400px;
+		margin: 100px auto;
+		border: solid red;
+		overflow:hidden;
+	}
+	#div1{
+		width: 200px;
+		height: 200px;
+		background-color:yellow;
+		float: left;
+
+	}
+	#div2{
+		width: 200px;
+		height: 200px;
+		background-color:blue;
+		float: left;
+	}
+	/*#div3{
+		clear:both;
+	}*/
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<!-- <div id="div3"></div> -->
+	</div>
+	<!-- 
+	如果父级不设置高度,且其内部的所有元素都浮动,则父级无法再由其内部的内容撑出高度,高度为0,该现象被称作"内容塌陷"
+
+	解决办法:
+	1.人为给父级设置高度
+	2.在所有浮动元素的下面加一个空元素并设置clear:both,空元素的类型不能是行元素.
+	3.给父级加overflow:hidden
+	overflow: hidden;  /*防止内容超出容器或者产生自动换行 溢出隐藏 overflower:hidden来清除浮动带来的影响*/
+	 -->
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>选字游戏</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            ul {
+                list-style: none;
+            }
+            
+            #wrap {
+                width: 400px;
+                height: 550px;
+                border: 3px solid black;
+                margin: 20px auto 0;
+                position: relative;
+            }
+            
+            #time {
+                font-size: 30px;
+                float: left;
+            }
+            
+            #count {
+                font-size: 30px;
+                float: right;
+            }
+            
+            #question {
+                clear: both;
+                font-size: 300px;
+                text-align: center;
+            }
+            
+            #answer {
+                margin-top: 30px;
+                display: flex;
+                justify-content: space-around;
+                font-size: 40px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="wrap">
+            <!--剩余时间-->
+            <div id="time">剩余时间:0</div>
+            <!--答对个数-->
+            <div id="count">答对个数:0</div>
+            <!--大字-->
+            <div id="question">字</div>
+            <!--小字-->
+            <ul id="answer">
+                <li>红</li>
+                <li>黄</li>
+                <li>蓝</li>
+                <li>绿</li>
+                <li>紫</li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            //时间
+            var timeDiv = document.getElementById("time");
+            //个数
+            var countDiv = document.getElementById("count");
+            //大字
+            var qDiv = document.getElementById("question");
+            //小字
+            var aLis = document.querySelectorAll("ul li");
+
+            //随机数函数
+            function randomNumber(x, y) {
+                return Math.floor(Math.random() * (y - x + 1) + x);
+            }
+
+            //声明一个文字数组
+            var fontArr = ["红", "黄", "蓝", "绿", "紫"];
+            //声明一个颜色数组
+            var colorArr = ["red", "yellow", "blue", "green", "purple"];
+            //声明一个变量存储大字颜色对应的汉字
+            var answer = "";
+
+            //question的逻辑函数
+            function randomQ() {
+                qDiv.innerHTML = fontArr[randomNumber(0, 4)];
+                qDiv.style.color = colorArr[randomNumber(0, 4)];
+                //存储答案
+                switch(qDiv.style.color) {
+                    case "red":
+                        {
+                            answer = "红";
+                            break;
+                        }
+                    case "yellow":
+                        {
+                            answer = "黄";
+                            break;
+                        }
+                    case "blue":
+                        {
+                            answer = "蓝";
+                            break;
+                        }
+                    case "green":
+                        {
+                            answer = "绿";
+                            break;
+                        }
+                    case "purple":
+                        {
+                            answer = "紫";
+                            break;
+                        }
+                }
+            }
+            randomQ();
+            
+            
+            //打乱数组的函数
+            function randomArr(arr){
+                for (var i = 0; i < 5; i++) {
+                	   var n1 = randomNumber(0, 4);
+                	   var n2 = randomNumber(0, 4);
+                	   if (n1 != n2) {
+                	   	  var t = arr[n1];
+                	   	  arr[n1] = arr[n2];
+                	   	  arr[n2] = t;
+                	   }
+                }
+            }
+            
+            //answer的逻辑函数
+            function randomA() {
+                //打乱文字和颜色数组里值的顺序.
+               randomArr(fontArr);
+               randomArr(colorArr);
+               //赋值
+               for (var i = 0; i < 5; i++) {
+               	   aLis[i].innerHTML = fontArr[i];
+               	   aLis[i].style.color = colorArr[i];
+               }
+            }
+            randomA();
+            
+            var count = 0;
+            //给每一个li绑定点击事件
+            for (var i = 0; i < 5; i++) {
+            	   aLis[i].onclick = function(){
+            	       if (this.innerHTML == answer) { 
+            	          randomQ();
+            	       	  randomA();
+            	       	  count++;
+            	       	  countDiv.innerHTML = "答对个数:" + count;
+            	       }
+            	   }
+            }
+            
+            //倒计时功能
+            var time = 10;
+            var tNum = setInterval(function(){
+                timeDiv.innerHTML = "剩余时间:" + time;
+                if (time == 0) {
+                	   clearInterval(tNum);
+                	   alert("游戏结束");
+                }
+                time--;
+            }, 1000);
+            
+        </script>
+    </body>
+
+</html>

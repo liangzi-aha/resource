@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象02</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//字面量创建对象不适合大量创建对象.
+			//可以通过函数创建对象
+			
+			//声明一个函数,创建学生对象,属性:,年龄,性别; 方法:sayHi()
+			
+			function createStu(name,age,sex){
+				var newN = ""
+				if(sex == "男"){
+					newN = name + "先生";
+				}else{
+					newN = name + "女士";
+				}
+				var stu = {
+					name:newN,
+					age:age,
+					sex:sex,
+					sayHi:function(){
+						console.log("你好, 我叫" + this.name + ",今年" + this.age);
+					}
+				};
+				return stu;
+			}
+			var stu1 = createStu("张三",18,"男")
+			console.log(stu1)
+			stu1.sayHi()
+		</script>
+	</body>
+</html>

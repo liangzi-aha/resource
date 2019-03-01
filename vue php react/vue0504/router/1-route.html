@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单路由</title>
+	</head>
+	<body>
+		<div id="app">
+			<router-link to="/">首页</router-link>
+			<router-link to="/aa">aa页面</router-link>
+			<router-link to="/bb">bb页面</router-link>
+			<router-link to="/cont">cont页面</router-link>
+			
+			<router-view></router-view>
+			<router-view name="cont"></router-view>
+			<router-view name="foot"></router-view>
+		</div>
+	</body>
+</html>
+
+<template id="cont">
+	<div>
+		<p>锄禾日当午</p>
+		<p>举头望明月</p>
+		<p>黄河入海流</p>
+		<p>曲颈向天歌</p>
+	</div>
+</template>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/router.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+	vue 路由是用route-link组件进行跳转, 它有一个to属性,来指定路由去向, router-link渲染后就是一个a标签
+	路由的出口,也就是内容显示的位置,使用router-view展示
+	*/
+	var home ={
+		template:'<p>显示home内容</p>'
+	};
+	var aa ={
+		template:'<p>显示aa内容</p>'
+	};
+	var bb ={
+		template:'<p>显示bb内容</p>'
+	};
+	// 设置路由
+	var router = new VueRouter({
+		routes:[
+		    {
+			    path:'/',
+			    component:home
+		    },
+		     {
+			    path:'/aa',
+			    component:aa
+		     },
+		     {
+			    path:'/bb',
+			    //如果显示的view较多,需使用components
+			    components:{
+			     	cont: bb,
+			     	foot: aa,
+			     	default:home
+               }
+		     },
+		      {
+			    path:'/cont',
+			    component:{
+			      	template:'#cont'
+			    }
+		     },
+		]
+	});
+	var app = new Vue({
+		el:'#app',
+		data:{},
+		methods:{},
+		router:router,
+	})
+</script>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2D变化</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#div1{
+				width: 200px;
+				height: 200px;
+				background-color:red;
+				/*transform:translate(200px,200px);*/
+				/*transform:scaleX(0.2)*/ translate(200px,200px);
+			}
+			#div2{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				margin: 0 auto;
+				transform: skewX(45deg);
+			}
+			#box{
+				width: 500px;
+				height: 500px;
+				background:url(xy.jpg);
+				margin: 50px auto;
+				position: relative;
+				/*打开变换的3d立体效果*/
+				transform-style: preserve-3d;
+			}
+			#box img{
+				width: 200px;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+			}
+			#box>img:nth-child(1){
+				opacity: 0.5;
+			}
+			#box>img:nth-child(2){
+				transform:rotate(45deg) ;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			元素变换 transform
+			1.平移  translate
+			2.缩放 scale
+			3.倾斜 skew
+			4.旋转 rotate
+			
+			2D变化的参考位置的坐标系是平面坐标系(x轴和y轴)
+			
+			注意:
+				1.每个元素都有自己的坐标轴,对当前元素设置的任何transform值影响的是自己的坐标轴.
+				2.系统在读取transform得值时,是按照顺序依次读取,在读取的过程中,只要某个值影响了坐标轴,以后的所有的值得计算,都在被影响了的坐标轴下进行的.
+		-->
+		<!--
+			1.平移
+			translateX() x轴方向移动
+			translateY() y轴方向移动
+			translate(x,y) x轴,y轴都移动
+		-->
+		<!--
+			2.缩放
+			scaleX() x轴方向缩放
+			scaleY()	 y轴方向缩放
+			scale(x,y) x轴,y轴方向缩放
+			
+			填写的是缩放的倍数,没有单位
+			值可以填负值,效果坐标轴翻转
+		-->
+		<!--
+			3.倾斜 skew
+				skewX() 沿x轴倾斜
+				skewY() 沿y轴倾斜
+				skew(x,y)x轴,y轴都倾斜
+				填写单位 角度 deg
+				倾斜里的坐标与普通坐标轴不同,水平是Y轴,竖直是X轴
+				x轴正值 逆时针旋转;负值 顺时针旋转
+				y轴正值 顺时针旋转;负值 逆时针旋转
+		-->
+		<!--
+			4. 旋转 rotate
+			rotateX() 绕x轴旋转
+			rotateY() 绕y轴旋转
+			rotate() 绕z轴旋转
+			
+			X轴旋转,从左往右看,正值逆时针,负值顺时针 
+			Y轴旋转,从上往下看,正值逆时针,负值顺时针
+		-->
+		<!--<div id="div1"></div>
+		<div id="div2"></div>-->
+		<div id="box">
+			<img src="k.jpg" alt="" />
+			<img src="k.jpg" alt="" />
+		</div>
+	</body>
+</html>

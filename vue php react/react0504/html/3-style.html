@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--react.js是react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作的-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.aa{
+				border: 5px;
+				/*color: blue;*/
+				width: auto;
+				height: 200px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test">
+		</div>
+	</body>
+	<script type="text/babel">
+		var arr=[
+			<p>高曾祖</p>,
+			<p>父而身</p>,
+			<p>身而子</p>,
+			<p>子而孙</p>,
+		];
+//		外部添加样式，其实是声明一个包含样式的对象，然后在元素中直接引用这个对象，
+//		注意设置样式时，不添加单位，默认为px，如果要添加单位，则数字和单位必须使用引号
+		var style1={
+			color:'#0f0',
+			fontSize:30
+		}
+//		引入样式，使用style引入，因为声明的是js，所以使用style={}
+		ReactDOM.render(<div style={style1}>{arr}</div>,document.getElementById("test"))
+		
+		// 直接写在style中的样式,引入外部的class名,为了和原生做区分,使用驼峰的方式引入样式className='样式名'
+		ReactDOM.render(<div className="aa" style={{fontSize:30,color:'#f00',fontWeight:'bold'}}>{arr}</div>,document.getElementById('test'));
+	</script>
+</html>

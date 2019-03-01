@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>插槽</title>
+	</head>
+	<body>
+		<div id="app">
+			<chao>
+				<p>所守或匪亲</p>
+			</chao>
+			<slot-dom>
+				<h1 slot="header">这就是头部</h1>
+				<p slot="foot">这就是尾部</p>
+				<div>
+					<p>贞子</p>
+					<p>咒怨</p>
+					<p>死神来了</p>
+				</div>
+			</slot-dom>
+		</div>
+	</body>
+</html>
+<!--slot可以引用组件包含的内容, 也就是把组件内部的内容插入到slot标签内部, 可以在slot标签内部添加内容,如果组件中没有内容, 就显示slot标签内容
+	
+	如果想指定插槽内容,则可以使用name属性
+-->
+
+
+<template id="cc">
+	<div>
+		<h2>将进酒</h2>
+		<slot>这就是slot内容</slot>
+	</div>	
+</template>
+<template id="dd">
+	<div>
+		<slot name="header">没有添加头部</slot>
+		<slot>这就是slot内容</slot>
+		<slot name="foot">没有添加尾部</slot>
+	</div>	
+</template>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el:'#app',
+		data:{},
+		methods:{},
+		components:{
+		     chao:{
+		     	template:'#cc'
+		     },
+		     'slot-dom':{
+		     	template:'#dd'		 
+		     },
+		}
+	});
+	
+</script>

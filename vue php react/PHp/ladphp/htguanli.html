@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>后台管理系统</title>
+		<style type="text/css">
+			tr{
+				text-align: center;
+			}
+		</style>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+ 
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+ 
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+	</head>
+	<body>
+		<button id="table_id_example_button">获取选中的行</button>
+		<table id="example" class="hover" style="width:100%">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>商品ID</th>
+					<th>价格</th>
+					<th>邮费</th>
+					<th>地区</th>
+					<th>商品介绍</th>
+					<th>关税</th>
+					<th>商品数量</th>
+					<th>商品图片路径</th>
+					<th>商品类型</th>
+					
+				</tr>
+			</thead>
+			 <tbody>	
+			 </tbody>
+			<tfoot>
+				<tr>
+					<th>商品名称</th>
+					<th>商品ID</th>
+					<th>价格</th>
+					<th>邮费</th>
+					<th>地区</th>
+					<th>商品介绍</th>
+					<th>关税</th>
+					<th>商品数量</th>
+					<th>商品图片路径</th>
+					<th>商品类型</th>
+				</tr>
+			</tfoot>
+		</table>
+		<h2>添加新商品</h2>
+		<div id="box">
+			<span>商品名称</span><input type="text" name="" id="" value="" />
+			<span>价格</span><input type="number" name="" id="" value="" />
+			<span>邮费</span><input type="number" name="" id="" value="" />
+			<span>地区</span><input type="text" name="" id="" value="" />
+			<span>商品介绍</span><input type="text" name="" id="" value="" />
+			<span>关税</span><input type="number" name="" id="" value="" />
+			<span>商品数量</span><input type="number" name="" id="" value="" />
+			<span>商品图片路径</span><input type="text" name="" id="" value="" />
+			<span>商品类型</span><input type="number" name="" id="" value="" /><br />
+			<button>提交添加</button>
+		</div>
+		<div id="box2">
+			<span>商品名称</span><input type="text" name="" id="" value="" />
+			<span>商品ID</span><input type="number" name="" id="" value="" disabled="disabled" />
+			<span>价格</span><input type="number" name="" id="" value="" />
+			<span>邮费</span><input type="number" name="" id="" value="" />
+			<span>地区</span><input type="text" name="" id="" value="" />
+			<span>商品介绍</span><input type="text" name="" id="" value="" />
+			<span>关税</span><input type="number" name="" id="" value="" />
+			<span>商品数量</span><input type="number" name="" id="" value="" />
+			<span>商品图片路径</span><input type="text" name="" id="" value="" />
+			<span>商品类型</span><input type="number" name="" id="" value="" /><br />
+			<button>提交修改</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+$.get('aldshangpin.php',function(data){
+					console.log(data)
+				});
+
+ 
+//  $(function  () {
+//          	 $("button").eq(1).click(function  () {
+//          	 	console.log(111)
+//          	 	$.ajax({
+//          	 		type:"get",
+//          	 		url:"tainjia.php",
+//          	 		data:{
+//          	 			//传输的数据
+//          	 			name: $('#box input').eq(0).val(),
+//                      jg: $('#box input').eq(1).val(),
+//                      yf:$('#box input').eq(2).val(),
+//                      dq: $('#box input').eq(3).val(),
+//                     spxq: $('#box input').eq(4).val(),
+//                      gs:$('#box input').eq(5).val(),
+//                      num: $('#box input').eq(6).val(),
+//                      src1:$('#box input').eq(7).val(),
+//                      type: $('#box input').eq(8).val(),
+//                     
+//          	 		},
+//          	 		async:true,//是否异步
+//          	 		//请求成功的函数
+//          	 		success:function  (data) {
+//          	 			console.log(data);
+//                       location.reload()
+//          	 		}
+//          	 		
+//          	 	});
+//          	 })
+//          	 //修改数据
+//          	  $("button").eq(2).click(function  () {
+//          	 	console.log(111)
+//          	 	$.ajax({
+//          	 		type:"get",
+//          	 		url:"xiugai.php",
+//          	 		data:{
+//          	 			//传输的数据
+//          	 			name: $('#box2 input').eq(0).val(),
+//                      id:$('#box2 input').eq(1).val(),
+//                      jg: $('#box2 input').eq(2).val(),
+//                      yf:$('#box2 input').eq(3).val(),
+//                      dq: $('#box2 input').eq(4).val(),
+//                     spxq: $('#box2 input').eq(5).val(),
+//                      gs:$('#box2 input').eq(6).val(),
+//                      num: $('#box2 input').eq(7).val(),
+//                      src1:$('#box2 input').eq(8).val(),
+//                      type: $('#box2 input').eq(9).val(),
+//                     
+//          	 		},
+//          	 		async:true,//是否异步
+//          	 		//请求成功的函数
+//          	 		success:function  (data) {
+//          	 			console.log(data);
+//                       location.reload() 
+//          	 		}
+//          	 		
+//          	 	});
+//          	 })
+// })
+// 
+// var table=$('#example').DataTable( {
+//  ajax: {
+//      url: 'aldshangpin.php',
+//      dataSrc: ''
+//  },
+//  columns: [
+//          { data: 'name' },
+//          { data: 'id' },
+//          { data: 'jg' },
+//          { data: 'yf' },
+//          { data: 'dq' },
+//          { data: 'spxq' },
+//          { data: 'gs' },
+//          { data: 'num' },
+//          { data: 'src1' },
+//          { data: 'type' }
+//      ]
+//} );
+////给行绑定选中事件
+//       $('#example tbody').on( 'click', 'tr', function () {
+//          if ($(this).hasClass('selected')) {
+//              $(this).removeClass('selected');
+//          }
+//          else {
+//              table.$('tr.selected').removeClass('selected');
+//              $(this).addClass('selected');
+//          }
+//      } );
+//      //给按钮绑定点击事件
+//      $("#table_id_example_button").click(function () {
+//          var column1 = table.row('.selected').data().name;
+//          var column2 = table.row('.selected').data().id;
+//           var column3 = table.row('.selected').data().jg;
+//          var column4 = table.row('.selected').data().yf;
+//           var column5 = table.row('.selected').data().dq;
+//           var column7 = table.row('.selected').data().spxq;
+//          var column8 = table.row('.selected').data().gs;
+//           var column13 = table.row('.selected').data().num;
+//          var column14 = table.row('.selected').data().src1;
+//           var column15 = table.row('.selected').data().type;
+//          
+//          
+//          $('#box2 input').eq(0).val(column1);
+//           $('#box2 input').eq(1).val(column2);
+//           $('#box2 input').eq(2).val(column3);
+//       $('#box2 input').eq(3).val(column4);
+//        $('#box2 input').eq(4).val(column5);
+//      $('#box2 input').eq(5).val(column7);
+//      $('#box2 input').eq(6).val(column8);
+//           $('#box2 input').eq(7).val(column13);
+//           $('#box2 input').eq(8).val(column14);
+//           $('#box2 input').eq(9).val(column15);
+// 
+//      });
+</script>

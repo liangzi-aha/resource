@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas11_渐变</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.渐变
+			/*
+			 * 1.线性渐变 createLinearGradient()
+			 * 2.放射渐变 createRadialGradient()
+			 * 
+			 * 以上两个方法都有返回值,返回值是一个canvasGrandient对象,我们先回去给对象,然后通过该对象的addColorstop()方法进一步处理渐变效果.
+			 * 
+			 * fillstyle 和 strokeStyle都可以接收一个渐变对象来实现图像的渐变效果.
+			 */
+			
+			/*
+			 * 线性渐变 createLinearGradient(x0,y0,x1,y1);
+			 * x0,y0: 渐变的起点
+			 * x1,y1: 渐变的终点
+			 */
+			var gObj = content.createLinearGradient(100,100,300,300)
+			//设置对象的渐变颜色
+			/*
+			 * addColorstop(offset,color)
+			 * offset: 颜色的偏移值 (0表示起点,1表示终点)
+			 * color: 渐变的颜色
+			 */
+			gObj.addColorStop(0,"red");
+			gObj.addColorStop(0.25,"yellow");
+			gObj.addColorStop(0.5,"blue");
+			gObj.addColorStop(0.75,"green");
+			gObj.addColorStop(1,"cyan");
+			content.fillStyle = gObj;
+			content.fillRect(100,100,200,200);
+//			
+//			content.font = "italic 50px 宋体"
+//			content.fillText("hello,world!",100,100)
+			
+			//清除画布
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//放射渐变
+			/*
+			 * createRadialGradient()
+			 * x0,y0,r0 :确定第一个圆
+			 * x1,y1,r1 :确定第二个圆
+			 */
+			var rObj = content.createRadialGradient(500, 250, 50, 500, 250, 100);
+			rObj.addColorStop(0,"red");
+			rObj.addColorStop(0.25,"yellow");
+			rObj.addColorStop(0.5,"blue");
+			rObj.addColorStop(0.75,"green");
+			rObj.addColorStop(1,"cyan");
+			content.fillStyle = rObj;
+			content.fillRect(0,0,canvas.width, canvas.height)
+			//设置渐变的颜色
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>生命周期</title>
+		<!--react.js是react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作的-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/babel">
+		/*
+     组件的生命周期:
+     1.初始化
+         1.getDefaultProps:设置默认属性
+         2.getInitialState:设置初始的状态
+         3.componentWillMount:组件即将被装载
+         4.render 渲染
+         5.componentDidMount:组件已经被装载，只会在第一个组件装载完成的时候触发
+     2.运行中
+         1.componentWillReceiveProps:在组件将要接收到属性的时候，接收属性前
+         2.shouldComponentUpdate:在接收到新的props或者state，将要渲染之前调用
+         3.componentWillUpdate:render触发之前，更新
+         4.render 渲染
+         5.componentDidUpdate:在渲染完成之后触发
+     3.销毁
+        1.componentWillUnmount:在组件从dom中移除的时候立刻被调用
+     */
+    
+    var Com = React.createClass({
+    		componentDidMount(){
+    			console.log(5555)
+    		},
+    		render(){
+    			console.log(4444)
+    			return <p>古来圣贤皆寂寞</p>
+    		},
+    		componentWillMount(){
+    			console.log(3333)
+    		}
+    });
+    //渲染  React:相应  render:使得
+    ReactDOM.render(<Com />,document.getElementById('test'));
+	</script>
+</html>

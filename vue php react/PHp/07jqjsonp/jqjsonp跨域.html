@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jq解决跨域</title>
+	</head>
+	<body>
+		<p id="msg"></p>
+		<button id="btn">点击</button>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	/*
+	jq中解决问题,同样使用$.Ajax()
+	$.ajax({
+		type:"get",
+		url:"",
+		data:,
+		async:true  //async是否异步,默认true,异步
+		datatype:json/xml/jsonp(数据类型)
+		jsonp: 要执行的函数键名,类似(cd=aa之中的cd),如果不写该属性,则默认为callback,
+		jsonpCallblack:要执行的函数实体(回调函数的名字),
+		success:成功回调函数
+	});
+	*/
+	$('#btn').click(function(){
+		$.ajax({
+			type:"get",
+			url:"http://127.0.0.1/PHP/jsonp.php",
+			async:true,
+			data:{name:'朱元璋',age:'70'},
+			dataType:'jsonp',
+			jsonpCallback:'aa',
+			success:function(data){
+				$('#msg').text(data+1);
+				console.log(1)
+			}
+		});
+	})
+	
+	function aa(str){
+		console.log(0)
+		$('#msg').text(str);
+	}
+	
+	//jsonpCallback 和 success都执行,并且jsonpCallback先执行
+	//也就是说可以直接写success,省略jsonpCallback
+</script>

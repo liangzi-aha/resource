@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 随机数
+			 * Math.random() 产生一个[0,1)的随机小数.
+			 * Math.random() * n 产生一个[0,n)的随机小数.
+			 * 
+			 * 
+			 * 向下取整(直接舍去小数部分)math.floor(小数)
+			 * 
+			 * Math.floor(Math.random()*n),产生一个[0,n)的随机整数
+			 * Math.floor(Math.random()*n+1),产生一个[0,n]的随机整数
+			 * Math.floor(Math.random()*(n-m+1)+m),产生一个[m,n]的随机整数
+			 */
+			console.log(Math.random());
+			console.log(Math.random()*10);
+			console.log(Math.floor(Math.random()*20));
+			
+			//[50,150]整数		
+			var num = Math.floor(Math.random()*(150-50+1)+50);
+			console.log(num);
+		</script>
+	</body>
+</html>

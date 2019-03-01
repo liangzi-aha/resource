@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过滤器</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{'12'|money('¥',2)}}</p>
+			<p>{{'慈禧太后'|filterStr}}</p>
+			<p>{{'15638744865'|filterNum}}</p>
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+// 过滤器, 创建的方法是 filter(过滤器的名字,过滤器操作函数)
+
+// 全局过滤器 参数,arg是可选的,可以写很多个,也可以不写
+Vue.filter('money',function(val,arg,arg2){
+	console.log(val,arg,arg2);
+	//返回过滤之后的内容
+	return arg+(Number(val).toFixed(arg2));
+});
+
+	var app = new Vue({
+	el:"#app",
+	data:{},
+	methods:{},
+	filters:{
+		filterStr(val){
+			return val + '可怜天下父母心';
+		},
+		filterNum(val){
+				var num = '';
+				for(var i=0;i<val.length;i++){
+					num+= i>=3&&i<=6?'*':val[i];
+				}
+//			 var val = val.split('');			    
+//			
+//			
+// 		 return val.splice(1, 3,"*"); ;
+				return num;
+			}
+	    },
+		
+});	
+</script>

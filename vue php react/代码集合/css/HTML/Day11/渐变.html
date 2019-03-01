@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>渐变</title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background:-webkit-linear-gradient(red,yellow,green);
+			}
+			#div2{
+				width: 200px;
+				height: 200px;
+				/*background: -webkit-linear-gradient(top left,red,yellow,blue);*/
+				background: -webkit-linear-gradient(left,red 20%, yellow 20%,yellow 40%,green 40%,green 60%,red 60%,red 80%,blue 80%);
+			}
+			#div3{
+				width: 300px;
+				height: 300px;
+				background: radial-gradient(200px 100px ellipse at center center,red 20%,yellow 50%,blue 80%);
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href=""/>
+	</head>
+	<body>
+		<!--
+			渐变效果
+			1.线性渐变
+			2.径向渐变
+			
+			渐变是对一个元素的背景图片做设置.
+			
+			渐变至少有两种颜色参与.
+			
+			渐变是一个值,不是样式.
+		-->
+		<!--
+			线性渐变
+			写法1:
+			-webkit-linear-gradient(颜色1,颜色2,.....);
+			默认的渐变方式是从上至下.
+			默认的颜色所占的区域相同.
+			
+			写法二:
+			-webkit-linear-gradient(渐变开始的方向,颜色1,颜色2,.....);
+			
+			简便的开始方式:
+			left right top bottom
+			
+			写法三:
+			-webkit-linear-gradient(渐变开始的方向,颜色1 百分比, 颜色2 百分比,......)
+		-->
+		<div id="div1"></div>
+		<div id="div2"></div>
+		
+		<!--
+			径向渐变
+			呈圆形的渐变方式
+			radial-gradient(半径 形状 at 圆心,颜色1 百分比,颜色2,百分比,...)
+			半径:
+				1.直接用px数值
+				2.使用边或者角的位置表示半径:
+					最远边:farthest-side
+					最近边:closest-side
+					最远角:farthest-corner
+					最近角:closest-corner
+			形状:
+				1.圆形:circle
+				2.椭圆:ellipse(如果要实现椭圆效果,需要提供两条半径)
+			圆心:
+				1.px数值,第一个表示x方向,第二个表示y方向
+				2.使用方位单词:
+				left right top bottom center
+				
+				注意:如果圆心的位置设置在了某条边上,不允许设置半径为最近边;如果圆心的位置设置在了某个角上,不允许设置最近角,如果设置,半径为0,没有效果.
+		-->
+		<div id="div3"></div>
+	</body>
+</html>

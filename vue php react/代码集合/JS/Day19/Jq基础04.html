@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ基础04</title>
+	</head>
+	<body>
+		<img src="../../css/HTML/Day03/2.jpg" alt="" />
+		<a href="http://www.baidu.com" alt="" aaa="123">点击跳转</a>
+		<input type="checkbox" checked/>
+		<script src="jquery-2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 * jq对元素属性的操作
+			 * 1.设置属性
+			 * 2.修改属性
+			 * 3.获取属性
+			 * 4.删除属性
+			 */
+			
+			/*
+			 * 1.attr()
+			 * 	设置属性
+			 * attr("属性名","属性值");
+			 * attr({
+			 * 		属性名1:"属性值1",
+			 * 		属性名2:"属性值2",
+			 * 		...
+			 * })
+			 * 	
+			 */
+//			$("img:first").attr("src","../Day08/img/1.png");
+//			$("img:first").attr({
+//				src:"../Day08/img/1.png",
+//				slt:"gir1"
+//			})
+//			console.log($("img:frist").attr("src"));
+			
+			//2.removeAttr("属性值");
+			//$("img:frist").removeAttr("alt");
+			
+			//自定义属性,自己写的属性
+			//3.prop()
+			//4.removeprop()
+			//console.log($("a").attr("href"))
+			//console.log($("a").prop("href"))
+			
+			//console.log($("a").attr("aaa"))
+			//console.log($("a").prop("aaa"))
+			
+			/*
+			 * attr和prop的区别:
+			 * attr() 建议操作自定义属性
+			 * prop() 建议操作系统属性
+			 * 
+			 * 属性名和属性值相同的属性,使用prop
+			 */
+//			console.log($("input").attr("checked"))
+			console.log($("input").prop("checked"))
+		</script>
+	</body>
+</html>

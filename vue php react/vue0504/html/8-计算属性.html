@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{str}}</p>
+			<template v-for="i in count"><span>{{i}}</span>&nbsp;</template>
+			<hr />
+			<template v-for="i in counts"><span>{{i}}</span>&nbsp;</template>
+			<p>{{txt}}</p>
+			
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    /*
+     * 在vue中,用差值表达式{{}}来绑定简单数据,展示在dom中比较便利,但{{}}不能处理比较大或者比较复杂的数据,并且某些复杂数据写在了{{}}中,不利于大面积维护,因此处理此类数据将使用计算属性computed
+     */
+
+	var app = new Vue({
+		el:"#app",
+		data:{
+			str:'青龙白虎',
+			count:[1,2,3,4,5,6,7,8,9,10],
+		},
+		methods:{},
+		// 计算属性
+		computed:{
+		    counts(){
+		  // filter 过滤,循环过滤数组内部的数据,根据所设置的规则,返回一个新数组
+		  return this.count.filter(function(n){
+		  	// 回调函数内部的参数指每一个循环的数组元素
+		         	return n%2==0;
+		             });
+		       },
+		       // 实质上每个计算属性都有一个get和set方法,默认为get方法,如上例,
+		     txt:{
+		     	//设置get方法
+		     	get(){
+		     		return this.str+'朱雀玄武';
+		     	},
+		     	set(val){
+		     		console.log(val);
+		     		this.str=val;
+		     	},
+		     }
+		     
+		}
+		
+	})
+	// 在外部设置数据
+	app.txt = '甲乙丙丁';
+	
+	/*优点:
+	 * 1. 在数据没有发生变化时优先读取的是缓存数据, 在computed操作数据时,会把数据放到缓存的dom中, 如果数据不变化,则会优先读取computed数据
+	 * 2. 本身是函数的实体,可以灵活设置,并且还有get和set方法,也可按照项目需求进行编写
+	 * 
+	 */
+	
+</script>

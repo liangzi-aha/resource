@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			tr {
+				text-align: center;
+			}
+			
+			#hzhbox {
+				width: 1700px;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			#hzhtitle {
+				width: 1700px;
+				height: 100px;
+				color: white;
+				background-color: rgb(46, 62, 78);
+				text-align: center;
+				line-height: 100px;
+				font-size: 36px;
+			}
+			
+			#hzhul1 {
+				width: 120px;
+				height: 800px;
+				background-color: rgb(75, 94, 111);
+			}
+			
+			#hzhul1>li {
+				width: 118px;
+				height: 99px;
+				line-height: 100px;
+				border: solid 1px black;
+				text-align: center;
+				font-size: 25px;
+			}
+			
+			#hzhspgl {
+				width: 1580px;
+				height: 800px;
+				position: absolute;
+				left: 120px;
+				top: 100px;
+			}
+			
+			#hzhgrxx {
+				width: 1580px;
+				height: 800px;
+				position: absolute;
+				left: 120px;
+				top: 100px;
+				display: none;
+			}
+		</style>
+
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
+		<!-- jQuery -->
+		<script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+		<!-- DataTables -->
+		<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+
+	</head>
+
+	<body>
+		<div id="hzhbox">
+			<div id="hzhtitle">
+				<h2>后台管理系统</h2>
+			</div>
+			<ul id="hzhul1">
+				<li id="hzhli1">商品管理</li>
+				<li id="hzhli2">个人信息</li>
+				<li>XXXX</li>
+				<li>XXXX</li>
+				<li>XXXX</li>
+				<li>XXXX</li>
+			</ul>
+
+			<div id="hzhspgl">
+				<button id="table_id_example_button">获取选中的行</button>
+				<table id="example" class="hover" style="width:100%">
+					<thead>
+						<tr>
+							<th>商品名称</th>
+							<th>ID</th>
+							<th>原价</th>
+							<th>现价</th>
+							<th>商品介绍</th>
+							<th>分类</th>
+							<th>产地</th>
+							<th>图片路径</th>
+							<!--<th>商品数量</th>-->
+							<!--<th>商品类型</th>-->
+
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<br />
+				<h2>添加新商品</h2>
+				<div id="spglbox1">
+					<span>商品名称</span><input type="text" name="" id="" value="" />
+					<span>原价</span><input type="number" name="" id="" value="" />
+					<span>现价</span><input type="number" name="" id="" value="" />
+					<span>简介</span><input type="text" name="" id="" value="" />
+					<span>分类</span><input type="text" name="" id="" value="" />
+					<span>产地</span><input type="text" name="" id="" value="" />
+					<span>图片路径</span><input type="text" name="" id="" value="" />
+					<!--<span>商品数量</span><input type="number" name="" id="" value="" />-->
+					<!--<span>商品图片路径</span><input type="text" name="" id="" value="" />-->
+
+					<button onclick="add()">提交添加</button>
+				</div>
+				<br />
+				<h2>修改商品信息</h2>
+				<div id="spglbox2">
+					<span>商品名称</span><input type="text" name="" id="" value="" />
+					<span>ID</span><input type="number" name="" id="" value="" disabled="disabled" />
+					<span>原价</span><input type="number" name="" id="" value="" />
+					<span>现价</span><input type="number" name="" id="" value="" />
+					<span>简介</span><input type="text" name="" id="" value="" />
+					<span>分类</span><input type="text" name="" id="" value="" />
+					<span>产地</span><input type="text" name="" id="" value="" />
+					<span>图片路径</span><input type="text" name="" id="" value="" />
+					<!--<span>商品数量</span><input type="number" name="" id="" value="" />-->
+					<!--<span>商品类型</span><input type="number" name="" id="" value="" /><br />-->
+					<button onclick="xiugai()">提交修改</button>
+				</div>
+			</div>
+
+			<!-- 个人信息-->
+			<div id="hzhgrxx">
+				<button id="table_id_example_button2">获取选中的行</button>
+				<table id="example2" class="hover" style="width:100%">
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>ID</th>
+							<th>手机号</th>
+							<th>密码</th>
+							<th>地址</th>
+							<th>积分</th>
+							<!--<th>产地</th>-->
+							<!--<th>商品数量</th>-->
+							<!--<th>商品图片路径</th>-->
+							<!--<th>商品类型</th>-->
+
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<h2>添加新信息</h2>
+				<div id="grxxbox1">
+					<span>姓名</span><input type="text" name="" id="" value="" />
+					<span>手机号</span><input type="text" name="" id="" value="" />
+					<span>密码</span><input type="text" name="" id="" value="" />
+					<span>地址</span><input type="text" name="" id="" value="" />
+					<span>积分</span><input type="text" name="" id="" value="" />
+					<!--<span>产地</span><input type="text" name="" id="" value="" />-->
+					<!--<span>商品数量</span><input type="number" name="" id="" value="" />-->
+					<!--<span>商品图片路径</span><input type="text" name="" id="" value="" />-->
+					<!--<span>商品类型</span><input type="number" name="" id="" value="" /><br />-->
+					<button onclick="add2()">提交添加</button>
+				</div>
+				<div id="grxxbox2">
+					<span>姓名</span><input type="text" name="" id="" value="" />
+					<span>ID</span><input type="number" name="" id="" value="" disabled="disabled" />
+					<span>手机号</span><input type="text" name="" id="" value="" />
+					<span>密码</span><input type="text" name="" id="" value="" />
+					<span>地址</span><input type="text" name="" id="" value="" />
+					<span>积分</span><input type="text" name="" id="" value="" />
+					<!--<span>产地</span><input type="text" name="" id="" value="" />-->
+					<!--<span>商品数量</span><input type="number" name="" id="" value="" />-->
+					<!--<span>商品图片路径</span><input type="text" name="" id="" value="" />-->
+					<!--<span>商品类型</span><input type="number" name="" id="" value="" /><br />-->
+					<button onclick="xiugai2()">提交修改</button>
+				</div>
+			</div>
+
+		</div>
+
+		</div>
+
+	</body>
+
+</html>
+<script type="text/javascript">
+	function add() {
+		$.ajax({
+			type: "get",
+			url: "add.php",
+			data: {
+				//传输的数据
+				name: $('#spglbox1 input').eq(0).val(),
+				yj: $('#spglbox1 input').eq(1).val(),
+				xj: $('#spglbox1 input').eq(2).val(),
+				jj: $('#spglbox1 input').eq(3).val(),
+				fl: $('#spglbox1 input').eq(4).val(),
+				cd: $('#spglbox1 input').eq(5).val(),
+				src: $('#spglbox1 input').eq(6).val(),
+			},
+			async: true, //是否异步
+			//请求成功的函数
+			success: function(data) {
+				console.log(data);
+			}
+		});
+		location.reload();
+	}
+	//修改数据
+	function xiugai() {
+		$.ajax({
+			type: "get",
+			url: "xiugai.php",
+			data: {
+				//传输的数据
+				name: $('#spglbox2 input').eq(0).val(),
+				id: $('#spglbox2 input').eq(1).val(),
+				yj: $('#spglbox2 input').eq(2).val(),
+				xj: $('#spglbox2 input').eq(3).val(),
+				jj: $('#spglbox2 input').eq(4).val(),
+				fl: $('#spglbox2 input').eq(5).val(),
+				cd: $('#spglbox2 input').eq(6).val(),
+				src: $('#spglbox2 input').eq(7).val(),
+			},
+			async: true, //是否异步
+			//请求成功的函数
+			success: function(data) {
+				//console.log(data);   
+			}
+		});
+		location.reload();
+	}
+	var table = $('#example').DataTable({
+		ajax: {
+			url: 'hzhxqwsp.php',
+			dataSrc: ''
+		},
+		columns: [{
+				data: 'name'
+			}, {
+				data: 'id'
+			}, {
+				data: 'yj'
+			}, {
+				data: 'xj'
+			}, {
+				data: 'jj'
+			}, {
+				data: 'fl'
+			}, {
+				data: 'cd'
+			}, {
+				data: 'src'
+			},
+		]
+	});
+	//给行绑定选中事件
+	$('#example tbody').on('click', 'tr', function() {
+		if ($(this).hasClass('selected')) {
+			$(this).removeClass('selected');
+		} else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+	//给按钮绑定点击事件
+	$("#table_id_example_button").click(function() {
+		var column1 = table.row('.selected').data().name;
+		var column2 = table.row('.selected').data().id;
+		var column3 = table.row('.selected').data().yj;
+		var column4 = table.row('.selected').data().xj;
+		var column5 = table.row('.selected').data().jj;
+		var column6 = table.row('.selected').data().fl;
+		var column7 = table.row('.selected').data().cd;
+		var column8 = table.row('.selected').data().src;
+		$('#spglbox2 input').eq(0).val(column1);
+		$('#spglbox2 input').eq(1).val(column2);
+		$('#spglbox2 input').eq(2).val(column3);
+		$('#spglbox2 input').eq(3).val(column4);
+		$('#spglbox2 input').eq(4).val(column5);
+		$('#spglbox2 input').eq(5).val(column6);
+		$('#spglbox2 input').eq(6).val(column7);
+		$('#spglbox2 input').eq(7).val(column8);
+	});
+	// 个人信息
+	function add2() {
+		$.ajax({
+			type: "get",
+			url: "add2.php",
+			data: {
+				//传输的数据
+				name: $('#grxxbox1 input').eq(0).val(),
+				phone: $('#grxxbox1 input').eq(1).val(),
+				mm: $('#grxxbox1 input').eq(2).val(),
+				dz: $('#grxxbox1 input').eq(3).val(),
+				jf: $('#grxxbox1 input').eq(4).val(),
+			},
+			async: true, //是否异步
+			//请求成功的函数
+			success: function(data) {
+				console.log(data);
+			}
+		});
+		location.reload();
+	}
+	//修改数据
+	function xiugai2() {
+		$.ajax({
+			type: "get",
+			url: "xiugai2.php",
+			data: {
+				//传输的数据
+				name: $('#grxxbox2 input').eq(0).val(),
+				id: $('#grxxbox2 input').eq(1).val(),
+				phone: $('#grxxbox2 input').eq(2).val(),
+				mm: $('#grxxbox2 input').eq(3).val(),
+				dz: $('#grxxbox2 input').eq(4).val(),
+				jf: $('#grxxbox2 input').eq(5).val(),
+			},
+			async: true, //是否异步
+			//请求成功的函数
+			success: function(data) {
+			}
+		});
+		location.reload();
+	}
+	var table2 = $('#example2').DataTable({
+		ajax: {
+			url: 'hzhxqwgrxx.php',
+			dataSrc: ''
+		},
+		columns: [{
+			data: 'name'
+		}, {
+			data: 'id'
+		}, {
+			data: 'phone'
+		}, {
+			data: 'mm'
+		}, {
+			data: 'dz'
+		}, {
+			data: 'jf'
+		}, ]
+	});
+	//给行绑定选中事件
+	$('#example2 tbody').on('click', 'tr', function() {
+		if ($(this).hasClass('selected')) {
+			$(this).removeClass('selected');
+		} else {
+			table2.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+	//给按钮绑定点击事件
+	$("#table_id_example_button2").click(function() {
+		var column1 = table2.row('.selected').data().name;
+		var column2 = table2.row('.selected').data().id;
+		var column3 = table2.row('.selected').data().phone;
+		var column4 = table2.row('.selected').data().mm;
+		var column5 = table2.row('.selected').data().dz;
+		var column7 = table2.row('.selected').data().jf;
+		$('#grxxbox2 input').eq(0).val(column1);
+		$('#grxxbox2 input').eq(1).val(column2);
+		$('#grxxbox2 input').eq(2).val(column3);
+		$('#grxxbox2 input').eq(3).val(column4);
+		$('#grxxbox2 input').eq(4).val(column5);
+		$('#grxxbox2 input').eq(5).val(column7);
+	});
+	$('#hzhli1').click(function() {
+		$('#hzhspgl').css({
+			display: "block"
+		});
+		$('#hzhgrxx').css({
+			display: "none"
+		});
+	});
+	$('#hzhli2').click(function() {
+		$('#hzhspgl').css({
+			display: "none"
+		});
+		$('#hzhgrxx').css({
+			display: "block"
+		});
+	})
+</script>
+
+</html>

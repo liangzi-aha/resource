@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>事件冒泡和事件捕获</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #div5 {
+                width: 500px;
+                height: 500px;
+                background-color: red;
+            }
+            
+            #div4 {
+                width: 400px;
+                height: 400px;
+                background-color: yellow;
+            }
+            
+            #div3 {
+                width: 300px;
+                height: 300px;
+                background-color: blue;
+            }
+            
+            #div2 {
+                width: 200px;
+                height: 200px;
+                background-color: green;
+            }
+            
+            #div1 {
+                width: 100px;
+                height: 100px;
+                background-color: purple;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div5">
+            <div id="div4">
+                <div id="div3">
+                    <div id="div2">
+                        <div id="div1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            /*
+             * 事件冒泡和事件捕获描述的都是事件的传播问题.
+             * JS里的事件是可以传递和互相影响的.
+             * 而事件冒泡和事件捕获描述的仅仅是当事件发生传播时, 传播的方向.
+             * 
+             * 事件冒泡: 这是js里默认的事件传播方向. 当某个节点上的事件被触发时, 该事件会沿着继承的DOM树,向根节点方向进行传播. 沿途只要有节点添加了相同的事件, 那么所有相同的事件都会被触发.
+             * 
+             * 事件捕获: 当某个节点上的事件被触发时, 该节点所属的DOM树里的根节点最先触发, 然后沿着DOM树向真正触发该事件节点的方向进行传播, 沿途只要有节点添加了相同的事件, 那么所有相同的事件都会被触发.
+             */
+            //          div5.onclick = function(){
+            //              alert("这是div5");
+            //          }
+            //          div4.onclick = function(){
+            //              alert("这是div4");
+            //          }
+            //          div3.onclick = function(){
+            //              alert("这是div3");
+            //          }
+            //          div2.onclick = function(){
+            //              alert("这是div2");
+            //          }
+            //          div1.onclick = function(){
+            //              alert("这是div1");
+            //          }
+
+            /*
+             * 事件监听的方式添加事件
+             * 语法:
+             * 元素.addEventListener("事件类型", function(){}, 是否设置传播方式为捕获: true/false);
+             */
+            var isCatch = false;
+            
+            div5.addEventListener("click", function(){
+                alert("这是div5");
+            }, isCatch);
+            
+            div4.addEventListener("click", function(){
+                alert("这是div4");
+            }, isCatch);
+            
+            div3.addEventListener("click", function(){
+                alert("这是div3");
+            }, isCatch);
+            
+            div2.addEventListener("click", function(){
+                alert("这是div2");
+            }, isCatch);
+            
+            div1.addEventListener("click", function(){
+                alert("这是div1");
+            }, isCatch);
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>属性传值</title>
+		<!--react.js是react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作的-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/babel">
+		var Fu = React.createClass({
+			render(){
+				return <div>
+					<Son mm={this.props.msg}/>
+					<p>千树万树梨花开</p>
+				</div>
+			}
+		});
+		var Son = React.createClass({
+			render(){
+				return <p>{this.props.mm}</p>
+			}
+		});
+		ReactDOM.render(<Fu msg='忽如一夜春风来'/>,document.getElementById('test'));
+		
+		// 操作标签内部的元素
+		// this.props.children 获取组件内部的内容
+		 var DomAct = React.createClass({
+		 	render(){
+		 		return <div>
+		 		{
+		 			this.props.children.map(function(item){
+		 				return item;
+		 			})
+		 		}
+		 		</div>
+		 	}
+		 })
+		 ReactDOM.render(<DomAct>
+		 	<p>高曾祖</p>
+			<p>父而身</p>
+			<p>身而子</p>
+			<p>子而孙</p>
+		 </DomAct>,document.getElementById('test'));
+	</script>
+</html>

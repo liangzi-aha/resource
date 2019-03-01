@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas10_获取图片像素信息</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.创建一个图片对象
+			var img = new Image()
+			img.src = "girl1.jpg"
+			img.onload = function(){
+				content.drawImage(this,1000,0,920,1080,0,0,460,500)
+			}
+			/*
+			 * 获取图像的像素信息
+			 * getImageDate(x,y,w,h)
+			 * x,y:要获取的区域的左上角的位置
+			 * w,h:要获取的区域的宽高
+			 * 
+			 * 返回值:
+			 * 一个imageDate对象
+			 * data:一个包含了对应区域里所有像素点的信息的数组,数组里每4个表示一个像素点的rgba信息
+			 * width:取值区域的宽
+			 * height:取值区域的高
+			 */
+			var imgData = content.getImageData(0,0,460,500)
+			console.log(imgData)
+			
+			
+			/*
+			 * createImageData(w,h);
+			 */
+			var newImageData = content.createImageData(200,200)
+			var pixelArray = newImageData.data;
+			
+			for(var i = 0;i < pixelArray.length/4;i++){
+				pixelArray[i*4] = Math.floor(Math.random()*256);
+				pixelArray[i*4+1] = Math.floor(Math.random()*256);
+				pixelArray[i*4+2] = Math.floor(Math.random()*256);
+				pixelArray[i*4+3] = 255;
+			}
+			/*
+			 * 将处理好的ImageData对象绘制到canvas画布上
+			 * putImageData
+			 * 写法一:
+			 * putImageData(imageData,x,y);
+			 * imageData:要绘制的图像对象
+			 * x,y:图像要绘制到canvas画布上的位置
+			 * 
+			 * 
+			 * 写法一:
+			 * putImageData(imageData,x,y,dx,dy,dw,dh);
+			 * imageData:要绘制的图像对象
+			 * x,y:图像要绘制到canvas画布上的位置
+			 * dx,dy:要截取的图像的位置
+			 * dw,dh:要截取图像的宽高
+			 */
+			content.putImageData(newImageData,500,200);
+		</script>
+	</body>
+</html>
+

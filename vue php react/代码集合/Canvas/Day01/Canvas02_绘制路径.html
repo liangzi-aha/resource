@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas02_绘制路径</title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			/*
+			 * canvas可以设置大小,如果不设置,默认大小300*150
+			 * 如果我们想要设置canvas标签的大小,建议使用以下方式:
+			 * 1.直接用canvas的width和 height属性设置大小
+			 * 2.通过js代码简介给width 和 height 属性设置大小
+			 * 注意:不要用css的方法设置宽高,该方法会容易导致绘制的图像变形.
+			 */
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.绘制图形
+			content.beginPath(); //开始路径
+			content.moveTo(100,100); //设置起点
+			content.lineTo(300,300); //设置下一个点
+			content.closePath(); //结束路径
+			content.stroke(); //绘制路径
+			
+			content.beginPath(); 
+			content.moveTo(400,0); 
+			content.lineTo(450,100); 
+			content.moveTo(450,100);
+			content.lineTo(500,100); 
+			content.closePath(); 
+			content.stroke();
+		</script>
+	</body>
+</html>

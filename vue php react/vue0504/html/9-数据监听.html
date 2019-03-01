@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>watch 数据监听</title>
+	</head>
+	<body>
+		<div id="app">
+			 <input type="text" v-model="val">
+			 	<p>{{val}}</p>
+			 	<p>{{str}}</p>
+			 <input type="text" v-model="str">
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			val:'',
+			str:'但得妖娆能举动'
+		},
+		methods:{},
+		computed:{},
+		
+		// 在数据变化时执行异步操作,用watch监听,函数名为监听的数据,如果 val 发生改变，这个函数就会运行, 第一个参数为新数据, 第二个参数为旧数据
+		
+		watch:{
+			val(newVal,oldVal){
+				console.log('新='+newVal);	
+				console.log('旧='+oldVal);
+			}
+		},
+	});
+	
+	  // 在实例化外部,也可以监听数据,使用 $watch方法,两个参数,第一个为要监听的数据,第二个为回调函数
+	  app.$watch('str',function(newVal,oldVal){
+	  	console.log('新='+newVal);	
+		console.log('旧='+oldVal);
+	  });
+</script>

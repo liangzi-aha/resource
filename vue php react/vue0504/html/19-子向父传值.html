@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"> 
+		<title>子向父传值</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{kk}}</p>
+			<!--$event指的是$emit第二个参数所传的值-->
+			<child  :tag="str" @change-name="cname($event)"></child>
+		</div>
+	</body>
+</html>
+
+<template id="child">
+	<div>
+	    <p>{{tag}}</p>
+	    <button @click="changeName()">点击子组件,传值给父组件</button>
+	    <button @click="useParent()">子组件调用父组件的方法</button>
+	</div>
+</template>
+
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  // this.$refs 获取所有携带ref属性的组件的集合, this.$refs.name 获取ref=name的元素的组件
+	var app = new Vue({
+		el:"#app",
+		data:{
+			str:'耶律休哥',
+			kk:'完颜宗旺',
+		},
+		methods:{
+			cname(name){
+				this.kk = name;			
+			},
+			show(){
+				alert('精忠岳飞');
+			}
+		},
+		components:{
+			child:{
+				template:'#child',
+				data(){
+					return {
+						mm:'李元昊'						
+					}
+				},
+                 props:['tag'],
+                 methods:{
+                 	changeName(){
+                 		// 使用$emit(事件名,所传的值),事件名不写成驼峰,可使用aa-bb形式命名事件
+                 		// $emit触发事件（子传父）
+                 		this.$emit('change-name',this.mm)
+                 	},
+                 	useParent(){
+                 		//  this.$parent     获取父组件
+                 		// this.$root        获取根实例
+                 		this.$parent.show();
+                 	}
+                 },
+			},	
+		 }
+	});	
+</script>

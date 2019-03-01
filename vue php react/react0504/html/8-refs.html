@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>refs</title>
+		<!--react.js是react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作的-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/babel">
+		//ref 是一个特殊的属性,他存储在当前组件的refs中,refs 可以通过refs.ref的name 来获取ref属性为name的元素,从而进行元素的操作
+		//this.refs.aa 就可以获取 ref=aa的元素
+		var Ref = React.createClass({
+			changeColor(){
+				this.refs.aa.style.color = '#f00';
+			},
+			render(){
+				return <div>
+					<p ref='aa'>待到山花烂漫时</p>
+					<button onClick={this.changeColor}>点击</button>
+				</div>
+			}
+		});
+		
+		ReactDOM.render(<Ref />,document.getElementById('test'));
+	</script>
+</html>

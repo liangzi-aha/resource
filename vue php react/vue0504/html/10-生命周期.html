@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生命周期</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{str}}</p>
+		</div>
+		 <button id="btn" @click="destroy()">点击销毁</button>	
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			str:'马滑霜浓',
+		},
+		methods:{
+			aa(){
+				console.log('秋风宝剑孤臣泪')
+			},
+		
+		},
+		computed:{},
+		
+		// template 模板,替换el所挂载的元素
+		template:`
+		  <div>
+		  	<p>{{str}}</p>
+		    <p>大黄都不理我,变成包子了</p>
+		    <input type="text" v-model="str"/>	
+		  </div>    
+		`,
+		created(){
+			// 在vue实例创建完成之后执行	
+			console.log('created创建之后')
+		},
+		beforeCreate(){
+			// 在vue实例创建完成之前执行		
+			console.log('beforeCreate创建之前')
+		},
+		beforeMount(){
+			// 在挂载开始之前被调用:相关的render 函数被首次被调用. 也就是说在指令挂载el之后执行		
+			console.log('beforeMount执行')
+		},
+		mounted(){
+			// 只有在mounted执行之后才可以执行dom操作, 简言之就是在该钩子函数内部执行一些你需要加载立即执行的函数
+			console.log('mounted执行');
+			this.aa();
+		},
+		beforeUpdate(){
+			// 当data中的数据发生修改, 或者view模板中的内容重新绘制时,触发该方法
+			console.log('beforeUpdate');
+		},
+		updated(){
+			// 当data中的数据或dom结构发生修改之后,触发该事件
+			console.log('updated');
+		},
+		beforeDestroy(){
+			// 在实例销毁前调用,此时,实例是可以使用的
+			console.log('beforDestroy');
+		},
+		destroyed(){
+			// 在实例销毁后调用,此时,实例被回收
+			console.log('destroyed');
+		}
+	});
+	
+	//点击销毁
+    var btn = document.getElementById("btn");
+	    btn.onclick = function(){
+		   app.$destroy(); // 销毁vue实例
+	};
+	// 综上,为vue实例的部分生命周期函数,为钩子函数
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas05_绘制矩形</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.绘制矩形
+			/*
+			 * strokeRect(x,y,w,h)
+			 * 四个参数
+			 * x,y绘制矩形的左上角的点的坐标
+			 * w,h矩形宽高
+			 * 
+			 * fillRect(x,y,w,h)
+			 * 四个参数
+			 * x,y绘制矩形的左上角的点的坐标
+			 * w,h矩形宽高
+			 */
+			
+//			content.beginPath()
+			content.strokeRect(100,100,500,100)
+			content.fillRect(700,100,200,300)
+		</script>
+	</body>
+</html>

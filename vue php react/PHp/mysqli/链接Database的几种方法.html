@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1 style="text-align: center;">连接数据库的几种方法</h1>
+		<pre style="color: red;font-size: 20px;">
+		第一、常用普通方法
+		1.$mysql_server="localhost";
+		2.$mysql_username="数据库用户名";
+		3.$mysql_password="数据库密码";
+		4.$mysql_database="数据库名";
+		5.//建立数据库链接
+		$conn = mysql_connect($mysql_server,$mysql_username,$mysql_password) or die("数据库链接错误");
+		6.//选择某个数据库
+		mysql_select_db($mysql_database,$conn);
+		7.mysql_query("set names 'utf8'");
+		8.//执行MySQL语句
+		$result=mysql_query("SELECT id,name FROM 数据库表");
+		9.//提取数据
+		$row=mysql_fetch_row($result);
+		在提取数据的时候，我们使用mysql_fetch_row，还可以使用mysql_fetch_assoc和mysql_fetch_array，具体的我们参考手册。
+		</pre>
+		<pre style="color:blue;font-size: 20px;">
+		第二、面向对象方法
+		$db=new mysqli($dbhost,$username,$userpass,$dbdatabase);
+		if(mysqli_connect_error()){
+		echo 'Could not connect to database.';
+		exit;
+		}
+		$result=$db->query("SELECT id,name FROM user");
+		$row=$result->fetch_row();
+		</pre>
+		<pre style="color: green;font-size: 20px;">
+		第三、PDO方法
+		$dsn='mysql:host='.$dbhost.';dbname='.$dbdatabase.';'
+		$dbh=new PDO($dsn,$username,$userpass);
+ 
+		$stmt=$dbh->query('SELECT id,name FROM user');
+		$row=$stmt->fetch();
+		以上是常用的3种PHP连接MYSQL数据库的方法，我们可以尝试使用，一般我们用第一种比较多。
+		</pre>
+	</body>
+</html>

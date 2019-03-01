@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3-事件</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{msg}}</p>
+			<button v-on:click="aa()">点击aa</button>
+			<button v-on:click="bb('红军不怕远征难')">点击bb</button>
+			<input type="text" :value="val" @input='sBind($event)' />
+			<p>{{val}}</p>
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+ /*事件绑定:
+ v-on: 事件名 = "要执行的函数 () 可选",如果需要传参必须加括号,不需要传参则可以不加
+ v-on的简写 @事件名 
+ methods 属性,它里面是所有方法的集合,也就是所有的事件函数都写在methods里面,它是生命周期函数中的一个
+ */
+	var app = new Vue({
+		el:'#app',
+		data:{
+			msg:'车辚辚马萧萧',
+			val:''
+		},
+		//methods 属性是所有的事件的集合,里面存放所有要执行的函数
+		methods:{
+			aa(){
+				//在vue实例中, data中声明的数据, 在vue各个钩子函数中都可以随意使用和操作,由于都在vue实例化的对象中,所以可以直接this.msg 的形式来获取数据
+				this.msg = '行人弓箭各在腰'
+				alert('行人弓箭各在腰');
+			},
+			bb(str){
+				alert(str+'一片冰心在玉壶');
+			},
+			sBind(ev){
+				this.val= ev.target.value;   //$event.target 获取事件源
+			}
+		}
+	})
+</script>

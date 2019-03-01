@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>移动端元素缩放效果</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #div1 {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                margin: 100px auto;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+        <script type="text/javascript">
+            //上一次两个点的位置信息
+            var one1 = {
+                x: 0,
+                y: 0
+            };
+            var two1 = {
+                x: 0,
+                y: 0
+            };
+
+            //当前两个点的位置信息
+            var one2 = {
+                x: 0,
+                y: 0
+            };
+            var two2 = {
+                x: 0,
+                y: 0
+            };
+
+            div1.ontouchstart = function(e) {
+                var even = e || event;
+                even.preventDefault();
+                //获取两个手指的点
+                var toucObj1 = even.touches[0];
+                var toucObj2 = even.touches[1];
+
+                one1.x = toucObj1.pageX;
+                one1.y = toucObj1.pageY;
+
+                two1.x = toucObj2.pageX;
+                two1.y = toucObj2.pageY;
+
+                div1.ontouchmove = function(e) {
+                    var even = e || event;
+                    even.preventDefault();
+                    //获取两个手指的点
+                    var toucObj1 = even.touches[0];
+                    var toucObj2 = even.touches[1];
+
+                    one2.x = toucObj1.pageX;
+                    one2.y = toucObj1.pageY;
+
+                    two2.x = toucObj2.pageX;
+                    two2.y = toucObj2.pageY;
+                    
+                    var nowDis = Math.sqrt(Math.pow(one2.x - two2.x, 2) + Math.pow(one2.y - two2.y, 2));
+                    
+                    var preDis = Math.sqrt(Math.pow(one1.x - two1.x, 2) + Math.pow(one1.y - two1.y, 2));
+                    
+                    var bl = nowDis / preDis;
+//                  div1.innerHTML = bl;
+                    div1.style.width = Math.ceil(div1.offsetWidth * bl) + "px";
+                    div1.style.height = Math.ceil(div1.offsetHeight * bl) + "px";
+                    
+                    one1.x = one2.x;
+                    one1.y = one2.y;
+                    
+                    two1.x = two2.x;
+                    two1.y = two2.y;
+                    
+                }
+            }
+        </script>
+    </body>
+
+</html>

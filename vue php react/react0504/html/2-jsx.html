@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jsx语法</title>
+		<!-- react.js react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/babel">
+	//	jsx 语法:渲染过程中如果遇到{}则按照js语法进行渲染,如果遇到HTML则按照HTML语法进行渲染
+	ReactDOM.render(<div>
+		<p>1+1={1+1}</p>
+	</div>,document.getElementById('test'));
+//	注意:render渲染的第一个参数必须包含在一个dom元素中
+
+	// babel 解释器,主要负责编辑es6和jsx语法,他和js虽然是写法不同实质上还是js的一种
+	// js->从服务器下载js->再回到浏览器执行js
+	// babel->从服务器下载js->babel解释器->回到浏览器执行js
+	</script>
+</html>

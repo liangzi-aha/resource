@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas06_绘制视频马赛克</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<video src="../../css/HTML/Day08/HTML5的前世今生.mp4" style="display: none;"></video>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+
+			//3.
+			var video = document.querySelector("video");
+			video.oncanplay = function() {
+				video.play();
+				//				setInterval(function(){
+				//					//清空画布
+				//					content.clearRect(0,0,canvas.width,canvas.height)
+				//					//重新绘制
+				//					content.drawImage(video,0,0,canvas.width,canvas.height)
+				//				},16)
+				refreshWeb()
+			}
+
+			function refreshWeb() {
+				//清空画布
+				content.clearRect(0, 0, canvas.width, canvas.height)
+				//重新绘制
+				content.drawImage(video, 0, 0, canvas.width, canvas.height)
+				//让浏览器自己根据自己的刷新频率调用方法
+				window.requestAnimationFrame(refreshWeb);
+			}
+		</script>
+	</body>
+
+</html>

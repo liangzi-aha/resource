@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>BOM基础</title>
+    </head>
+
+    <body>
+        <a href="http://www.jd.com" target="newLink">点击跳转到京东首页</a>
+        <button id="btn1">创建窗口</button>
+
+        <button onclick="createWindow()">创建多个</button>
+        <button onclick="closeWindow()">删除多个</button>
+
+        <button onclick="mt1()">moveTo方法</button>
+        <button onclick="mb1()">moveBy方法</button>
+        
+        <button onclick="rt1()">resizeTo方法</button>
+        <button onclick="rb1()">resizeBy方法</button>
+        <iframe src="" width="" height=""></iframe>
+        <script type="text/javascript">
+            /*
+             * BOM Browser Object Model
+             * 浏览器对象模型
+             * 
+             * BOM是由一系列的对象组成, 每一个对象都有自己的属性, 它们各自负责一类功能.
+             * 
+             * window是BOM里的顶层对象, 也是核心对象, 其他所有对象都是从window延伸出来的.
+             * 
+             * 由window延伸出来的对象:
+             * 1. document
+             * 2. history
+             * 3. location
+             * 4. navigator
+             * 5. screen
+             * 6. frames
+             * 
+             * 
+             * 
+             * window指的是运行当前文档的浏览器窗口.
+             */
+            
+
+            //1. window对象 
+            //	    	     console.log(window);
+
+            // 所有的全局变量或者方法都是window的属性, 都可以通过window.变量名获取或者window.方法名()调用, 只不过, 我们在平常写时, window是可以省略的.
+
+            //	    	     字符串.substr()
+            //	    	     数组.push();
+            //	    	     
+            //	    	     
+            //	    	     console.log()
+            //	    	     alert()
+            //	    	     
+            //	    	     Math.random()
+            ////	    	     
+            //	    	     function a(){
+            //	    	        window.console.log(this);
+            //	    	     }
+            //	    	     
+            //	    	     window.a();
+            //
+            //	    	     var a = 10;
+            //	    	     console.log(a);
+            //	    	     
+            //	    	     window.alert(121111);
+
+            //          function f1(){
+            //              function f2(){
+            //                  console.log(this);
+            //              }
+            //              return f2;
+            //          }
+            //          var func = f1();
+            //          window.func();
+
+            //window有关的方法
+            /*
+             * 1. open(URL, name, features) 打开一个新的浏览器窗口
+             * URL: 新打开的窗口的跳转位置
+             * name: 窗口的标识, 结合a链接实现多窗口操作
+             * features: 窗口的特征, 大小, 位置
+             * 返回值: 新窗口对象(新window对象)
+             */
+            //        var newW = open("http://www.baidu.com", "newLink", "width=400, height=400, left=200, top=300");
+
+            /*
+             * 2. 窗口对象.close()  关闭窗口
+             */
+            //          newW.close();
+
+            //练习1  创建一个空新窗口, 新窗口的大小500*500,  位置 left: 300, top:300, 并在新创建的窗口里添加一个div, 大小100*100, 背景色红色
+            //          btn1.onclick = function() {
+            //              var newW = window.open("", "", "width=500, height=500, left=300, top=300");
+            //              var div = document.createElement("div");
+            //              div.style.width = "100px";
+            //              div.style.height = "100px";
+            //              div.style.backgroundColor = "red";
+            //              newW.document.body.appendChild(div);
+            //          }
+
+            //练习2 点击创建按钮, 连续打开三个窗口, 点击关闭按钮, 将三个窗口全部关闭
+            var wins = [];
+            //          var w1;
+            //          var w2;
+            //          var w3;
+            function createWindow() {
+                //              for (var i = 0; i < 3; i++) {
+                //              	    open("", "", "width=200, height=200");
+                //              }
+                //              w1 = open("", "", "width=200, height=200");
+                //              w2 = open("", "", "width=200, height=200");
+                //              w3 = open("", "", "width=200, height=200");
+                for(var i = 0; i < 3; i++) {
+                    var nw = open("", "", "width=200, height=200");
+                    wins.push(nw);
+                }
+            }
+
+            function closeWindow() {
+                //              w1.close();
+                //              w2.close();
+                //              w3.close();
+                for(var i = 0; i < wins.length; i++) {
+                    wins[i].close();
+                    wins.shift();
+                    i--;
+                }
+                //              wins = [];
+            }
+
+            /*
+             * 移动窗口
+             * 1. moveTo(x, y) 移动到某个位置
+             * 2. moveBy(x+, y+) 在当前的位置上移动x, y的增量
+             * 以上两个方法移动窗口无法超出屏幕范围
+             */
+//          var nW = open("http://www.baidu.com", "", "width=300, height=300");
+            
+//          function mt1() {
+//              nW.moveTo(400, 400);
+//          }
+//
+//          function mb1() {
+//              nW.moveBy(-10, -10);
+//          }
+            
+            
+            /*
+             * resizeTo(w, h) 改变窗口的大小为x, y
+             * resizeBy(w+, h+) 在当前窗口大小的基础上增加x和y(x, y可以为负).
+             * 
+             * 以上两种方法不可无限放大或者缩小窗口.
+             */
+//          function rt1() {
+//              nW.resizeTo(500, 500);
+//          }
+//          
+//          function rb1() {
+//              nW.resizeBy(50, 50);
+//          }
+            
+            /*
+             * scrollTo(x, y)
+             * scrollBy(x, y)
+             */
+            
+            /*
+             * JS里有一个资源访问保护机制:同源策略
+             * 只允许同源下的文件互相访问, 非同源之间的文件不可互相访问.
+             * 解决办法, 实现跨域资源共享
+             * 1. jsonp
+             * 2. CORS
+             * ....
+             */
+            
+            //2. history对象
+            console.log(history);
+            /*
+             * 实现浏览器窗口内容的前进和后退
+             * 前进    forward()
+             * 后退    back()
+             */
+            
+            
+            //3. location对象
+//          console.log(location);
+            
+            console.log("协议名:" + location.protocol);
+            
+            console.log("主机名:" + location.host);
+            
+            console.log("ip地址:" + location.hostname);
+            
+            console.log("端口号:" + location.port);
+            
+            console.log("参数:" + location.search);
+            
+            console.log("文件目录:" + location.pathname);
+            
+            
+        </script>
+    </body>
+
+</html>

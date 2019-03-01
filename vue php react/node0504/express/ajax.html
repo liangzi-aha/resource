@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+姓名: <input type="text" value="" id="user1" ><br/>
+工作: <input type="text" value="" id="job1" ><br/>
+<button id="getBtn">get提交</button>
+<p id="msg1"></p>
+<hr />
+姓名: <input type="text" value="" id="user2" ><br/>
+工作: <input type="text" value="" id="job2" ><br/>
+<button id="postBtn">post提交</button>
+<p id="msg2"></p>
+</body>
+</html>
+<script type="text/javascript" src="jq.js"></script>
+<script type="text/javascript">
+    //get请求
+    $('#getBtn').click(function(){
+        var val = $('#user1').val();
+        var job = $('#job1').val();
+        $.ajax({
+            type:'get',
+            url:'/get',
+            data:{name:val,job:job},
+            success:function(data){
+                $('#msg1').text(data);
+            }
+        });
+    });
+    //post请求
+    $('#postBtn').click(function(){
+        var val = $('#user2').val();
+        var job = $('#job2').val();
+        $.ajax({
+            type:'post',
+            url:'/post',
+            data:{name:val,job:job},
+            success:function(data){
+                $('#msg2').text(data);
+            }
+        });
+    });
+
+</script>

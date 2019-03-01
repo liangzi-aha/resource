@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 闭包:Js里,把A函数的声明写到B函数的声明里,一般会把A函数当做B函数的返回值,那么A函数就叫做闭包!
+			 * 1.在闭包函数A里,可以直接访问函数B里的变量,且闭包可以延长局部变量的生命周期,让其生命周期与全局变量的生命周期保持一致.
+			 */
+			
+//			function f1(){
+//				var n1 = 100;
+//				n1++;
+//				console.log(n1);
+//			}
+//			f1(); //101
+//			f1(); //101
+//			f1(); //101   每次调用f1函数结束var n1 就会被销毁 再次调用f1函数再次声明var n1=100，函数内的局部变量和函数的生命周期一样，在调用后被销毁。
+
+			function f1(){
+				var n1 = 100;
+				function f2(){
+					n1++;
+					console.log(n1);
+				}
+				return f2;
+				
+			}
+			//f1函数里的函数:f2函数
+//			f1()();
+			var res = f1();11
+			
+			res() //101
+			res() //102
+			res() //103  闭包可以延长局部变量的生命周期,让其生命周期与全局变量的生命周期保持一致.
+			
+			//引用
+		</script>
+	</body>
+</html>

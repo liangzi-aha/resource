@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jsx基础语法</title>
+		<!-- react.js react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/babel">
+		var html = React.createElement('h1',null,'赵钱孙李');
+		ReactDOM.render(html,document.getElementById('test'));
+		ReactDOM.render(<h1>周吴郑王</h1>,document.getElementById('test'));
+		
+		//ReactDOM 用来操作dom元素的react对象,render方法是渲染dom元素,第一个参数为要渲染在页面上的dom元素的实体,第二个参数为要渲染到页面所在的哪一个dom内,该参数只能是一个原生方法获取的dom : 也就是说把第一个参数的dom结构,渲染到第二个参数里面
+		
+		//createElement 用来创建dom元素,第一个参数为要创建的dom元素的名称,第二个参数为元素的样式,如果不设置则为null,第三个参数为元素的内容
+		
+		var li1 = React.createElement('ul',null,'慈母手中线');
+		var li2 = React.createElement('ul',null,'游子身上衣');
+		var ul =  React.createElement('ul',null,[li1,li2]);
+		ReactDOM.render(ul,document.getElementById('test'))
+	</script>
+</html>

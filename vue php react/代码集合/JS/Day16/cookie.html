@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie</title>
+	</head>
+
+	<body>
+		<input type="text" placeholder="key" id="k" />
+		<input type="text" placeholder="value" id="v" />
+		<button onclick="addCookie()">添加cookie</button>
+		<button onclick="getCookie()">获得cookie</button>
+		<button onclick="deleteCookie()">删除cookie</button>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 * Cookie的概念:
+			 * Cookie本质上是一段文本信息,储存在本地终端上.当发起网络请求时,cookie会跟着请求传递到服务器,后台根据获取到的cookie可以做出对应的反应.
+			 * cookie的使用场景:
+			 * 1.保存用户的登录注册场景
+			 * 2.跟踪用户的行为.
+			 * 3.个性化定义网站内容
+			 * 
+			 * cookie的弊端:
+			 * 1.容量太小,大约4kb
+			 * 2.cookie可以被删除(非代码删除)
+			 * 3.默认情况下cookie有存活期限
+			 * 4.cookie只能储存文本数据
+			 */
+
+			//如何设置cookie的生命周期
+			/*
+			 * 1.设置cookie的失效时刻
+			 * 2.设置cookie的存活时间
+			 */
+
+			function addCookie() {
+				/*
+				 * cookie添加的语法格式:
+				 * 以键值对的形式储存
+				 * "key=value"
+				 */
+				//1.设置失效时刻
+				/*
+				 * 语法:"key=value;expires=失效时刻"
+				 */
+				//有一个时刻
+				var t = new Date();
+				var day = t.getDate() + 1;
+				t.setDate(day);
+				//将失效时刻转化成字符串
+				var tStr = t.toString();
+				document.cookie = k.value + "=" + v.value + ";expires=" + tStr;
+				
+				//2.设置存活时间
+				/*
+				 * 语法:"key=value;max-age=秒数";
+				 */
+//				document.cookie = k.value + "=" + v.value + ";max-age=60";
+			}
+
+			function getCookie() {
+				console.log(document.cookie);
+			}
+			
+			//修改cookie
+			/*
+			 * 修改cookie其实就是重新设置相同key的value值,如果重新设置cookie时没有设置延长时间,新的键值对的生命周期为默认生命周期.
+			 */
+			//document.coolie = "city=kaifeng";
+			
+			//删除cookie其实就是让cookie的立刻到达失效时间.
+			
+			function deleteCookie(){
+				document.cookie = "name=laowang;max-age=-1";	
+			}
+			console.log(hasKey("abcd"));
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>自定义滚动条</title> 
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #box {
+                width: 300px;
+                height: 500px;
+                margin: 50px auto;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            #content {
+                width: 285px;
+                font-size: 30px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            
+            #scrollArea {
+                width: 15px;
+                height: 500px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                background-color: lightgray;
+            }
+            
+            #line {
+                width: 15px;
+                background-color: gray;
+                position: absolute;
+                left: 0;
+                top: 0;
+                border-radius: 7.5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="box">
+            <!--内容区域-->
+            <div id="content">
+                根据最新披露的信息，小米创始人、董事长兼CEO雷军持股约29.4%，以目前小米约465亿美元市值计算，雷军持有的小米股份市值约136.9亿美元。据福布斯富豪榜实时榜单数据显示，目前雷军以124亿美元身家排在中国富豪榜第12位，马化腾以430亿美元身家排在第1位。小米集团此次IPO全球发售21.8亿股，其中95%供国际配售，5%供投资者公开认购。据小米集团上周五发布的公告，公开招股及国际配售分别获9.5倍及1.1倍认购。小米原定发行价区间为17-22港元，最终定价区间下限，以17港元的价格计算，全球发售所得款项净额约239.75亿港元尽管让利发行，上周小米暗盘价仍遭多次破底。据香港经济日报报道，7月6日，小米在暗盘交易平台开市价报16港元，跌破发行价，最低价一度触及15.5港元。最终收报16.1港元，较每股17港元招股价跌5.3%。对此，小米创始人、董事长兼CEO雷军7月8日发出公开信称，最近资本市场跌宕起伏，小米能够上市就意味着巨大成功。在公开信中，雷军还提到，李嘉诚、马云、马化腾等大佬认购了小米的股票，“这是对小米管理层和员工莫大的信任和重托。”小米集团此次IPO全球发售21.8亿股，其中95%供国际配售，5%供投资者公开认购。据小米集团上周五发布的公告，公开招股及国际配售分别获9.5倍及1.1倍认购。小米原定发行价区间为17-22港元，最终定价区间下限，以17港元的价格计算，全球发售所得款项净额约239.75亿港元尽管让利发行，上周小米暗盘价仍遭多次破底。据香港经济日报报道，7月6日，小米在暗盘交易平台开市价报16港元，跌破发行价，最低价一度触及15.5港元。最终收报16.1港元，较每股17港元招股价跌5.3%。对此，小米创始人、董事长兼CEO雷军7月8日发出公开信称，最近资本市场跌宕起伏，小米能够上市就意味着巨大成功。在公开信中，雷军还提到，李嘉诚、马云、马化腾等大佬认购了小米的股票，“这是对小米管理层和员工莫大的信任和重托。”
+            </div>
+            <!--滚动条区域-->
+            <div id="scrollArea">
+                <!--滚动条-->
+                <div id="line"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        		window.onmousewheel = function(e){
+        			even = e || event 
+        			even.p
+        		}
+        		
+            //按比例计算滚动条的高度
+            line.style.height = box.offsetHeight / content.offsetHeight * scrollArea.offsetHeight + "px";
+
+            //给box添加鼠标滚轮方向
+            box.onmousewheel = function(e) {
+                var even = e || event;
+                //比例系数
+                var scale = content.offsetTop / (content.offsetHeight - box.offsetHeight);
+                console.log(scale);
+                if(even.wheelDelta < 0) {
+                    //滚轮向上 内容向上 top变小; 滚动条向下 top变大
+                    content.style.top = content.offsetTop - 100 + "px";
+                    if(content.offsetTop <= box.offsetHeight - content.offsetHeight) {
+                        content.style.top = box.offsetHeight - content.offsetHeight + "px";
+                    }
+                    line.style.top = -scale * (scrollArea.offsetHeight - line.offsetHeight)
+ + "px";
+                } else {
+                    //滚轮向下 内容向下 top变大; 滚动条向上 top变小
+                    content.style.top = content.offsetTop + 100 + "px";
+                    if(content.offsetTop >= 0) {
+                        content.style.top = "0px";
+                    }
+                    line.style.top = -scale * (scrollArea.offsetHeight - line.offsetHeight)
+ + "px";
+                }
+            }
+            line.onmousedown = function(e){
+            	var even = e || event 
+            	var t = even.clientY - this.offsetTop
+            	window.onmousemove
+            }
+        </script>
+    </body>
+
+</html>

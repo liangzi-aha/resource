@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>get请求</title>
+	</head>
+	<body>
+		<div id="app">
+			<p v-for="item in arr">{{item.name}}</p>
+			<button @click="getFun()">提交get请求</button>
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/axios.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+   
+	var app = new Vue({
+		el:'#app',
+		data:{
+			arr:[],
+		},
+		methods:{
+		/*	axios get请求,使用方式为 axios.get('请求接口').then(回调函数),回调函数内部有一个参数,是请求到的数据,如果需要操作请求的有用数据,需要该参数的data属性中获取
+		 * 
+			.then(function(res){
+				res.data 获取数据
+			})
+			拿到数据后,就可以绑定到组件上
+		*/
+			getFun(){
+				axios.get('../js/data.json').then(function(res){
+					console.log(res);
+					var list = res.data.result.teammatch;
+					this.arr = list;
+				}.bind(this));
+			}
+		}
+	});
+	
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue 内置指令</title>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-if = 'true'>显示h1</h1>
+			<h1 v-if = 'false'>显示h1</h1>
+			<h2 v-else >显示h2</h2>
+			<hr />
+			<p v-if="num==1">孙悟空</p>
+			<p v-else-if="num==2">猪八戒</p>
+			<p v-else-if="num==3">爱爱</p>
+			<p v-else-if="num==4">怜怜</p>
+			<p v-else>珍珍</p>
+			<p v-once>{{num==3?'值为3':'无值'}},只编译一次</p>
+			<p>{{num==3?'值为3':'无值'}},编译</p> 
+			<button v-on:click="changeNum">点击</button>
+			<hr />
+			<p v-show="true" >111</p>
+			<p v-show="false" >222</p>
+			<hr />
+			<p>v-for 的写法为(当前循环元素,元素的索引) in 数据集合, 其中括号内可以理解为传参,名称可以自定义</p>
+			<ul>
+				<li v-for="(item,index) in arr">{{index+1+item.name}}</li>
+			</ul>
+			<p>template标签没有实际意义,可以辅助布局或者显示内容</p>
+			<template v-for="aa in arr">
+				<p>{{aa.name}}</p>
+				<p>{{aa.age}}</p>
+			</template>
+			<p v-pre>{{arr}}</p>
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+/* v-if: 值是bol,可以单独使用 
+   v-else: 必须和v-if成对使用
+   v-else-if: 必须和v-if成对使用
+   * 以上三个操作可动态改变dom
+   v-for: 类似angular的 ngFor 操作
+   v-show: 显隐dom元素的指令
+   
+   v-for 语法: v-for="形参 in 数组(对象)"  还有一个值 key={{id}}, 可以提高渲染的效率
+   v-pre: 不编译内容,直接原样输出
+   v-once: 只编译一次
+*/
+	var app = new Vue({
+		el:'#app',
+		data:{
+			num:3,
+			arr:[
+			{name:'魔礼青',age:24},
+			{name:'魔礼红',age:23},
+			{name:'魔礼海',age:22},
+			{name:'魔礼瘦',age:21}
+			]
+		},
+		methods:{
+			changeNum(){
+				this.num++;
+				if(this.num==6){
+					this.num=1;
+				}
+			}
+		}
+	})
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas04_canvas样式</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			/*
+			 * canvas可以设置大小,如果不设置,默认大小300*150
+			 * 如果我们想要设置canvas标签的大小,建议使用以下方式:
+			 * 1.直接用canvas的width和 height属性设置大小
+			 * 2.通过js代码简介给width 和 height 属性设置大小
+			 * 注意:不要用css的方法设置宽高,该方法会容易导致绘制的图像变形.
+			 */
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.
+			/*
+			 * canvas里绘制图形分两种
+			 * a.绘制路径
+			 * b.绘制图形
+			 * 		1.描边图形 带有stroke单词的属性或者方法
+			 * 		2.填充图形 fill单词的属性或者方法
+			 */
+			
+			/*
+			 * 1.描边样式属性:strokeStyle
+			 * 		a.颜色值:十六进制,rgba,rgb,单词颜色
+			 * 		b.渐变对象
+			 * 2.描边样式方法:stroke()
+			 */
+			
+			/*
+			 * 1.填充样式属性 :fillStyle
+			 * 		可填的值与strokeStyle一样
+			 * 2.填充样式方法 fill()
+			 */
+			//线宽 lineWidth
+			//描边的宽度是如何添加的???
+			content.lineWidth = 20;
+			
+			content.strokeStyle = "blue";
+			content.fillStyle = "#00FFFF";
+			content.beginPath()
+			content.moveTo(100,100);
+			content.lineTo(400,400);
+			content.lineTo(300,500);
+			content.lineTo(0,200);
+			content.lineTo(100,100);
+			content.closePath(); 
+			content.stroke();
+			content.fill();
+			
+			/*
+			 * 注意:
+			 * 所有样式一旦设置,会影响到接下来绘制的所有图形.
+			 * 描边样式和填充样式如果不设置,默认是黑色.
+			 */
+		</script>
+	</body>
+
+</html>

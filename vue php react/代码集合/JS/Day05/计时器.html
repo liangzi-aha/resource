@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>计时器</title>
+	</head>
+
+	<body>
+		<img src="img/1.jpg" alt="" />
+		<button onclick="previous()">上一张</button>
+		<button onclick="next()">下一张</button>
+		<button onclick="start()">开始</button>
+		<button onclick="end()">结束</button>
+		<script type="text/javascript">
+			
+			var img = document.querySelector("img");
+			//声明一个变量存储当前是第几张图片
+			var index = 1;
+			function previous() {
+				if(index == 1){
+					index = 8;
+				}else{
+					index = index - 1;
+				}
+				img.src = "img/" + index + ".jpg";
+			}
+
+			function next() {
+				if(index == 8){
+					index = 1;
+				}else{
+					index++;
+				}
+				img.src = "img/" + index + ".jpg";
+			}
+			/*
+			 * 计时器:
+			 * 作用:每隔一段时间系统会自动调用我们自己传入的一个方法,实现不需要人为操作就可以重复执行函数的行为效果.
+			 * 
+			 * 添加计时器语法:
+			 * 
+			 * setInterval(传入的函数,间隔时间(单位毫秒))     //setInterval时间间隔 //set设置
+			 * 
+			 * 返回值:添加计时器的编号.
+			 * 
+			 * 清除计时器语法:
+			 * clearInterval(要清除计时器的编号);
+			 */
+			
+			setInterval(function(){},1000);
+			
+			var timer;
+			function start(){
+//				//清楚计时器
+				clearInterval(timer);
+				timer = setInterval(function(){0
+					next();
+				},1000)
+			}
+			function end(){
+				clearInterval(timer);
+			}
+			
+			
+//			function a(fun,time){
+//				fun();
+//			}
+//			//回调函数
+//			a(function(){
+//				console.log(123);
+//			},1000)
+		</script>
+	</body>
+
+</html>

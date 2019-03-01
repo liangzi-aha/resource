@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--react.js是react的核心模块-->
+		<script src="../js/react.js" type="text/javascript" charset="utf-8"></script>
+		<!--控制dom操作的-->
+		<script src="../js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<!--babel转换器-->
+		<script src="../js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="test"></div>
+	</body>
+	<script type="text/babel">
+		var InputDom = React.createClass({
+		//设置默认状态  getInitialState()
+		getInitialState(){
+			return {
+				val:'朱棣'
+			}
+		},
+		// event.target 事件源
+		changeVal(event){
+			this.setState({
+				val: event.target.value
+			});
+		},
+		render(){
+			return <div>
+				<input type="text" value={this.state.val} onInput={this.changeVal} />
+				<p>{this.state.val}</p>
+			</div>
+		}
+		});
+		ReactDOM.render(<InputDom />,document.getElementById('test'));
+	</script>
+</html>

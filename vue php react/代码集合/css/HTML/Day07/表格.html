@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格</title>
+		<style type="text/css">
+			*{
+				
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			表格标签 table 双标签 表示表格的范围
+			完整的表格一般由3部分组成
+			1.表头 thead标签
+			2.内容 tbody标签
+			3.表尾 tfoot标签
+			
+			这三部分并不是必须都要有,但是每个表格里必须写tbody.如果不写系统会自动添加.
+			tr标签,表示表格里的一行
+			td,th标签,表示每一行里的一个单元格
+			td和th的区别
+			th默认字体加粗且文字始终居中.
+			
+			每一列单元格的宽度由当前列里内容最长的单元格决定.
+			table标签的border属性可以直接为table和单元格一起添加边框.
+			单元格与单元格之间的距离,使用cellspacing属性设置
+			单元格自身内容与边框的距离,使用cellpadding属性设置
+			
+			
+			
+		-->
+		<table border="2" cellspacing="0" cellpadding="5">
+			<thead>
+				
+			</thead>
+			<tbody>
+				<!--(tr>td*5)*5-->
+				<!--tr*5>th*5-->
+				<tr>
+					<th>星期一</th>
+					<th>星期二</th>
+					<th>星期三</th>
+					<th>星期四</th>
+					<th>星期五</th>
+				</tr>
+				<tr>
+					<th>体育</th>
+					<th>计算机应用</th>
+					<th>HTML</th>
+					<th>英语</th>
+					<th>英语</th>
+				</tr>
+				<tr>
+					<th>语文</th>
+					<th>高数</th>
+					<th>高数</th>
+					<th>吃饭</th>
+					<th>ps</th>
+				</tr>
+				<tr>
+					<th>3dmax</th>
+					<th>综合布线</th>
+					<th>没课</th>
+					<th>没课</th>
+					<th>没课</th>
+				</tr>
+				<tr>
+					<th>没课</th>
+					<th>没课</th>
+					<th>没课</th>
+					<th>没课</th>
+					<th>没课</th>
+				</tr>
+			</tbody>
+			<tfoot>
+				
+			</tfoot>
+		</table>
+		
+		</table>
+	</body>
+</html>

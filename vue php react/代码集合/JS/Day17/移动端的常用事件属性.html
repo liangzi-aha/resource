@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>移动端的常用事件属性</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			#div1{
+				width: 300px;
+				height: 300px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			div1.ontouchstart = function(e){
+				even = e || event 
+				/*
+				 * 1.clientX/Y  触摸点距离浏览器内容左端和上端的距离.
+				 * 2.screenX/Y  触摸点距离屏幕左端和上端的距离.
+				 * 3.pageX/Y   触摸点距离真正页面左端和上端的距离.
+				 */
+				//首先找到对应的触摸点
+				//所有的触摸点存放在事件对象的touches属性里,该属性是一个数组,里面存放所有的触摸点
+				var touchObj = even.touches[0];
+				alert("clientX:" + touchObj.clientX + ",clientY:" + touchObj.clientY);
+			}
+		</script>
+	</body>
+</html>

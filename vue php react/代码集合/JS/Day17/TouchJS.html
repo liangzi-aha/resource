@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>TouchJS</title>
+		<style type="text/css">
+			#div1{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../../HTML/抖音链接/st5.jpg" alt="" />
+		<div id="div1"></div>
+		<script src="js/touch-0.2.14.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*
+			 * Touch.js 是一个移动端的手势插件
+			 * 1.tap 点击
+			 * 2.hold 长按
+			 * 3.drag 拖拽
+			 * 4.rotate 旋转
+			 * 5.pinch 捏合
+			 * 6.swipe 轻扫
+			 * 7.doubletap 双击
+			 * 
+			 * 首先引入touch.js
+			 * 语法:
+			 * touch.on(element,"type",callback);
+			 */
+			
+			var img = document.querySelector("img");
+			//Touch.js规定,如果实现旋转操作,需要选实现touchstart方法,并在其触发函数里调用startRotate方法.
+			touch.on(img,"touchstart",function(e){
+				var even = e || event 
+				even.preventDefault();
+				even.startRotate();
+			});
+			//声明一个变量储存每次旋转过的角度
+			var deg = 0;
+			
+			
+			
+			touch.on(img,"rotate",function(e){
+				var even = e || event;
+				
+				//事件对象里的rotation属性就表示当前的旋转角度
+				var total = deg + even.rotation;
+				img.style.transform = "rotateZ(" + total + "deg)";
+				//每次旋转结束时,记录旋转的角度
+				if(even.fingerStatus == "end"){
+					deg = total;
+				}
+			});
+			
+			//轻扫
+			var div1 = document.getElementById("div1");
+			touch.on(div1,"touchstart",function(e){
+				var even = e || event;
+				even.preventDefault();
+			});
+			touch.on(div1,"swipeleft swiperight swipeup swipedown",function(e){
+				var even = e || event;
+				//事件对象的type属性表示轻扫的方向
+				alert(even.type);
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件的data</title>
+	</head>
+	<body>
+		<div id="app">
+			<all></all>
+			<my-say></my-say>
+		</div>		
+	</body>
+</html>
+
+<!--外部可直接写差值表达式-->
+<template id="say">
+	<p>{{txt}}</p>
+</template>
+
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+  //data 属性在实例化中是一个对象,在自定义的组件中是一个函数,使用return 返回数据  组件内部也可以使用生命周期函数
+	Vue.component('all',{
+		template:'<p>{{txt}}</p>',
+		data(){
+			return {
+				txt:'南村群童欺我老无力'
+			}
+		}
+	});
+	
+  var app = new Vue({
+	el:"#app",
+	data:{},
+	methods:{},
+	//局部创建组件
+	components:{
+	   mySay:{
+		template:'#say',
+		data(){
+			return {
+				txt:'一句错错错'
+			}
+		 }
+	   },
+	  }
+	});	
+</script>

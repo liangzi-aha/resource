@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+	</head>
+
+	<body>
+		<input type="text" id="text" />
+		<input type="submit" value="判断是否包含数字" onclick="haveNum()" />
+		<script type="text/javascript">
+			/*
+			 * 正则表达式
+			 * 1.前端,后台,移动端,ios,Android Java 都有正则表达式.
+			 * 
+			 * 2.是一门全新的语法
+			 * 
+			 * 3.我们使用正则表达式对数据进行检测,提取,匹配,判断.
+			 * 
+			 * 4.你不会写,可以查
+			 */
+			function haveNum() {
+				var content = text.value;
+				//				var strArr = content.split("");
+				//				for(var i = 0;i < strArr.length;i++){
+				//					if (strArr[i] - 0 == strArr[i]) {
+				//						alert("有数字");
+				//						return;
+				//					}
+				//				}
+				//				alert("没有数字")
+
+				//正则表达式
+				if(/\d/.test(content)) {
+					alert("有数字");
+				} else {
+					alert("没有数字");
+				}
+			}
+
+			/*
+			 * 正则的基本知识
+			 * 1.正则表达式里有两类字符
+			 * 	a.普通字符: 小写字母,大写字母,数字,汉字 _
+			 * 	b.元字符: 具有特殊意义的字符或者字符的组合 \d \D \s \w * + ? .
+			 * 我们以后写的正则规则都是有以上两种符号组成的.
+			 * JS里的正则是以正则表达式对象的形式存在的
+			 * 如何创建正则表达式对象??
+			 * 	regular expression
+			 * 
+			 * 写法1:简单写法创建正则对象
+			 * var reg = /参数1/参数2;
+			 * 参数1:正则规则
+			 * 参数2:规则属性(可省略)
+			 * 规则属性:
+			 * i:忽略大小写
+			 * m:影响系统对行头和行尾的解释
+			 * g:全局匹配
+			 * 
+			 * 以上方式创建正则对象时,两个参数直接写,不能写成字符串
+			 * 
+			 * 写法2.标准创建正则对象的方法
+			 * var reg = new RegExp("参数1","参数2");
+			 * 
+			 * 参数1:正则规则
+			 * 参数2:规则属性(可省略)
+			 * 规则属性:
+			 * i:忽略大小写
+			 * m:
+			 * g:全局匹配
+			 * 
+			 * 以上方法创建正则对象时,两个参数必须都是字符串格式.
+			 */
+			//var str = "today is Friday!";
+
+			//var reg1 = /friday/i;
+
+			//var reg2 = new RegExp("friday","i");
+
+			//正则表达式对象有一个方法,test(要检测的数据),如果匹配,返回值true,如果不匹配返回值false.
+			//console.log(reg1.test(str));
+			//console.log(reg2.test(str));
+
+			//声明数组的两种方法
+			//var arr = [];
+			//语法糖写法
+			//var arr1 = new Array(5);
+
+			//声明对象的两种方法
+			//var obj = {};
+			//语法糖写法
+			//var obj1 new Object();
+
+			/*
+			 * 元字符
+			 * \d:表示数字0-9
+			 * \D:表示非数字
+			 * 
+			 * \s:表示空白符(空格,回车,tab)
+			 * \S:表示非空白符 	`
+			 * 
+			 * \w:表示(a-z,A-Z,0-9, _)
+			 * \W:表示非(a-z,A-Z,0-9, _)
+			 * 
+			 * . :除了\n之外的所有符号  \n回车
+			 * 
+			 * *************************************
+			 * 
+			 * 表示数量的元字符
+			 *  * : 个数>=0
+			 *  + : 个数>=1
+			 *  ? : 个数是0或者1
+			 * 
+			 * **************************
+			 * 
+			 * []:匹配中括号中出现的任何一个字符或者非字符
+			 * [^]:匹配任意一个不在中括号里出现过的字符.
+			 *  ^ : 脱字符
+			 */
+
+			//var str3 = "ab1c2d3"
+			//var reg3 = /\D\d/;
+			//console.log(reg3.test(str3))
+
+			// \n回车 \t空格
+			//var str4 = "abcd"
+			//var reg4 = /\S/;
+			//console.log(reg4.test(str4))
+
+			//var str5 = "我是谁_a"
+			//var reg5 = /\w/;
+			//console.log(reg5.test(str5));
+
+			//var str6 = "abAAAAAc@";
+			//var reg6 = /\w+@/;
+			//console.log(reg6.test(str6))
+
+			//var str7 = "bie du le zhe shi pin yin";
+			//var reg7 = /[^bie du le zhe shi pin yin]/;
+			//console.log(reg7.test(str7));
+
+			/*
+			 * 字符串与正则有关的方法
+			 * 1.match();
+			 * 参数:正则表达式对象
+			 * 返回值:匹配到的数据的数组
+			 */
+
+			var str9 = "js is zhe best language in the Best world"
+			var reg9 = /best/gi;
+			console.log(str9.match(reg9));
+
+			/*
+			 * 连字符 -
+			 * 0-9表示所有数字
+			 * a-z A-Z 表示所有大小写字母
+			 * 
+			 * 使用Unicode编码表示汉字的范围
+			 * 
+			 * 汉字的取值范围
+			 * \u4e00-\u9fa5
+			 */
+			//var str10 = "我发 撒大声 sadfsad"
+			//var reg10 = /[\u4e00-\u9fa5]/g;
+			//console.log(str10.match(reg10))
+
+			var bookReg = /[\u4e00-\u9fa5]+\.txt/;
+			var bookArr = ["西游记.txt", "time.txt", "斗破苍穹.txt", "Love.txt", "参与摩托车维修.txt"]
+			for(var i = 0; i < bookArr.length; i++) {
+				if(bookReg.test(bookArr[i])) {
+					console.log(bookArr[i]);
+				}
+			}
+			//作业正则表达式加全局和不加全局
+			/*
+			 * 每一个正则表达式对象都有一个lastindex属性,该属性用于储存检测字符串对应的下标位置,如果匹配成功,那么下次匹配正则对象会从上一次lastindex的位置上继续进行匹配,这样可能导致忽略某些内容判断错误. 解决办法:每次匹配完毕之后,重置lastindex为0.
+			 */
+
+			/*
+			 * 定位符
+			 * ^ : 表示字符串的开头
+			 * $ : 表示字符串的结尾
+			 * \b: 表示字符串中单词的边界.
+			 */
+
+			//判断字符串是否以http开头
+			var str11 = "http://www.baidu.com";
+			var reg11 = /^http/;
+			console.log(reg11.test(str11));
+
+			//判断字符串是否以.com结尾
+			var str12 = "http://www.baidu.com";
+			var reg12 = /\.com$/;
+			console.log(reg12.test(str12));
+
+			//判断字符串是否以http开头,且判断字符串是否以.com结尾.
+			var str13 = "http://www.baidu.com";
+			var reg13 = /^http:\/\/.*\.com$/;
+			console.log(str13.match(str13));
+
+			var str14 = "today is monday";
+			var reg14 = /\bmonday\b/;
+			console.log(reg14.test(str14))
+
+			/*
+			 * 量词
+			 * {n}:个数为n
+			 * {n,}:个数 >= n
+			 * {n,m}: n <= 个数 <= m
+			 * 
+			 * * ====> {0,}
+			 * + ====> {1,}
+			 * ? ====> {0,1}
+			 */
+
+			var str15 = "a12bc45678def9101112";
+			//var reg15 = /\d{5}/g;
+			var reg15 = /\d{2,4}/g;
+			console.log(str15.match(reg15))
+
+			//判断身份证号码是否合法
+			///^[1-9]\d{5}(18|19)\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/
+
+			/*
+			 * 选择符和分组符
+			 * 选择符 规则1|规则2 只要匹配规则1或者规则2即可.  |:或.
+			 * 分组符 () 
+			 */
+			var str16 = "if life lie to you ,do not sad do not cry!";
+			var reg16 = /sad\b|cry\b/g;
+			console.log(str16.match(reg16))
+
+			var str17 = "big pig eig ooig happy sun";
+			var reg17 = /(b|p|e|oo)ig/g;
+			console.log(str17.match(reg17))
+
+			/*
+			 * m的作用,当不加m时,^和$指的是整个字符串的开头和结尾,加了m且字符串有换行时,^和$分别指每一行的开头和结尾.
+			 */
+			var str18 = "123\n456";
+			var reg18 = /^123$/m;
+			console.log(reg18.test(str18))
+
+
+
+			//str为要去除空格的字符串， 实例如下：
+			
+			var str = " 23 23 ";
+			var str2 = str.replace(/\s*/g, "");
+			console.log(str2); // 2323
+
+
+
+			//str.trim() 局限性： 无法去除中间的空格， 实例如下：
+
+			var str = "   xiao  ming   ";
+			var str2 = str.trim();
+			console.log(str2); //xiao  ming 
+			//同理， str.trimLeft()， str.trimRight() 分别用于去除字符串左右空格。
+			
+			
+			
+		</script>
+	</body>
+
+</html>

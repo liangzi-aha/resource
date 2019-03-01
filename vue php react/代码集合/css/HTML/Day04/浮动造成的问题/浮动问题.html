@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>浮动的问题</title>
+		<style type="text/css">
+			#one {
+				width: 200px;
+				height: 200px;
+				background-color: black;
+				float: left;
+			}
+			
+			#two {
+				width: 300px;
+				height: 300px;
+				background-color: yellow;
+				clear: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 
+	问题1:浮动的元素脱离文档流失去自己之前的位置,其后面的元素会顶替浮动元素的位置,造成浮动元素盖在后面的元素之上.
+
+	清楚浮动造成的影响:
+	clear:
+	1.left  清除左浮动造成的影响
+	2.right 清除右浮动造成的影响
+	3.both  清除左或右浮动照成的影响
+
+	注意:clear样式要添加给受到浮动影响的元素,而不是添加给浮动元素!
+	
+	margin在使用过程中的坑点:
+		1.相邻兄弟元素在垂直方向上margin会出现融合.
+		融合标准:以较大的为准.
+
+		解决办法:
+			a.尽量只给一个元素设置垂直的margin值.
+			b.给两个中的任何一个display:inline-block样式.
+		2.父子关系的元素,在垂直方向上margin会出现传递
+		解决办法:
+			a.给父级加一个边框
+			b.给父级添加display:inline-block
+			c.给父级添加overflow:hidden
+			d.用父级的padding代替子级的margin
+	 -->
+		<div id="one"></div>
+		<div id="two"></div>
+	</body>
+
+</html>

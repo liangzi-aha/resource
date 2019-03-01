@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>1-vue基础</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		
+		<div id="app">
+			{{ msg }}
+			<p v-text='msg'></p>
+			<p >输入num的值为{{num}}</p>
+			<p v-html='baidu'></p>
+			<p v-text='baidu'></p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	/*1. vue 介绍
+	 vue 是MVVM框架, 有效地实现了module到view的数据传输
+	2. 使用方式
+	   1. 直接引入vue.js
+	   2. 使用vue-cli(脚手架)
+    数据绑定:
+    1. 差值表达式 {{}}
+    2. 使用v-html 和 v-text绑定数据 v:vue的缩写, v-html指的是vue的指令
+    v-html 可以往所绑定的dom元素中添加html
+    v-text 可以往所绑定的dom元素中添加文字信息
+    使用vue要实例化一个vue实体
+    */
+   
+    var app = new Vue({
+  el: '#app', //官方给出的属性, 不能更改, 它是vue实体, 挂载到哪个dom元素中
+    //data 是vue数据操作的一个数据集合, 所有的数据都源自该属性
+  data: {
+    msg: '商女不知亡国恨',
+    num:100,
+    baidu:'<a href="http://www.baidu.com">百度</a>',
+   }
+  })    
+</script>

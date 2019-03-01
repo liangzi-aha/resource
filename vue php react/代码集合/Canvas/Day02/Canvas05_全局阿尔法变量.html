@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas05_全局阿尔法变量</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.全局阿尔法值
+			/*
+			 * globalAlpha
+			 * 充当透明度alpha计算基数,默认值是1.
+			 */
+			content.globalAlpha = 0.2;
+			content.fillStyle = "rgba(255,0,0,1)";
+			content.fillRect(100,100,100,100);
+			
+		</script>
+	</body>
+</html>

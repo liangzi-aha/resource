@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模板</title>
+	</head>
+	<body>
+		<h1>标题</h1>
+		<p>内容</p>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	var id = localStorage.getItem('id');
+	
+	$.get('news.php?id='+id+'&type=3',function(data){
+		console.log(data);
+		$('h1').text(data[0].title);
+		$('p').text(data[0].cont);
+	});
+	
+</script>

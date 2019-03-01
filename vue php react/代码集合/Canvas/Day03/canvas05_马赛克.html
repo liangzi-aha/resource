@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas05_马赛克</title>
+		<style type="text/css">
+			canvas {
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="button1">马赛克</button>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+
+			//3.马赛克
+			var img = new Image()
+			img.src = "../Day02/girl1.jpg";
+			img.onload = function() {
+				content.drawImage(this, 0, 0, canvas.width, canvas.height)
+			}
+			/*
+			 * canvas里马赛克的实现原理:
+			 * 将整个图像分割成若干个片段(块),对每个片段作处理
+			 */
+
+			button1.onclick = function() {
+
+				//获取图像像素对象
+				var imgData = content.getImageData(0, 0, canvas.width, canvas.height)
+
+				//获取像素组
+				var pixelArray = imgData.data;
+				//规定分割的行数和列数
+				var row = 50;
+				var col = 100;
+
+				//计算每个片段的尺寸大小
+				var itemW = imgData.width / col;
+				var itemH = imgData.height / row;
+
+				for(var i = 0; i < row; i++) { 
+					for(var j = 0; j < col; j++) {
+						//计算每个片段的中心点所在的行和列   0*10+5
+						var itemRow = i * itemH + itemH / 2;  //行
+						//一个片段为10*10   一个像素为1*1    i * itemH:   i为第几行,itemH为一个片段的高"10像素",第一行片段: "10*10像素的马赛克" 的中心都在第五行的像素 "1*1的像素" 里, inemH / 2:是片段的一半就是片段的正中间.i:"行" i循环一次j走一圈,因为片段的行中心点都一样. 行中心点:例第一行片段的行中心点都是5.列不一样
+						var itemCol = j * itemW + itemW / 2;  //列
+						//列有100列,每行片段的列不一样,j * itemW:第几列乘以之身的宽的像素,itemW / 2:因为从0开始所以加上自身像素宽的一半为列的中间. 
+						
+						//根据当前中心点的行数和列数,计算其在pixelArray里的下标
+						var index = ((itemRow - 1) * imgData.width + (itemCol - 1)) * 4;
+
+						//获取每个中心点的rgba值
+						var red = pixelArray[index]
+						var green = pixelArray[index + 1]
+						var blue = pixelArray[index + 2]
+						var alpha = pixelArray[index + 3]
+
+						//合成一个颜色值
+						var colorStr = "rgba(" + red + "," + green + "," + blue + "," + alpha + ")";
+
+						content.fillStyle = colorStr;
+
+						//绘制矩形
+						content.fillRect(j * 10, i * 10, 10, 10)
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

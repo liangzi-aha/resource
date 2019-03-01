@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>圆角</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #div1 {
+                width: 200px;
+                height: 200px;
+                background-color: yellow;
+                /*圆角*/
+                /*border-radius: 100px;*/
+                /*单独设置每一个角的圆角*/
+                /*border-top-left-radius: 20px;
+			    border-top-right-radius: 50px;
+			    border-bottom-left-radius: 80px;
+			    border-bottom-right-radius: 100px;*/
+                /*单独设置某个角的水平和竖直方向的值
+                    第一个值表示水平方向的距离
+                    第二个值表示竖直方向的距离
+                 */
+                /*border-top-left-radius: 20px 80px;*/
+                /*合写*/
+                /*写一个值, 表示四个角的水平和竖直的值相同*/
+                /*border-radius: 20px;*/
+                /*写两个值
+                 第一个值表示 左上角和右下角的水平和竖直值
+                 第二个值表示 右上角和左下角的水平和竖直值
+                 */
+                /*border-radius: 10px 100px;*/
+                /*写三个值
+                 第一个值表示 左上角水平和竖直值
+                 第二个值表示 右上角和左下角的水平和竖直值
+                 第三个值表示 右下角的水平和竖直值
+                 */
+                /*border-radius: 10px 50px 100px;*/
+                /*写四个值
+                 四个值表示从左上角开始沿顺时针依次各个角的水平和竖直值.
+                 */
+                /*border-radius: 10px 30px 50px 70px;*/
+                /*
+                    如果四个角的水平和竖直值都不相同, 需要8个值表示
+                    前4个值表示从左上角开始顺时针依次各个角的水平值
+                    后4个值表示从左上角开始顺时针依次各个角的竖直值
+                    前4个值与后4个值中间用/分隔开.
+                   
+                   如果某些角的值相同, 此方法可以简写成6个值, 4个值, 或者2个值
+                 */
+                border-radius: 10px 20px 30px 40px / 50px 60px 70px 80px;
+            }
+            
+            #div2 {
+                width: 200px;
+                height: 100px;
+                background-color: red;
+                border-top-left-radius: 100px;
+                border-top-right-radius: 100px;
+            }
+            
+            #div3 {
+                width: 500px;
+                height: 200px;
+                background-color: pink;
+                /*border-top-left-radius: 250px 100px;
+                border-top-right-radius: 250px 100px;
+                border-bottom-left-radius: 250px 100px;
+                border-bottom-right-radius: 250px 100px;*/
+               
+               border-radius: 250px 260px 270px / 80px 90px 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+        <!--半圆-->
+        <div id="div2"></div>
+        <!--椭圆-->
+        <div id="div3"></div>
+    </body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>背景蒙版</title>
+		<style type="text/css">
+			div{
+				width: 1000px;
+				height:1000px;
+				background-image: url(狗.png);
+				/*背景蒙版*/
+				-webkit-mask-box-image: url(蝴蝶.png);
+				/*背景蒙版的平铺方式*/
+				-webkit-mask-repeat:no-repeat;
+				/*背景蒙版的位置*/
+				-webkit-mask-position: 50% 50%;
+				/*
+				 背景蒙版的大小
+				 两个值:1.宽度 2.高度
+				 可以填px,也可以填百分比
+				 cover contain
+				 */
+				-webkit-mask-size: 100% 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			背景蒙版:
+					蒙版的兼容性比较差,只对webkit内核的浏览其效果
+					
+					1.充当蒙版的图片的格式必须是png格式
+					2.设置成蒙版的图片,系统会把原来透明的设置成不能透明,不透明的变成透明的.
+		-->
+		<div>
+		</div>
+	</body>
+</html>

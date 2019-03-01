@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>nth-of-type选择器</title>
+		<style type="text/css">
+			li:nth-of-type(4){
+				background-color:red;
+			}
+			li:nth-child(n+3):nth-child(-n+8){
+				background-color:greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			nth-child和nth-of-type的区别:
+			nth-child查找元素时是从所有的子元素里按照编号的顺序进行查找.
+			nth-of-type查找元素时先把非E类型的元素过滤掉之后再按照编码的顺序进行查找.
+			
+		-->
+		<ul>
+			<li>我是1号</li>
+			<li>我是2号</li>
+			<li>我是3号</li>
+			<p>12</p>
+			<li>我是4号</li>
+			<li>我是5号</li>
+			<li>我是6号</li>
+			<li>我是7号</li>
+			<p>12</p>
+			<li>我是8号</li>
+			<li>我是9号</li>
+			<li>我是10号</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas10_图像的保留和获取</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.图形的保存和获取
+			/*
+			 * 保存 save()
+			 * 恢复 restore()
+			 */
+			//绘制红色矩形
+			content.fillStyle = "red";
+			content.shadowBlur = 20;
+			content.shadowOffsetX = 10;
+			content.shadowOffsetY = 10;
+			content.shadowColor = "black";
+			content.fillRect(10,10,100,100)
+			content.save();
+			
+			//绘制黄色矩形
+			content.fillStyle = "yellow";
+			content.shadowBlur = 20;
+			content.shadowOffsetX = 10;
+			content.shadowOffsetY = 10;
+			content.shadowColor = "black";
+			content.fillRect(150,10,100,100)
+			content.save();
+			
+			//绘制蓝色矩形
+			content.fillStyle = "blue";
+			content.shadowBlur = 20;
+			content.shadowOffsetX = 10;
+			content.shadowOffsetY = 10;
+			content.shadowColor = "black";
+			content.fillRect(290,10,100,100)
+			content.save();
+			
+			//恢复
+			content.restore();
+			content.arc(60,200,50,0,2*Math.PI,false);
+			content.fill();
+			
+			content.restore();
+			content.fillRect(150,150,100,100)
+			
+			content.restore();
+			content.fillRect(290,150,100,100)
+			
+			/*
+			 * Canvas中保存和恢复的行为类似数据进栈和出栈的过程
+			 * save() ----> 保存绘图的状态(出栈)
+			 * 绘图的样式状态一旦出栈,系统就不再保留该状态.
+			 * 
+			 * 注意:save的次数 >= restore的次数
+			 */
+		</script>
+	</body>
+</html>

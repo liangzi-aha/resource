@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性的多样性</title>
+	</head>
+	<body>
+		<div id="app">
+			<child :str="'绝代有佳人'" :bol="false" :aa="{name:'吕布'}"></child>
+		</div>
+	</body>
+</html>
+
+<template id="child">
+	<div>
+		<p>{{aa.name}}</p>
+		<p>{{bol?'唐僧':'宋江'}}</p>
+		<p>{{str}}</p>
+	</div>
+</template>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    // 设置属性可以设置多种属性设置
+    var app = new Vue({
+    	el:'#app',
+    	data:{},
+    	methods:{},
+    	components:{
+    		child:{
+    			template:'#child',
+    			props:{
+    				str:{
+    				type:String,
+    				},
+    				
+    				bol:{
+    				type:Boolean,
+    				default:true, //不写该属性默认为 true
+    				// 表示必须写该属性
+    				isrequired:true,
+    		       },
+    		       aa:{
+    		       	type: Object,
+    		       	default:function(){
+    		       		return {
+    		       			name:'张三丰',
+    		       			age:123,
+    		       		}
+    		       	  }
+    		       }
+    			}  			
+    		}
+    	}
+})
+	
+</script>

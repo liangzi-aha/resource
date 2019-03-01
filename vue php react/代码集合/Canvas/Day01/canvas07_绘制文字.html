@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas07_绘制文字</title>
+	<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				margin: 50px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="Canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签并设置大小
+			var canvas = document.getElementById("Canvas")
+			canvas.width = 1000;
+			canvas.height = 500;
+			
+			//2.获取 2D渲染上下文 对象
+			var content = canvas.getContext("2d")
+			
+			//3.绘制文字
+			//创建文字
+			var txt = "Hello,world!你好,世界!"
+			/*
+			 * 绘制文字
+			 * 1.strokeText(text,x,y,maxwidth)
+			 * 2.fillText(text,x,y,maxwidth)
+			 * 
+			 * 四个参数
+			 * text:要绘制的文字
+			 * x,y:要绘制的位置
+			 * maxwidth:允许绘制的最大宽度,一般省略
+			 */
+			content.strokeStyle = "blue"
+			/*
+			 * font属性,设置绘制的文字特点:
+			 * 倾斜 文字大小 字体类型
+			 */
+			
+			content.font = "italic 50px Bradley Hand";
+			content.strokeText(txt,100,100);
+			
+			content.fillStyle = "#00FFFF"
+			content.fillText(txt,300,300);
+			
+			/*
+			 * 如何旋转文字图像???
+			 */
+			content.rotate(0.1*Math.PI)  //PI  =  π
+			content.fillText(txt,200,400);
+			
+			content.beginPath()
+			content.arc(500,250,-0.5,0*Math.PI)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过渡</title>
+		<style>
+			.bb{
+				background: #0f0;
+				height: 500px;
+				width:  500px;
+			}
+			.wp{
+				height: 500px;
+				width:  500px;
+				overflow: hidden;
+			}
+			 /*设置过渡类名*/
+			/*进入状态*/
+			.aa-enter,.aa-leave-to {
+				transition: all 3s ease;
+			}
+			/*动画状态*/
+			.aa-enter-active,.aa-leave-active  {
+				background: #FF0000;
+				transition: all 3s linear;
+			}
+			/*结束状态*/
+			.aa-enter-to,.aa-leave{
+			  transform: translateX(500px);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="wp">
+			<transition name="aa" tag="div">
+				<div v-if="bol" class="bb">
+					
+				</div>
+			</transition>	
+			</div>
+			<button @click="change()">点击切换</button>			
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/* 过渡
+	1. 把需要结合动画效果的元素, 使用transition组件包裹起来
+	2. 做动画需要一个动画的名字
+	3. 设置动画
+	4. 还可以设置标签名 例如:tag="p"
+	过渡动画的使用场景:
+	v-if
+	v-show
+	路由
+	*/
+    var app = new Vue({
+	    el:'#app',
+	    data:{
+	    	    bol:false;
+	    },
+	    methods:{
+		   change(){
+		   	this.bol = !this.bol;
+		   },
+	    },	
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+

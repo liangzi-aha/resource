@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文件上传</title>
+	</head>
+	<body>
+		<!--
+			文件上传:
+			1.提交方式必须是post
+			2.需要修改form表单的编码格式
+		-->
+		<!-- enctype="multipart/form-data" 提交的东西转化为2进制-->
+		<form action="http://localhost/PHP/Day03/uploadFile.php" method="post" enctype="multipart/form-data">
+			<!--input file 文件类型-->
+			<input type="file" name="headImg" /> 
+			<input type="submit" value="上传文件"/>
+		</form>
+	</body>
+</html>

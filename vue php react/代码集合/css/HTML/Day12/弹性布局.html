@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹性布局</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 600px;
+				height: 600px;
+				background-color:blue;
+				margin: 0 auto;
+				/*开启弹性布局*/
+				display: flex;
+				/*主轴方向*/
+				flex-direction: column-reverse;
+				/*换行方式*/
+				flex-wrap: wrap-reverse;
+				/*弹性子元素在主轴上的是对齐方式*/
+				justify-content:space-between;
+				/*单行弹性子元素侧轴上的对齐方式*/
+				align-items:center;
+				/*多行弹性子元素侧轴上的对齐方式*/
+				align-content: center;
+			}
+			#box>div{
+				width: 80px;
+				height: 80px;
+				background-color:yellow;
+				color: black;
+				line-height: 80px;
+				font-size: 30px;
+				text-align: center;
+				border-radius: 50%;
+			}
+			#wrap{
+				width: 800px;
+				height: 800px;
+				background-color:cyan;
+				display: flex;
+			}
+			#wrap>div:nth-child(1){
+				width: 300px;
+				height: 200px;
+				background-color:red;
+				felx-shrink:1;
+			}
+			#wrap>div:nth-child(2){
+				width: 400px;
+				height: 200px;
+				background-color:yellow;
+				/*align-self: center;*/
+				felx-shrink:2;
+			}
+			#wrap>div:nth-child(3){
+				width: 300px;
+				height: 200px;
+				background-color:grey;
+				/*align-self:flex-end;*/
+				felx-shrink:3;
+			}
+			#container{
+				width: 1000px;
+				margin: 0 auto;
+				border: solid red;
+				display: flex;
+			}
+			p{
+				width: 200px;
+				flex-basis: 400px;
+				max-width: 100px;
+				height: 200px;
+				text-align: center;
+				font-size: 80px;
+				line-height: 200px;
+				background-color: red;
+				
+			}
+			p+p{
+				background-color:blue;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href=""/>
+	</head>
+	<body>
+		<!--
+			布局方式:
+			1.盒模型布局
+			2.浮动布局
+			3.定位布局
+			4.流式布局
+			5.多列布局
+			6.弹性布局
+		-->
+		<!--
+			容器:设置了display:flex/inline-flex的元素
+			弹性子元素:容器里的元素
+			
+			主轴:默认情况下弹性子元素会从主轴的起点开始到主抽的终点,
+			
+			侧轴(交叉轴):与主轴垂直的轴
+			
+			主轴和侧轴并不是真实存在的,其目的只是方便我们明确弹性子元素的排布方向和排布位置.
+			
+			1.容器的样式:
+				1.主轴的方向 flex-direction
+					a.row 默认值,从左往右
+					b.row-reverse  水平,从右往左
+					c.column ['kɒləm] 竖直,从上往下
+					d.column-reverse [rɪ'vɜːs] 垂直,从下往上
+				2.换行方式 flex-wrap
+					a.nowrap 默认值,不换行,如果空间不够,强制压缩元素的宽.
+					b.wrap 换行
+					c.wrap-reverse 换行,侧轴与之前的相反,按照调整过后的方向排布
+				3.弹性子元素在主轴上的是对齐方式justify-content  justify:(对齐)佳斯特fai
+					a.flex-start 主轴开始方向对齐
+					b.flex-end 主轴结束方向对齐
+					c.center  主轴方向居中
+					d.space-between  两端元素靠边,其余间距等距
+					e.space-around  所有元素左右两边间距等距
+				4.单行弹性子元素侧轴上的对齐方式align-items
+					a.flex-start 侧轴开始方向对齐
+					b.flex-end  侧轴结束方向对齐
+					c.center  侧轴方向居中
+					d.baseline  基线对齐
+					e.stretch 规定弹性子元素在侧轴上的默认高度.如果已经设置了高度,该值无效,不设置,弹性子元素默认撑满整个容器
+				5.多行弹性子元素侧轴上的对齐方式align-content
+					a.flex-start 侧轴开始方向对齐
+					b.flex-end  侧轴结束方向对齐
+					c.center  侧轴方向居中
+					d.stretch 规定弹性子元素在侧轴上的默认高度.如果已经设置了高度,该值无效,不设置,弹性子元素默认撑满整个容器
+					e.space-between  两端元素靠边,其余间距等距
+					f.space-around  所有元素左右两边间距等距
+				二.弹性子元素的样式:
+					1.order 顺序数值,决定元素的排布顺序,默认值都是0,值越小,位置越靠前,如果值相等,写的早的靠前.
+					2.align-self 单独设置弹性子元素在侧轴上的对齐方式  值与align-items相同
+					3.felx-grow 多余空间的分配比例 默认值0,表示不分配空间.
+					
+					4.felx-shrink 空间不足时的收缩比例 默认值1,0表示不收缩
+							计算公式
+								a.计算权重:
+								所有元素的宽*缩放比例的和
+								b.计算收缩量
+								自身宽度*缩放比例/权重*溢出
+					5.flex-basis 用来规定弹性子元素的基础宽度.
+						content宽 < width < flex-basis  (max-width和min-width会限制flex-basis)
+						如果没有设置flex-basis,弹性子元素的大小为width的值
+						如果没有设置width也没有设置,弹性子元素的大小为内容大小.
+						
+						flex-basis与width的区别:
+						1.flex-basis只对flex元素起作用,不是flex的元素只能用width
+						2.flex-basis只在主轴为row时起作用,如果主轴设置成了column,还是要用width设置宽.
+						3.flex-basis对局定位的元素不起效果,还是要用width设置宽度.
+						
+						flex是flex-grow,flex-shrink和flex-basis的合写形式,合写顺序:flex:geow shrink basis;
+						
+						flex的默认值(initial)是 0 1 auto (flex-grow:0; flex-shrink:1; flex-basis:auto;)
+						auto 与 1 1 auto相同
+						none 与 0 0 auto相同
+						
+		-->
+		<!--<div id="box">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>-->
+		<div id="wrap">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div id="container">
+			<p>1</p>
+			<p>2</p>
+		</div>
+	</body>
+</html>

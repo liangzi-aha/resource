@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas01_拾色器</title>
+        <style type="text/css">
+            canvas {
+                border: 1px solid red;
+                margin: 50px auto;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="Canvas" width="500" height="500">
+            您的浏览器不支持canvas, 请更换或者升级浏览器
+        </canvas>
+        <script type="text/javascript">
+            //1. 获取canvas标签并设置大小
+            var canvas = document.getElementById("Canvas");
+
+            canvas.width = 1000;
+            canvas.height = 500;
+
+            //2. 获取 2D渲染上下文 对象
+            var content = canvas.getContext("2d");
+
+            //3. 拾色器
+            var img = new Image();
+            img.src = "img/girl1.jpg";
+            img.onload = function(){
+                content.drawImage(this, 0, 0, 1000, 500);
+            }
+            
+            canvas.onclick = function(e) {
+                var even = e || event;
+                //获取鼠标位置
+                var x = even.offsetX;
+                var y = even.offsetY;
+                var imgdata = content.getImageData(x, y, 1, 1);
+                var pixelArray = imgdata.data;
+                
+                //生成一个rgb值
+                var colorStr = "rgb(" + pixelArray[0] + "," + pixelArray[1] + "," + pixelArray[2] + ")";
+                document.body.style.background = colorStr;
+            }
+        </script>
+    </body>
+
+</html>

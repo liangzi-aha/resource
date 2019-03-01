@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>元素拖拽</title>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                position: relative;
+            }
+            
+            #div1 {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+        <script type="text/javascript">
+            div1.onmousedown = function(e) {
+                var even = e || event;
+                var x = even.clientX - this.offsetLeft;
+                var y = even.clientY - this.offsetTop;
+                window.onmousemove = function(e) {
+                    var even = e || event;
+                    div1.style.left = even.clientX - x + "px";
+                    div1.style.top = even.clientY - y + "px";
+                }
+            }
+            
+            div1.onmouseup = function(){
+                window.onmousemove = null;
+            }
+            window.onmouseover = function(){
+                window.onmousemove = null;
+            }
+        </script>
+    </body>
+
+</html>

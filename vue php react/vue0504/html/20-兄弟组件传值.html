@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>兄弟组件传值</title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{txt}}</h1>
+			<son1></son1>
+			<son2></son2> 
+		</div>
+	</body>
+</html>
+<!--创建两个模板-->
+<template id="son1">
+	<p>{{str}}</p>
+</template>
+
+<template id="son2">
+	<button @click="cFun()">点击</button>
+</template>
+
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+   // 两个子组件通信,可声明一个bus变量,它是vue的一个实例,通过该变量,实现组件之间的传值
+   var bus = new Vue();
+
+	var app = new Vue({
+		el:"#app",
+		data:{
+			txt:'展昭'
+		},
+		methods:{
+			
+		},
+		components:{
+			son1:{
+				template:'#son1',
+				data(){
+					return{
+					    str:'蒋平'
+					}
+				},
+				mounted(){
+					// 监听$emit所触发的方法,使用$on, $on(要监听的方法,回调函数), 回调函数内的this不是当前组件,而是bus,添加bind(this)即可,或者重新声明this, 回调函数的参数即为$emit所传的值
+					bus.$on('aa',(val)=>{
+						this.str = val;
+					});
+				}
+			},
+			son2:{
+				template:'#son2',
+				methods:{
+					cFun(){
+					bus.$emit('aa','韩张');	
+					}
+				}
+			}
+		}
+	})
+	
+</script>

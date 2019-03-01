@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <pre>
+        mongoDB
+        基于分布式文件存储的数据库
+        它是非关系型数据库
+        它由c++编写
+        特点:高性能，易部署，易使用
+
+        关系型数据库:mysql sqlserver Oracle 表和表之间可以建立关联(一般通过主键和外键),关系型数据库通过SQL语句进行操作
+
+        链接MongoDB的步骤:在终端中输入mongod --dbpath =存储数据的路径
+        如果加载完毕,输入 mongo 是打开mongo环境
+        输入 db,查看当前操作的数据库,默认会显示test为当前操作的数据库
+
+        mongodb 的操作语句:
+        查看所有的数据库 show dbs
+
+        创建数据库 :  use 数据库名
+
+        删除数据库:db.dropDatabase()
+
+        创建集合 db.createCollection(name)
+
+        给集合插入文档 db.集合名.insert(文档)
+
+        查询所有文档  db.集合名,find()
+
+        条件查询 db.集合名.find({age:50})  意思是查询age的值是50的所有数据
+
+        显示所有的集合名  show collections
+
+        修改 db.集合名.update(查询条件,要修改的内容,可以选择的参数)
+
+        删除文档 db.集合名.remove({删除条件},可选参数)
+
+        删除表  db.集合名.drop()
+    </pre>
+</body>
+</html>

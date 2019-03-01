@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>auto值</title>
+	<style type="text/css">
+	#div1{
+		border: 5px solid red;
+		height: 200px;
+		text-align:center;
+	}
+	#div2{
+		width: 200px;
+		height: 100px;
+		background-color: blue;	
+		margin-right: auto;
+		margin-left: auto;
+	}
+	</style>
+</head>
+<body>
+	<!-- 
+		auto值,可以帮助我们灵活的进行块级元素的布局.
+
+		在盒模型里,一般那我们会给width,margin设置auto值.
+
+		1.如果width,margin-left,margin-right三个样式里有一个值为auto,其余两个必须是定值.
+		2.如果width,margin-left,margin-right三个样式都为定值且发生了冲突,系统会强制修改margin-right的值.
+
+		3.如果margin-left和margin-right两个值为auto,width必须为定值.
+	 -->
+
+	  <div id="div1">
+	  	<div id="div2"></div>
+	  </div>
+
+		<!-- 
+		text-align样式,只对内容类型为行级 元素起效果,对快级元素不起效果
+
+		单纯的文本是匿名行元素.
+
+		1.行元素水平居中给父级用text-align:center
+		2.块元素水平居中用margin:auto
+		 -->
+
+
+
+
+
+</body>
+</html>

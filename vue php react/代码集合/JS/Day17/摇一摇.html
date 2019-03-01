@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>摇一摇</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 摇一摇结合手机硬件功能
+			 * 
+			 * ondevicemotion
+			 * 
+			 * 我们认为用在某一方向的重力加速度大于某一个值时,就判断用户在晃动手机.
+			 * 
+			 */
+			//上一次
+			var a1 = {
+				x: 0,
+				y: 0,
+				z: 0
+			}
+			//当前
+			var a2 = {
+				x: 0,
+				y: 0,
+				z: 0
+			}
+			window.ondevicemotion = function(e) {
+				var even = e || event ;
+				//获取重力加速度的对象,该对象里存放了三个维度的速度值.
+				var aObj = even.accelerationIncludingGravity;
+				a2.x = aObj.x;
+				a2.y = aObj.y;
+				a2.z = aObj.z;
+				
+				if(Math.abs(a2.x - a1.x) > 50 || Math.abs(a2.y - a1.y) > 50 || Math.abs(a2.z - a1.z) > 50){									alert("摇一摇")
+				}
+				a1.x = a2.x
+				a1.y = a2.y
+				a1.z = a2.z
+			}
+		</script>
+	</body>
+
+</html>

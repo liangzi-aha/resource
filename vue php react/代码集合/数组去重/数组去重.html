@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		var a = [1, 2, 2, 3, 3, 3, 3, 3, 3, 1, 4, 5, 6, 6];
+//		for(var i = 0; i < a.length; i++) {
+//			for(var j = i + 1; j < a.length; j++) {
+//				if(a[i] == a[j]) {
+//					a.splice(j, 1)
+//					j--;
+//				}
+//			}
+//		}
+
+		function unique2(arr){
+ 			var arr2 = arr.sort();
+			var res = [arr2[0]];
+ 		for(var i=1; i<arr2.length; i++){
+  		if(arr2[i] !== res[res.length-1]){
+  		 res.push(arr2[i]);
+ 			}
+ 		} 
+		 return res;
+		}
+		
+		console.log(unique2(a))
+	</script>
+
+</html>

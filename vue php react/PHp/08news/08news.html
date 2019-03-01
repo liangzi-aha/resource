@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新闻操作</title>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" cellpadding="0">
+			<tr>
+				<th>标题</th>
+				<th>内容</th>
+			</tr>
+			<tr class="p">
+				<td>
+					<span></span>
+				</td>
+				<td>
+					<button>编辑</button>
+					<button>删除</button>
+				</td>
+			</tr>
+		</table>
+		<hr />
+		<div>
+			<input type="text" name="ti" value="" id="ti" /><br />
+			<textarea name="" rows="10" cols="10" id="cont"></textarea><br />
+			<button id="bth">提交</button>
+		</div>
+	</body>
+
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+		//加载表格数据
+		function lodaDate(){
+			$.get("news.php?type=0",function(data){
+				console.log(data);
+				//删除所有的列表内容
+				$('.p').remove();
+				//声明空的字符串,备用
+				var html = "";
+				for(var i=0;i<data.length;i++){
+					var tit=data[i].title;
+					var id=data[i].id;
+					var cont=data[i].cont;
+					html+='<tr class="p"><td><span onclick="goPage('+id+')">'+tit+'</span></td><td><button onclick="update('+id+',\''+tit+'\',\''+cont+'\')">编辑</button><button onclick="del('+id+')">删除</button></td></tr>';
+				}
+				$('table').append(html);
+			})
+		}
+		lodaDate()
+	
+	//声明点击方法
+	function goPage(n){
+		//设置本地存储
+		localStorage.setItem('id',n);
+		window.location.href = "09template.html";
+	}
+	
+	//声明删除
+	function del(id){
+		$.get('news.php?',{id:id,type:1},function(data){
+			console.log(data);
+			lodaDate()
+		});
+	}
+	//声明编辑方法
+	var Id = null;
+	function update(id,tit,cont){
+		$('#ti').val(tit);
+		$('#cont').val(cont);
+		Id = id;
+	}
+	
+	//编辑提交
+	$('#btn').click(function(){
+		var tit = $('#ti').val();
+		var cont = $('#cont').val();
+		$.get('news.php',{type:2,id:Id,tit:tit,cont:cont},function(data){
+			console.log(data);
+			lodaData();
+			$('#ti').val('');
+			$('#cont').val('');
+			Id = null;
+		});
+	});
+</script>

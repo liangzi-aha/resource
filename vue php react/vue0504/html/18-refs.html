@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>refs</title>
+	</head>
+	<body>
+		<div id="app">
+			<child  ref="aa"></child>
+			<button @click="aa()">点击</button>
+		</div>
+	</body>
+</html>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  // this.$refs 获取所有携带ref属性的组件的集合, this.$refs.name 获取ref=name的元素的组件
+	var app = new Vue({
+		el:"#app",
+		data:{},
+		methods:{
+			aa(){
+				var son = this.$refs.aa;
+				son.childFun();
+			}
+		},
+		components:{
+			child:{
+				template:'<p>{{str}}{{num}}</p>',				
+				data(){
+				return {
+					str:'为天地立心',
+					num:0 
+				    }
+			    },
+			methods:{
+			    childFun(){
+			    	this.str = '为生民立命';
+			    	this.num++
+			        }
+		      	}
+			},			
+		 }
+	});	
+</script>
